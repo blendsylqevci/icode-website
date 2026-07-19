@@ -155,7 +155,7 @@
     }
     // mobile drawer + overlay
     var drawer = document.createElement('div'); drawer.className='mobile-nav';
-    drawer.innerHTML = '<div class="lang-toggle" role="group" aria-label="Language"><button data-setlang="sq">SQ</button><button data-setlang="en">EN</button></div>' + mobileHtml + '<a class="btn btn-primary" href="contact.html" data-sq="Na kontakto" data-en="Get in touch">Na kontakto</a>';
+    drawer.innerHTML = '<div class="m-top"><div class="lang-toggle" role="group" aria-label="Language"><button data-setlang="sq">SQ</button><button data-setlang="en">EN</button></div><a class="u-badge" href="audit.html"><span data-sq="Kërko audit falas" data-en="Request free audit">Kërko audit falas</span>'+ICON.arrow+'</a></div>' + mobileHtml + '<a class="btn btn-primary" href="contact.html" data-sq="Na kontakto" data-en="Get in touch">Na kontakto</a>';
     var overlay = document.createElement('div'); overlay.className='nav-overlay';
     document.body.appendChild(overlay); document.body.appendChild(drawer);
     function positionDrawer(){

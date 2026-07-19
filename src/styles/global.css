@@ -207,7 +207,9 @@ body.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg);}
 body.menu-open .mobile-nav{transform:translateX(0);}
 .mobile-nav a{display:block;font-family:var(--ff-head);font-weight:600;font-size:1.15rem;padding:14px 0;border-bottom:1px solid var(--line);}
 .mobile-nav a.sub{font-size:.95rem;font-weight:500;color:var(--muted);padding:10px 0 10px 16px;border:none;}
-.mobile-nav .lang-toggle{margin-bottom:22px;}
+.mobile-nav .m-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;}
+.mobile-nav .m-top .u-badge{display:inline-flex;width:auto;border-bottom:none;padding:9px 16px;font-size:.82rem;}
+.mobile-nav .m-top .u-badge svg{width:13px;height:13px;}
 .mobile-nav .m-item{display:flex;align-items:center;border-bottom:1px solid var(--line);}
 .mobile-nav .m-item a{flex:1;border-bottom:none;}
 .mobile-nav .m-chev{flex:none;width:44px;height:44px;display:grid;place-items:center;color:var(--ink);}

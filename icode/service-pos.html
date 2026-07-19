@@ -57,20 +57,73 @@ a{color:inherit;}a:hover{color:var(--primary);}
 .printer i{position:absolute;left:14px;right:14px;bottom:5px;height:4px;background:#000;border-radius:2px;}
 .rslot{overflow:hidden;padding:0 12px 6px;margin-top:-2px;}
 .receipt2{transform:translateY(-104%);margin:0 auto;}
-.receipt2.printing{transition:transform 4.8s cubic-bezier(.25,.6,.35,1);transform:translateY(0);}
+.receipt2.printing{transition:transform 3.6s cubic-bezier(.25,.6,.35,1);transform:translateY(0);}
 .rqr{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;width:78px;margin:10px auto 6px;}
 .rqr i{aspect-ratio:1;background:#111;}
 .rqr i.o{background:transparent;}
 .sef{text-align:center;font-size:.64rem;letter-spacing:.12em;font-weight:700;}
 .sef.ok2{color:#16a34a;}
 .bill .rl{display:flex;justify-content:space-between;gap:12px;}
-.pos-stage{position:relative;min-height:492px;}
+.pos-stage{position:relative;min-height:680px;}
 .bill{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(320px,100%);background:#fff;border:1.5px solid var(--line-2);border-radius:14px;box-shadow:0 24px 50px rgba(14,14,16,.14);padding:22px 22px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;line-height:1.75;color:#222;transition:opacity .5s var(--ease),transform .5s var(--ease);}
 .bill.gone{opacity:0;transform:translateX(-50%) translateY(-18px);pointer-events:none;}
 .bill .bt{text-align:center;font-weight:700;letter-spacing:.12em;margin-bottom:6px;}
 .bill .bsub{text-align:center;font-size:.62rem;color:#888;letter-spacing:.08em;margin-bottom:10px;}
-.paybtn{width:100%;margin-top:14px;background:#0e0e10;color:#fff;border-radius:10px;padding:13px;font-family:var(--ff-head);font-weight:700;font-size:.8rem;letter-spacing:.08em;border:none;transition:transform .15s,background .3s;}
+.paybtn{width:100%;margin-top:14px;background:#0e0e10;color:#fff;border-radius:10px;padding:13px;font-family:var(--ff-head);font-weight:700;font-size:.8rem;letter-spacing:.08em;border:none;cursor:pointer;transition:transform .15s,background .3s;}
 .paybtn.pressed{transform:scale(.95);background:#16a34a;}
+.paybtn.pulse{animation:payPulse 2s infinite;}
+@keyframes payPulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.55);}50%{box-shadow:0 0 0 14px rgba(22,163,74,0);}}
+@media (prefers-reduced-motion:reduce){.paybtn.pulse{animation:none;}}
+.paybtn:disabled{opacity:.45;cursor:default;}
+.tbl-row{display:flex;gap:8px;margin:10px 0 8px;}
+.tbl{flex:1;font-family:var(--ff-head);font-weight:700;font-size:.72rem;letter-spacing:.06em;padding:8px 0;border:1.5px solid #e0e0e4;border-radius:8px;background:#fafafa;cursor:pointer;transition:.2s;color:#555;}
+.tbl.on{background:#0e0e10;color:#7dffa8;border-color:#0e0e10;}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 6px;}
+.mi{text-align:left;border:1.5px solid #e4e4e8;border-radius:10px;padding:8px 11px;background:#fff;cursor:pointer;transition:transform .15s,border-color .2s;font-family:inherit;font-size:.72rem;line-height:1.5;}
+.mi:hover{border-color:#0e0e10;}
+.mi.hit{transform:scale(.94);border-color:#16a34a;}
+.mi b{display:block;font-size:.74rem;color:#111;}
+.mi .mc{display:block;font-size:.54rem;letter-spacing:.12em;font-weight:700;}
+.mi .mp{color:#666;}
+.mc.pije{color:#1b4dff;}.mc.pizza{color:#ff5a1f;}.mc.steak{color:#c0392b;}.mc.sallat{color:#16a34a;}
+.ord-lines .rl{cursor:pointer;}
+.ord-lines .rl:hover{color:#c0392b;}
+.ord-empty{color:#999;font-size:.68rem;text-align:center;padding:4px 0 6px;}
+.mode-tabs{display:flex;gap:8px;margin-bottom:12px;}
+.mtab{flex:1;font-family:var(--ff-head);font-weight:700;font-size:.72rem;letter-spacing:.08em;padding:10px 0;border:1.5px solid #e0e0e4;border-radius:10px;background:#fafafa;color:#555;cursor:pointer;transition:.2s;}
+.mtab.on{background:#0e0e10;color:#7dffa8;border-color:#0e0e10;}
+.mtab-more{flex:0 0 auto;display:flex;align-items:center;padding:10px 11px;font-size:.58rem;color:#888;background:#fff;border-style:dashed;cursor:default;}
+.mtab-more:hover{border-color:#e0e0e4;color:#888;}
+.mode-note{font-family:var(--ff-head);font-size:.58rem;color:#999;text-align:center;margin:-4px 0 12px;letter-spacing:.02em;}
+.floor{display:flex;justify-content:center;gap:44px;padding:34px 0 30px;}
+.tseat{position:relative;width:92px;height:92px;background:#fff;border:2px solid #0e0e10;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:var(--ff-head);font-weight:800;font-size:1rem;transition:transform .2s,background .2s,color .2s;box-shadow:4px 4px 0 #0e0e10;}
+.tseat.round{border-radius:50%;}.tseat.sq{border-radius:18px;}
+.tseat:hover{transform:translateY(-3px);background:#0e0e10;color:#7dffa8;}
+.tseat .ch{position:absolute;background:#e2e2e6;border:1.5px solid #bbb;border-radius:6px;}
+.ch.c-t{width:34px;height:12px;top:-22px;left:50%;transform:translateX(-50%);}
+.ch.c-b{width:34px;height:12px;bottom:-22px;left:50%;transform:translateX(-50%);}
+.ch.c-l{width:12px;height:34px;left:-22px;top:50%;transform:translateY(-50%);}
+.ch.c-r{width:12px;height:34px;right:-22px;top:50%;transform:translateY(-50%);}
+.tseat .tt{font-style:normal;font-size:.56rem;font-weight:700;color:#16a34a;min-height:.8em;}
+.tseat:hover .tt{color:#7dffa8;}
+.back-row{display:flex;align-items:center;gap:10px;margin:2px 0 10px;}
+.backbtn{width:30px;height:30px;flex:none;border:1.5px solid #ddd;border-radius:8px;background:#fff;cursor:pointer;font-size:.9rem;line-height:1;transition:.2s;}
+.backbtn:hover{border-color:#0e0e10;}
+.cat-tabs{display:flex;gap:8px;margin:0 0 10px;}
+.cat{flex:1;font-family:var(--ff-head);font-weight:700;font-size:.66rem;letter-spacing:.08em;padding:8px 0;border:1.5px solid #e0e0e4;border-radius:8px;background:#fafafa;color:#555;cursor:pointer;transition:.2s;}
+.cat.on{background:#1b4dff;color:#fff;border-color:#1b4dff;}
+.scan-table{width:100%;border-collapse:collapse;font-size:.6rem;margin:6px 0 10px;}
+.scan-table th{font-size:.52rem;letter-spacing:.05em;text-align:left;border-bottom:1.5px solid #111;padding:4px 3px;}
+.scan-table td{padding:4px 3px;border-bottom:1px dashed #e0e0e4;white-space:nowrap;}
+.scan-table th:nth-child(4),.scan-table td:nth-child(4),.scan-table th:nth-child(5),.scan-table td:nth-child(5){text-align:right;}
+.scan-table td.nm{max-width:82px;overflow:hidden;text-overflow:ellipsis;}
+.scan-table tr.hit td{animation:scanFlash .6s;}
+@keyframes scanFlash{from{background:#d7f8e3;}}
+.sc-empty td{color:#999;text-align:center !important;padding:10px 3px;}
+.bc{display:block;width:44px;height:13px;margin-bottom:4px;background:repeating-linear-gradient(90deg,#111 0 2px,transparent 2px 4px,#111 4px 5px,transparent 5px 8px);}
+.mki .mcode{display:block;font-size:.54rem;color:#888;}
+.pos-cur{display:none !important;}
+.fiscal-wrap{pointer-events:none;}
 .fiscal-wrap{position:absolute;inset:0;opacity:0;transition:opacity .4s;}
 .fiscal-wrap.on{opacity:1;}
 .rfh{text-align:center;font-weight:700;letter-spacing:.14em;border:1.5px solid #111;border-radius:4px;padding:3px 0;margin-bottom:8px;font-size:.72rem;}
@@ -100,34 +153,52 @@ a{color:inherit;}a:hover{color:var(--primary);}
       </div>
     </div>
     <div data-reveal data-reveal-delay="2">
-      <div class="printer-scene" aria-hidden="true">
-        <div class="payterm" id="payterm"><span>5.60 €</span><span id="pt-st">FATURA E HAPUR</span></div>
+      <div class="printer-scene">
+        <div class="payterm" id="payterm"><span id="pt-amt">0.00 €</span><span id="pt-st">FATURA E HAPUR</span></div>
         <div class="pos-stage">
           <div class="bill" id="bill">
-            <div class="bt">FATURA</div>
-            <div class="bsub">TAVOLINA 4 · OP: BLERTA · <span id="rc-date">--</span></div>
-            <hr style="border:none;border-top:1.5px dashed #bbb;margin:8px 0;">
-            <div class="rl"><span>2× Espresso dopio</span><span>3.00 €</span></div>
-            <div class="rl"><span>1× Kroasan gjalpi</span><span>1.80 €</span></div>
-            <div class="rl"><span>1× Ujë 0.5L</span><span>0.80 €</span></div>
-            <hr style="border:none;border-top:1.5px dashed #bbb;margin:8px 0;">
-            <div class="rl big"><span>TOTALI</span><span>5.60 €</span></div>
-            <button class="paybtn" id="paybtn">PAGUAJ FATURËN</button>
+            <div class="mode-tabs"><button class="mtab on" data-mode="market">MARKET</button><button class="mtab" data-mode="rest" data-sq="RESTORANT" data-en="RESTAURANT">RESTORANT</button><span class="mtab mtab-more" data-sq="+ TJERA" data-en="+ MORE">+ TJERA</span></div>
+            <div class="mode-note" data-sq="Ofrojmë edhe POS për hotele, farmaci, servise, bar-kafe etj. — na pyet." data-en="We also offer POS for hotels, pharmacies, workshops, cafés and more — ask us.">Ofrojmë edhe POS për hotele, farmaci, servise, bar-kafe etj. — na pyet.</div>
+            <div id="v-rest" hidden>
+              <div id="floor-v">
+                <div class="bt" data-sq="ZGJIDH TAVOLINËN" data-en="PICK A TABLE">ZGJIDH TAVOLINËN</div>
+                <div class="floor">
+                  <button class="tseat round" data-tbl="1"><span class="ch c-t"></span><span class="ch c-b"></span><span class="ch c-l"></span><span class="ch c-r"></span><b>T1</b><i class="tt" id="tt-1"></i></button>
+                  <button class="tseat sq" data-tbl="2"><span class="ch c-t"></span><span class="ch c-b"></span><span class="ch c-l"></span><span class="ch c-r"></span><b>T2</b><i class="tt" id="tt-2"></i></button>
+                </div>
+                <div class="ord-empty" data-sq="Kliko tavolinën për të hapur porosinë" data-en="Tap a table to open its order">Kliko tavolinën për të hapur porosinë</div>
+              </div>
+              <div id="menu-v" hidden>
+                <div class="back-row"><button class="backbtn" id="backbtn" aria-label="Back">←</button><div class="bsub" style="margin:0;"><span data-sq="TAVOLINA" data-en="TABLE">TAVOLINA</span> <span id="tbl-lbl">1</span> · OP: BLERTA · <span id="rc-date">--</span></div></div>
+                <div class="cat-tabs"><button class="cat on" data-cat="pije" data-sq="PIJE" data-en="DRINKS">PIJE</button><button class="cat" data-cat="ushqim" data-sq="USHQIM" data-en="FOOD">USHQIM</button></div>
+                <div class="menu-grid" id="menu-grid"></div>
+                <hr style="border:none;border-top:1.5px dashed #bbb;margin:8px 0;">
+                <div class="ord-lines" id="ord-lines"></div>
+                <div class="rl big"><span>TOTALI</span><span id="ord-total">0.00 €</span></div>
+                <button class="paybtn" id="rest-pay" disabled data-sq="PAGUAJ FATURËN" data-en="PAY THE BILL">PAGUAJ FATURËN</button>
+              </div>
+            </div>
+            <div id="v-market">
+              <div class="bt">MARKETI iCode LLC</div>
+              <div class="bsub">KASA 01 · OP: BLERTA</div>
+              <table class="scan-table"><thead><tr><th data-sq="Barkodi" data-en="Barcode">Barkodi</th><th data-sq="Shifra" data-en="Code">Shifra</th><th data-sq="Emërtimi" data-en="Item">Emërtimi</th><th data-sq="Sasia" data-en="Qty">Sasia</th><th data-sq="Çmimi" data-en="Price">Çmimi</th></tr></thead><tbody id="scan-body"></tbody></table>
+              <div class="menu-grid" id="mk-grid"></div>
+              <div class="rl big" style="margin-top:10px;"><span>TOTALI</span><span id="mk-total">0.00 €</span></div>
+              <button class="paybtn" id="mk-pay" disabled data-sq="F12 · PAGUAJ" data-en="F12 · PAY">F12 · PAGUAJ</button>
+            </div>
           </div>
           <div class="fiscal-wrap" id="fwrap">
             <div class="printer"><i></i></div>
             <div class="rslot">
               <div class="receipt receipt2" id="rc2">
                 <div class="rfh">KUPON FISKAL</div>
-                <div class="rfs" style="text-align:center;">iCode Sh.p.k. · NUI 811-XXX-XXX · Gjilan<br>Kasa 03 · Operator: BLERTA</div>
+                <div class="rfs" style="text-align:center;">iCode Sh.p.k. · NUI 811-XXX-XXX · Gjilan<br><span id="rc-ctx">Kasa 01 · Operator: BLERTA · TAVOLINA 1</span></div>
                 <hr>
-                <div class="rl"><span>2× Espresso dopio</span><span>3.00 €</span></div>
-                <div class="rl"><span>1× Kroasan gjalpi</span><span>1.80 €</span></div>
-                <div class="rl"><span>1× Ujë 0.5L</span><span>0.80 €</span></div>
+                <div id="rc-items"></div>
                 <hr>
-                <div class="rl"><span>Baza 18%</span><span>4.75 €</span></div>
-                <div class="rl"><span>TVSH 18%</span><span>0.85 €</span></div>
-                <div class="rl big"><span>TOTALI</span><span>5.60 €</span></div>
+                <div class="rl"><span>Baza 18%</span><span id="rc-base">0.00 €</span></div>
+                <div class="rl"><span>TVSH 18%</span><span id="rc-tvsh">0.00 €</span></div>
+                <div class="rl big"><span>TOTALI</span><span id="rc-total">0.00 €</span></div>
                 <div class="rl"><span>PAGUAR: KARTELË ····4921</span><span>APPROVED</span></div>
                 <hr>
                 <div class="rl rfs"><span>NIVF:</span><span>84F3-1C29-7B0A-4E</span></div>
@@ -227,30 +298,213 @@ a{color:inherit;}a:hover{color:var(--primary);}
   var rc=document.getElementById('rc2'), bill=document.getElementById('bill'); if(!rc) return;
   var d=new Date();
   document.getElementById('rc-date').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
-  var pt=document.getElementById('payterm'), st=document.getElementById('pt-st'), sef=document.getElementById('sef-st');
-  var cur=document.getElementById('pos-cur'), btn=document.getElementById('paybtn'), fw=document.getElementById('fwrap');
-  var stage=document.querySelector('.pos-stage');
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){st.textContent='APPROVED ✓';pt.classList.add('ok');rc.classList.add('printing');sef.classList.add('ok2');return;}
+  var pt=document.getElementById('payterm'), st=document.getElementById('pt-st'), sef=document.getElementById('sef-st'), fw=document.getElementById('fwrap');
+  var ptAmt=document.getElementById('pt-amt');
+  var vRest=document.getElementById('v-rest'), vMarket=document.getElementById('v-market');
+  var floorV=document.getElementById('floor-v'), menuV=document.getElementById('menu-v');
+  var menu=document.getElementById('menu-grid'), ordEl=document.getElementById('ord-lines'), totEl=document.getElementById('ord-total');
+  var restPay=document.getElementById('rest-pay'), mkPay=document.getElementById('mk-pay');
+  var mkGrid=document.getElementById('mk-grid'), scanBody=document.getElementById('scan-body'), mkTot=document.getElementById('mk-total');
+  var tblLbl=document.getElementById('tbl-lbl');
   function L(){try{return localStorage.getItem('icode-lang')||'sq';}catch(e){return 'sq';}}
-  function moveTo(el){var r=el.getBoundingClientRect(),sr=stage.getBoundingClientRect();cur.style.left=(r.left-sr.left+r.width/2)+'px';cur.style.top=(r.top-sr.top+r.height/2)+'px';}
-  function cycle(){
-    var sq=L()==='sq';
-    pt.classList.remove('ok'); sef.classList.remove('ok2');
-    sef.textContent='SEF · KUPON FISKAL I DIGJITALIZUAR';
-    fw.classList.remove('on'); rc.classList.remove('printing'); void rc.offsetWidth;
-    bill.classList.remove('gone'); btn.classList.remove('pressed');
-    st.textContent=sq?'FATURA E HAPUR':'BILL OPEN';
-    cur.style.left='74%'; cur.style.top='82%';
-    setTimeout(function(){ moveTo(btn); },700);
-    setTimeout(function(){ cur.classList.add('click'); btn.classList.add('pressed'); setTimeout(function(){cur.classList.remove('click');},320); st.textContent=sq?'PRIT KARTELËN…':'PRESENT CARD…'; },1700);
-    setTimeout(function(){ st.textContent=sq?'DUKE LEXUAR…':'READING…'; },2600);
-    setTimeout(function(){ pt.classList.add('ok'); st.textContent='APPROVED ✓'; },3400);
-    setTimeout(function(){ bill.classList.add('gone'); cur.style.left='84%'; cur.style.top='10%'; },4000);
-    setTimeout(function(){ fw.classList.add('on'); rc.classList.add('printing'); st.textContent=sq?'DUKE FISKALIZUAR…':'FISCALISING…'; },4600);
-    setTimeout(function(){ sef.classList.add('ok2'); sef.textContent=sq?'SEF ✓ FISKALIZUAR · QR AKTIV':'SEF ✓ FISCALISED · QR ACTIVE'; st.textContent=sq?'KUPONI FISKAL ✓':'FISCAL COUPON ✓'; },9800);
-    setTimeout(cycle,13000);
+  function F(n){return n.toFixed(2)+' €';}
+  /* ---- data ---- */
+  var CAT={pije:['PIJE','DRINKS'],ushqim:['USHQIM','FOOD']};
+  var P=[
+    {id:'uje', sq:'Ujë 0.5L', en:'Water 0.5L', c:'pije', p:1.00},
+    {id:'caffe', sq:'Caffe', en:'Coffee', c:'pije', p:1.50},
+    {id:'cola', sq:'Coca-Cola', en:'Coca-Cola', c:'pije', p:1.50},
+    {id:'birre', sq:'Birrë', en:'Beer', c:'pije', p:2.50},
+    {id:'vere', sq:'Verë (gotë)', en:'Wine (glass)', c:'pije', p:3.50},
+    {id:'pepe', sq:'Pizza Peperoni', en:'Pepperoni Pizza', c:'ushqim', p:7.00},
+    {id:'biftek', sq:'Biftek', en:'Steak', c:'ushqim', p:19.00},
+    {id:'cezar', sq:'Sallatë Cezar', en:'Caesar Salad', c:'ushqim', p:5.99},
+    {id:'trad', sq:'Tavë Tradicionale', en:'Traditional Casserole', c:'ushqim', p:6.50}
+  ];
+  var M=[
+    {id:'buke', sq:'Bukë e freskët', en:'Fresh bread', bc:'8600100010017', code:'1001', p:0.60},
+    {id:'qumesht', sq:'Qumësht KABI 1L', en:'KABI milk 1L', bc:'8600100010024', code:'1002', p:1.20},
+    {id:'veze', sq:'Vezë 10 copë', en:'Eggs, 10pc', bc:'8600100010031', code:'1003', p:2.40},
+    {id:'miell', sq:'Miell 1kg', en:'Flour 1kg', bc:'8600100010048', code:'1004', p:1.10},
+    {id:'cola15', sq:'Coca-Cola 1.5L', en:'Coca-Cola 1.5L', bc:'8600100010055', code:'1005', p:1.80},
+    {id:'cokollate', sq:'Çokollatë', en:'Chocolate', bc:'8600100010062', code:'1006', p:1.50}
+  ];
+  var byId={}; P.concat(M).forEach(function(x){byId[x.id]=x;});
+  /* ---- state ---- */
+  var mode='market', cat='pije', tbl=null, busy=false;
+  var orders={1:{},2:{}};
+  var cart={}, cartOrder=[];
+  /* ---- beep ---- */
+  var AC=null;
+  function beep(){
+    try{
+      AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+      var o=AC.createOscillator(), g=AC.createGain();
+      o.type='square'; o.frequency.value=1400;
+      g.gain.setValueAtTime(.1,AC.currentTime);
+      g.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+.09);
+      o.connect(g); g.connect(AC.destination);
+      o.start(); o.stop(AC.currentTime+.1);
+    }catch(e){}
   }
-  cycle();
+  /* ---- builders ---- */
+  function buildMenu(){
+    var sq=L()==='sq';
+    menu.innerHTML=P.filter(function(x){return x.c===cat;}).map(function(x){
+      return '<button class="mi" data-id="'+x.id+'"><span class="mc '+(x.c==='pije'?'pije':'steak')+'" data-sq="'+CAT[x.c][0]+'" data-en="'+CAT[x.c][1]+'">'+(sq?CAT[x.c][0]:CAT[x.c][1])+'</span><b data-sq="'+x.sq+'" data-en="'+x.en+'">'+(sq?x.sq:x.en)+'</b><span class="mp">'+F(x.p)+'</span></button>';
+    }).join('');
+  }
+  mkGrid.innerHTML=M.map(function(x){
+    return '<button class="mi mki" data-id="'+x.id+'"><span class="bc"></span><b data-sq="'+x.sq+'" data-en="'+x.en+'">'+x.sq+'</b><span class="mcode">'+x.bc+'</span><span class="mp">'+F(x.p)+'</span></button>';
+  }).join('');
+  /* ---- totals ---- */
+  function restTotal(){ if(tbl==null) return 0; var t=0,o=orders[tbl]; for(var k in o){t+=o[k]*byId[k].p;} return t; }
+  function mkTotal(){ var t=0; cartOrder.forEach(function(k){t+=cart[k]*byId[k].p;}); return t; }
+  function activeTotal(){ return mode==='rest' ? restTotal() : mkTotal(); }
+  /* ---- renders ---- */
+  function renderFloor(){
+    [1,2].forEach(function(n){
+      var t=0,o=orders[n]; for(var k in o){t+=o[k]*byId[k].p;}
+      document.getElementById('tt-'+n).textContent = t>0 ? F(t) : '';
+    });
+  }
+  function renderOrder(){
+    var sq=L()==='sq', rows='';
+    if(tbl!=null){ var o=orders[tbl];
+      for(var k in o){ if(o[k]>0){ var x=byId[k];
+        rows+='<div class="rl new" data-id="'+k+'"><span data-sq="'+o[k]+'× '+x.sq+'" data-en="'+o[k]+'× '+x.en+'">'+o[k]+'× '+(sq?x.sq:x.en)+'</span><span>'+F(o[k]*x.p)+'</span></div>';
+      }}
+    }
+    ordEl.innerHTML = rows || '<div class="ord-empty" data-sq="Shto produkte nga menyja…" data-en="Add products from the menu…">'+(sq?'Shto produkte nga menyja…':'Add products from the menu…')+'</div>';
+    totEl.textContent=F(restTotal());
+  }
+  function renderScan(){
+    var sq=L()==='sq';
+    scanBody.innerHTML = cartOrder.length ? cartOrder.map(function(k){
+      var x=byId[k];
+      return '<tr data-id="'+k+'"><td>…'+x.bc.slice(-4)+'</td><td>'+x.code+'</td><td class="nm" data-sq="'+x.sq+'" data-en="'+x.en+'">'+(sq?x.sq:x.en)+'</td><td>'+cart[k]+'</td><td>'+F(cart[k]*x.p)+'</td></tr>';
+    }).join('') : '<tr class="sc-empty"><td colspan="5" data-sq="Kliko produktet poshtë për t’i skanuar…" data-en="Tap products below to scan them…">'+(sq?'Kliko produktet poshtë për t’i skanuar…':'Tap products below to scan them…')+'</td></tr>';
+    mkTot.textContent=F(mkTotal());
+  }
+  function syncTerm(){
+    var sq=L()==='sq', t=activeTotal();
+    ptAmt.textContent=F(t);
+    restPay.disabled = busy || mode!=='rest' || restTotal()===0;
+    restPay.classList.toggle('pulse', !busy && mode==='rest' && restTotal()>0);
+    mkPay.disabled = busy || mode!=='market' || mkTotal()===0;
+    mkPay.classList.toggle('pulse', !busy && mode==='market' && mkTotal()>0);
+    if(busy) return;
+    if(mode==='rest'){
+      if(tbl==null) st.textContent = sq?'ZGJIDH TAVOLINËN':'PICK A TABLE';
+      else st.textContent = restTotal()>0 ? (sq?'FATURA E HAPUR':'BILL OPEN') : (sq?'ZGJIDH PRODUKTET':'PICK PRODUCTS');
+    } else {
+      st.textContent = mkTotal()>0 ? (sq?'FATURA E HAPUR':'BILL OPEN') : (sq?'SKANO PRODUKTET':'SCAN PRODUCTS');
+    }
+  }
+  function renderAll(){ renderFloor(); renderOrder(); renderScan(); syncTerm(); }
+  /* ---- receipt ---- */
+  function fillReceipt(){
+    var sq=L()==='sq', rows='', t=activeTotal();
+    if(mode==='rest'){ var o=orders[tbl];
+      for(var k in o){ if(o[k]>0){ var x=byId[k]; rows+='<div class="rl"><span>'+o[k]+'× '+(sq?x.sq:x.en)+'</span><span>'+F(o[k]*x.p)+'</span></div>'; }}
+      document.getElementById('rc-ctx').textContent='Kasa 01 · Operator: BLERTA · '+(sq?'TAVOLINA ':'TABLE ')+tbl;
+    } else {
+      cartOrder.forEach(function(k){ var x=byId[k]; rows+='<div class="rl"><span>'+cart[k]+'× '+(sq?x.sq:x.en)+'</span><span>'+F(cart[k]*x.p)+'</span></div>'; });
+      document.getElementById('rc-ctx').textContent='MARKETI iCode LLC · Kasa 01 · OP: BLERTA';
+    }
+    document.getElementById('rc-items').innerHTML=rows;
+    var base=t/1.18;
+    document.getElementById('rc-base').textContent=F(base);
+    document.getElementById('rc-tvsh').textContent=F(t-base);
+    document.getElementById('rc-total').textContent=F(t);
+  }
+  /* ---- events ---- */
+  document.querySelector('.mode-tabs').addEventListener('click', function(e){
+    var b=e.target.closest('.mtab'); if(!b||busy||!b.getAttribute('data-mode')) return;
+    mode=b.getAttribute('data-mode');
+    this.querySelectorAll('.mtab').forEach(function(x){x.classList.toggle('on', x===b);});
+    vRest.hidden = mode!=='rest'; vMarket.hidden = mode!=='market';
+    renderAll();
+  });
+  floorV.addEventListener('click', function(e){
+    var b=e.target.closest('.tseat'); if(!b||busy) return;
+    tbl=+b.getAttribute('data-tbl'); tblLbl.textContent=tbl;
+    floorV.hidden=true; menuV.hidden=false;
+    buildMenu(); renderAll();
+  });
+  document.getElementById('backbtn').addEventListener('click', function(){
+    if(busy) return;
+    menuV.hidden=true; floorV.hidden=false; tbl=null; renderAll();
+  });
+  document.querySelector('.cat-tabs').addEventListener('click', function(e){
+    var b=e.target.closest('.cat'); if(!b||busy) return;
+    cat=b.getAttribute('data-cat');
+    this.querySelectorAll('.cat').forEach(function(x){x.classList.toggle('on', x===b);});
+    buildMenu();
+  });
+  menu.addEventListener('click', function(e){
+    var b=e.target.closest('.mi'); if(!b||busy||tbl==null) return;
+    var id=b.getAttribute('data-id');
+    orders[tbl][id]=(orders[tbl][id]||0)+1;
+    b.classList.add('hit'); setTimeout(function(){b.classList.remove('hit');},180);
+    renderOrder(); syncTerm();
+  });
+  ordEl.addEventListener('click', function(e){
+    var r=e.target.closest('.rl'); if(!r||busy||tbl==null) return;
+    var id=r.getAttribute('data-id');
+    if(orders[tbl][id]>0){ orders[tbl][id]--; if(!orders[tbl][id]) delete orders[tbl][id]; }
+    renderOrder(); syncTerm();
+  });
+  mkGrid.addEventListener('click', function(e){
+    var b=e.target.closest('.mki'); if(!b||busy) return;
+    var id=b.getAttribute('data-id');
+    if(!cart[id]){ cart[id]=0; cartOrder.push(id); }
+    cart[id]++;
+    beep();
+    b.classList.add('hit'); setTimeout(function(){b.classList.remove('hit');},180);
+    renderScan(); syncTerm();
+    var row=scanBody.querySelector('tr[data-id="'+id+'"]');
+    if(row){ row.classList.add('hit'); setTimeout(function(){row.classList.remove('hit');},600); }
+  });
+  scanBody.addEventListener('click', function(e){
+    var r=e.target.closest('tr[data-id]'); if(!r||busy) return;
+    var id=r.getAttribute('data-id');
+    cart[id]--; if(!cart[id]){ delete cart[id]; cartOrder=cartOrder.filter(function(k){return k!==id;}); }
+    renderScan(); syncTerm();
+  });
+  /* ---- pay flow ---- */
+  function pay(){
+    if(busy || activeTotal()===0) return; busy=true;
+    var sq=L()==='sq', paidMode=mode, paidTbl=tbl;
+    fillReceipt(); syncTerm();
+    var pb = paidMode==='rest' ? restPay : mkPay;
+    pb.classList.add('pressed'); pb.disabled=true;
+    st.textContent=sq?'PRIT KARTELËN…':'PRESENT CARD…';
+    setTimeout(function(){ st.textContent=sq?'DUKE LEXUAR…':'READING…'; },900);
+    setTimeout(function(){ pt.classList.add('ok'); st.textContent='APPROVED ✓'; },1700);
+    setTimeout(function(){ bill.classList.add('gone'); },2300);
+    setTimeout(function(){ fw.classList.add('on'); rc.classList.add('printing'); st.textContent=sq?'DUKE FISKALIZUAR…':'FISCALISING…'; },2900);
+    setTimeout(function(){ doneBeep(); sef.classList.add('ok2'); sef.textContent=sq?'SEF ✓ FISKALIZUAR · QR AKTIV':'SEF ✓ FISCALISED · QR ACTIVE'; st.textContent=sq?'KUPONI FISKAL ✓':'FISCAL COUPON ✓'; },6800);
+    setTimeout(function(){
+      pt.classList.remove('ok'); sef.classList.remove('ok2');
+      sef.textContent='SEF · KUPON FISKAL I DIGJITALIZUAR';
+      fw.classList.remove('on'); rc.classList.remove('printing'); void rc.offsetWidth;
+      bill.classList.remove('gone'); pb.classList.remove('pressed');
+      if(paidMode==='rest'){ orders[paidTbl]={}; tbl=null; menuV.hidden=true; floorV.hidden=false; }
+      else { cart={}; cartOrder=[]; }
+      busy=false; renderAll();
+    }, 11200);
+  }
+  restPay.addEventListener('click', pay);
+  mkPay.addEventListener('click', pay);
+  /* ---- reduced motion ---- */
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    cart={buke:1, qumesht:2}; cartOrder=['buke','qumesht'];
+    fillReceipt(); renderAll();
+    st.textContent='APPROVED ✓'; pt.classList.add('ok'); rc.classList.add('printing'); sef.classList.add('ok2');
+    return;
+  }
+  renderAll();
 })();
 </script>
 </body>
