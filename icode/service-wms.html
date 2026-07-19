@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>WMS & OMS — iCode LLC</title>
+<meta name="description" content="WMS & OMS: wave/zone picking, FEFO/FIFO me lote e seri, numërim ciklik ABC, orkestrim porosish me rregulla rutimi dhe integrime transportuesish.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.wms-hero{background:#0e3050;color:#fff;position:relative;overflow:hidden;padding-block:clamp(64px,8vw,110px);}
+.wms-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);background-size:28px 28px;}
+.wms-hero h1{color:#fff;max-width:15ch;}
+.wms-hero .lead{color:rgba(220,236,250,.85);}
+.wms-kicker{font-family:var(--ff-head);font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#ffb46b;display:inline-block;margin-bottom:20px;border:1.5px dashed rgba(255,180,107,.6);padding:8px 16px;border-radius:6px;}
+.wmap{background:rgba(6,28,48,.75);border:1.5px solid rgba(255,255,255,.25);border-radius:14px;padding:20px;position:relative;font-family:var(--ff-head);}
+.wmap .wm-title{font-size:.68rem;letter-spacing:.18em;color:rgba(220,236,250,.6);margin-bottom:14px;display:flex;justify-content:space-between;}
+.wzone{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.wrack{height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:4px;display:grid;place-items:center;font-size:.62rem;letter-spacing:.08em;color:rgba(220,236,250,.75);}
+.wrack.hot{background:#ffb46b;border-color:#ffb46b;color:#082238;font-weight:700;}
+.wrack.pick{background:rgba(125,255,168,.2);border-color:#7dffa8;color:#7dffa8;}
+.wpath{position:absolute;left:24px;right:24px;bottom:16px;height:2px;background:repeating-linear-gradient(90deg,#7dffa8 0 10px,transparent 10px 18px);}
+.wlegend{display:flex;gap:18px;margin-top:16px;font-size:.68rem;color:rgba(220,236,250,.65);letter-spacing:.05em;}
+.wlegend i{width:10px;height:10px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:-1px;}
+.flow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;counter-reset:fs;}
+@media (max-width:980px){.flow-steps{grid-template-columns:1fr;}}
+.fstep{position:relative;padding:28px 22px 28px 26px;border-left:2.5px solid #0e3050;counter-increment:fs;}
+.fstep::before{content:counter(fs,decimal-leading-zero);position:absolute;left:-2px;top:0;transform:translateX(-50%);background:#0e3050;color:#fff;font-family:var(--ff-head);font-weight:700;font-size:.72rem;padding:5px 8px;border-radius:6px;}
+@media (min-width:981px){.flow-steps{grid-auto-flow:column;}.fstep{border-left:none;border-top:2.5px solid #0e3050;padding:30px 18px 0 0;}.fstep::before{left:0;top:-2px;transform:translate(0,-50%);}}
+.fstep h4{font-size:1.05rem;margin-bottom:8px;}
+.fstep p{font-size:.85rem;color:var(--muted);line-height:1.55;}
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media (max-width:860px){.acc-grid{grid-template-columns:1fr;}}
+.acell{background:#fff;border:1px solid var(--line);border-left:5px solid #0e3050;border-radius:12px;padding:26px;}
+.acell b{font-family:var(--ff-head);display:block;font-size:1.35rem;letter-spacing:-.02em;color:#0e3050;}
+.acell h4{font-size:1rem;margin:8px 0 8px;}
+.acell p{font-size:.86rem;color:var(--muted);line-height:1.55;}
+.oms-rules{display:grid;gap:12px;}
+.rule{display:grid;grid-template-columns:auto 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;align-items:baseline;}
+.rule code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.72rem;background:#0e3050;color:#9fd4ff;padding:4px 10px;border-radius:5px;white-space:nowrap;}
+.rule p{font-size:.9rem;color:var(--muted);}
+.rule p b{color:var(--ink);font-family:var(--ff-head);}
+a{color:inherit;}a:hover{color:var(--primary);}
+.wrack{transition:background .3s,border-color .3s,color .3s;}
+.wrack.now{background:#7dffa8;border-color:#7dffa8;color:#082238;font-weight:700;box-shadow:0 0 14px rgba(125,255,168,.5);}
+.wbot{position:absolute;width:14px;height:14px;border-radius:50%;background:#7dffa8;box-shadow:0 0 16px #7dffa8;z-index:3;transition:left .75s cubic-bezier(.4,0,.3,1),top .75s cubic-bezier(.4,0,.3,1);}
+.fstep{transition:background .4s;}
+.fstep.live{background:linear-gradient(180deg,rgba(255,180,107,.14),transparent);}
+.fstep.live::before{background:#ffb46b;color:#082238;}
+.wms-w .bg-soft{background:#eef4f9;}
+.wms-w .eyebrow{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;}
+.wms-w .eyebrow::before{content:"▤ ";opacity:.6;}
+</style>
+</head>
+<body class="wms-w">
+<header id="site-header"></header>
+
+<section class="wms-hero" data-screen-label="WMS Hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="wms-kicker">WMS · OMS · BLUEPRINT</span>
+      <h1 data-sq="Depoja që e di ku është çdo artikull" data-en="The warehouse that knows where everything is">Depoja që e di ku është çdo artikull</h1>
+      <p class="lead mt-m" data-sq="Nga pranimi te dorëzimi, çdo lëvizje kalon nëpër skaner — jo nëpër kujtesën e magazinierit. Libër stoku në kohë reale, porosi të orkestruara me rregulla, dhe saktësi që matet me numra." data-en="From receiving to delivery, every movement passes through a scanner — not the storeman's memory. A real-time stock ledger, rule-driven order orchestration, and accuracy measured in numbers.">Nga pranimi te dorëzimi, çdo lëvizje kalon nëpër skaner — jo nëpër kujtesën e magazinierit. Libër stoku në kohë reale, porosi të orkestruara me rregulla, dhe saktësi që matet me numra.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-light btn-lg" href="contact.html" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a>
+        <a class="btn btn-outline-light btn-lg" href="service-erp.html" data-sq="Pjesë e ERP-së →" data-en="Part of the ERP →">Pjesë e ERP-së →</a>
+      </div>
+    </div>
+    <div data-reveal data-reveal-delay="2">
+      <div class="wmap" aria-hidden="true">
+        <div class="wm-title"><span>ZONA A · PICKING FACE</span><span id="wm-status">WAVE #47 · 12 POROSI</span></div>
+        <div class="wzone">
+          <div class="wrack">A-01</div><div class="wrack pick">A-02</div><div class="wrack">A-03</div><div class="wrack hot">A-04</div><div class="wrack">A-05</div><div class="wrack">A-06</div>
+          <div class="wrack pick">B-01</div><div class="wrack">B-02</div><div class="wrack">B-03</div><div class="wrack">B-04</div><div class="wrack pick">B-05</div><div class="wrack">B-06</div>
+          <div class="wrack">C-01</div><div class="wrack">C-02</div><div class="wrack hot">C-03</div><div class="wrack">C-04</div><div class="wrack">C-05</div><div class="wrack pick">C-06</div>
+        </div>
+        <div class="wlegend"><span><i style="background:#7dffa8;"></i>PICK LIST</span><span><i style="background:#ffb46b;"></i>FAST MOVERS</span><span><i style="background:rgba(255,255,255,.4);"></i>RACKS</span></div>
+        <div class="wpath"></div>
+        <div class="wbot" id="wbot" style="left:20px;top:60px;"></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Rrjedha e depos" data-en="The warehouse flow">Rrjedha e depos</span>
+      <h2 data-sq="Pesë stacione, zero improvizim" data-en="Five stations, zero improvisation">Pesë stacione, zero improvizim</h2>
+    </div>
+    <div class="flow-steps" data-reveal>
+      <div class="fstep"><h4 data-sq="Pranimi" data-en="Receiving">Pranimi</h4><p data-sq="Pranim kundrejt urdhërblerjes me skanim — sasitë, lotet dhe afatet verifikohen në derë; devijimet hapin mospërputhje, jo diskutime." data-en="Receipt against the PO with scanning — quantities, lots and expiry verified at the door; deviations open a discrepancy, not a debate.">Pranim kundrejt urdhërblerjes me skanim — sasitë, lotet dhe afatet verifikohen në derë; devijimet hapin mospërputhje, jo diskutime.</p></div>
+      <div class="fstep"><h4>Putaway</h4><p data-sq="Vendosje e drejtuar nga sistemi sipas slotting-ut — artikujt me qarkullim të lartë pranë zonës së picking-ut, të rëndat poshtë, FEFO për afatet." data-en="System-directed putaway per slotting — fast movers near the pick face, heavy items low, FEFO for dated stock.">Vendosje e drejtuar nga sistemi sipas slotting-ut — artikujt me qarkullim të lartë pranë zonës së picking-ut, të rëndat poshtë, FEFO për afatet.</p></div>
+      <div class="fstep"><h4>Picking</h4><p data-sq="Wave, batch ose zone picking sipas profilit të porosive — rruga e skanerit optimizohet që magazinieri të ecë më pak e të gabojë zero." data-en="Wave, batch or zone picking to match your order profile — the scan path is optimised so pickers walk less and err zero.">Wave, batch ose zone picking sipas profilit të porosive — rruga e skanerit optimizohet që magazinieri të ecë më pak e të gabojë zero.</p></div>
+      <div class="fstep"><h4>Packing</h4><p data-sq="Verifikim artikull-për-artikull në stacion paketimi, kartonizim i sugjeruar sipas dimensioneve dhe peshës, dokumentet printohen vetë." data-en="Item-by-item verification at the pack station, suggested cartonisation by dimensions and weight, documents print automatically.">Verifikim artikull-për-artikull në stacion paketimi, kartonizim i sugjeruar sipas dimensioneve dhe peshës, dokumentet printohen vetë.</p></div>
+      <div class="fstep"><h4>Shipping</h4><p data-sq="Etiketa e manifeste transportuesish përmes API, tracking i kthyer te porosia dhe te klienti — dhe kosto reale për dërgesë në raport." data-en="Carrier labels and manifests via API, tracking flowed back to the order and the customer — and true per-shipment cost in reporting.">Etiketa e manifeste transportuesish përmes API, tracking i kthyer te porosia dhe te klienti — dhe kosto reale për dërgesë në raport.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Saktësia e stokut" data-en="Stock accuracy">Saktësia e stokut</span>
+      <h2 data-sq="Numra që i beson financa" data-en="Numbers finance can trust">Numra që i beson financa</h2>
+    </div>
+    <div class="acc-grid">
+      <div class="acell" data-reveal><b>99.8%</b><h4 data-sq="Saktësi porosish" data-en="Order accuracy">Saktësi porosish</h4><p data-sq="Skanim i detyruar në çdo hap — porosia e gabuar bëhet përjashtim statistikor, jo kosto javore kthimesh." data-en="Mandatory scanning at every step — a wrong order becomes a statistical outlier, not a weekly returns cost.">Skanim i detyruar në çdo hap — porosia e gabuar bëhet përjashtim statistikor, jo kosto javore kthimesh.</p></div>
+      <div class="acell" data-reveal data-reveal-delay="1"><b>FEFO / FIFO</b><h4 data-sq="Lote, seri & afate" data-en="Lots, serials & expiry">Lote, seri & afate</h4><p data-sq="Gjurmueshmëri e plotë për lot dhe numër serial — recall-i i një loti bëhet një kërkim, jo një javë panik." data-en="Full lot and serial traceability — recalling a lot is one query, not a week of panic.">Gjurmueshmëri e plotë për lot dhe numër serial — recall-i i një loti bëhet një kërkim, jo një javë panik.</p></div>
+      <div class="acell" data-reveal data-reveal-delay="2"><b>ABC</b><h4 data-sq="Numërim ciklik" data-en="Cycle counting">Numërim ciklik</h4><p data-sq="Artikujt A numërohen shpesh, C rrallë — stoku verifikohet vazhdimisht pa e mbyllur kurrë depon për inventar vjetor." data-en="A-items count often, C rarely — stock verifies continuously without ever closing the warehouse for a yearly count.">Artikujt A numërohen shpesh, C rrallë — stoku verifikohet vazhdimisht pa e mbyllur kurrë depon për inventar vjetor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:960px;">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">OMS</span>
+      <h2 data-sq="Porositë orkestohen me rregulla, jo me email-a" data-en="Orders orchestrate by rules, not by email">Porositë orkestohen me rregulla, jo me email-a</h2>
+      <p class="lead" style="margin-top:16px;" data-sq="OMS-i merr porositë nga çdo kanal — dyqani online, POS-i, B2B — dhe vendos vetë ku, si dhe kur përmbushen." data-en="The OMS takes orders from every channel — web shop, POS, B2B — and decides where, how and when they're fulfilled.">OMS-i merr porositë nga çdo kanal — dyqani online, POS-i, B2B — dhe vendos vetë ku, si dhe kur përmbushen.</p>
+    </div>
+    <div class="oms-rules" data-reveal>
+      <div class="rule"><code>ROUTE</code><p><b data-sq="Rutimi i përmbushjes:" data-en="Fulfilment routing:">Rutimi i përmbushjes:</b> <span data-sq="porosia ndahet automatikisht mes depove sipas stokut, afërsisë dhe kostos së transportit — me ndarje dërgese kur ia vlen." data-en="the order splits automatically across warehouses by stock, proximity and shipping cost — with split shipments when it pays off.">porosia ndahet automatikisht mes depove sipas stokut, afërsisë dhe kostos së transportit — me ndarje dërgese kur ia vlen.</span></p></div>
+      <div class="rule"><code>ATP</code><p><b data-sq="Premtim i saktë:" data-en="Accurate promising:">Premtim i saktë:</b> <span data-sq="available-to-promise llogaritet mbi stokun real minus rezervimet — data e dorëzimit që i thuhet klientit është e mbrojtur nga sistemi." data-en="available-to-promise is computed on real stock minus reservations — the delivery date quoted to the customer is system-guaranteed.">available-to-promise llogaritet mbi stokun real minus rezervimet — data e dorëzimit që i thuhet klientit është e mbrojtur nga sistemi.</span></p></div>
+      <div class="rule"><code>BACKORDER</code><p><b data-sq="Mungesat menaxhohen:" data-en="Shortages are managed:">Mungesat menaxhohen:</b> <span data-sq="backorder me prioritete, alokim automatik kur hyn malli dhe njoftim proaktiv i klientit — jo heshtje derisa të ankohet." data-en="prioritised backorders, automatic allocation when goods arrive and proactive customer notification — not silence until they complain.">backorder me prioritete, alokim automatik kur hyn malli dhe njoftim proaktiv i klientit — jo heshtje derisa të ankohet.</span></p></div>
+      <div class="rule"><code>RMA</code><p><b data-sq="Kthimet me proces:" data-en="Returns with a process:">Kthimet me proces:</b> <span data-sq="RMA me arsye të koduara, inspektim në pranim dhe vendim automatik — rikthim në stok, riparim ose shkarkim — me ndikim të saktë në financa." data-en="RMAs with coded reasons, inspection on receipt and an automatic disposition — restock, repair or write-off — with the exact financial impact.">RMA me arsye të koduara, inspektim në pranim dhe vendim automatik — rikthim në stok, riparim ose shkarkim — me ndikim të saktë në financa.</span></p></div>
+      <div class="rule"><code>SYNC</code><p><b data-sq="Kanalet gjithmonë të sakta:" data-en="Channels always accurate:">Kanalet gjithmonë të sakta:</b> <span data-sq="stoku i shitshëm publikohet për Shopify, Shopware dhe POS me buffer të konfigurueshëm për kanal — mbishitja bëhet e pamundur me dizajn." data-en="sellable stock publishes to Shopify, Shopware and POS with a per-channel buffer — overselling becomes impossible by design.">stoku i shitshëm publikohet për Shopify, Shopware dhe POS me buffer të konfigurueshëm për kanal — mbishitja bëhet e pamundur me dizajn.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:#0e3050;">
+      <h2 data-sq="Sa të kushton një porosi e gabuar?" data-en="What does one wrong order cost you?">Sa të kushton një porosi e gabuar?</h2>
+      <p data-sq="Na trego volumet dhe gabimet e sotme — të kthejmë një llogari të qartë të kursimit me WMS." data-en="Tell us today's volumes and error rate — we'll return a clear savings calculation with a WMS.">Na trego volumet dhe gabimet e sotme — të kthejmë një llogari të qartë të kursimit me WMS.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-primary btn-lg" href="contact.html" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var map=document.querySelector('.wmap'); if(!map) return;
+  var racks=map.querySelectorAll('.wrack'), bot=document.getElementById('wbot'), st=document.getElementById('wm-status');
+  var steps=document.querySelectorAll('.fstep');
+  var seq=[1,6,10,17], names=['A-02','B-01','B-05','C-06'];
+  function goTo(el){var r=el.getBoundingClientRect(),m=map.getBoundingClientRect();bot.style.left=(r.left-m.left+r.width/2-7)+'px';bot.style.top=(r.top-m.top+r.height/2-7)+'px';}
+  function setStep(i){steps.forEach(function(s,k){s.classList.toggle('live',k===i);});}
+  function cycle(){
+    setStep(2);
+    seq.forEach(function(idx,i){
+      setTimeout(function(){
+        racks.forEach(function(r){r.classList.remove('now');});
+        racks[idx].classList.add('now'); goTo(racks[idx]);
+        st.textContent='PICK '+(i+1)+'/4 · '+names[i];
+      }, i*1400);
+    });
+    setTimeout(function(){ racks.forEach(function(r){r.classList.remove('now');}); st.textContent='PACK · POROSIA #1042'; setStep(3); goTo(racks[15]); },5800);
+    setTimeout(function(){ st.textContent='SHIP → DHL · TRACKING ✓'; setStep(4); },7400);
+    setTimeout(function(){ st.textContent='WAVE #47 · 12 POROSI'; setStep(-1); goTo(racks[0]); },9000);
+    setTimeout(cycle,9800);
+  }
+  setTimeout(cycle,900);
+})();
+</script>
+</body>
+</html>

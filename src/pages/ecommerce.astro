@@ -1,0 +1,241 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="E-Commerce — iCode LLC"
+  description="Dyqane Shopware 6 & Shopify me integrim të thellë ERP — sync stoku pa mbishitje, checkout i optimizuar, Core Web Vitals në buxhet dhe migrimet pa humbje SEO."
+  bodyClass="ec-w"
+>
+
+<section class="ec-hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="ec-kicker">Shopware 6 · Shopify · Headless</span>
+      <h1 data-sq="Dyqane që shesin edhe kur fushata sjell 10× trafik" data-en="Stores that keep selling when the campaign brings 10× traffic">Dyqane që shesin edhe kur fushata sjell 10× trafik</h1>
+      <p class="lead mt-m" data-sq="Ndërtojmë dhe migrojmë dyqane Shopware 6 dhe Shopify të lidhura thellë me ERP-në — stoku, çmimet dhe porositë rrjedhin vetë, dhe faqja mban Core Web Vitals në të gjelbër edhe në Black Friday." data-en="We build and migrate Shopware 6 and Shopify stores wired deep into the ERP — stock, prices and orders flow automatically, and the site holds green Core Web Vitals even on Black Friday.">Ndërtojmë dhe migrojmë dyqane Shopware 6 dhe Shopify të lidhura thellë me ERP-në — stoku, çmimet dhe porositë rrjedhin vetë, dhe faqja mban Core Web Vitals në të gjelbër edhe në Black Friday.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-primary btn-lg" href="/audit" style="background:#ff5a1f;" data-sq="Audit falas i dyqanit" data-en="Free store audit">Audit falas i dyqanit</a>
+        <a class="btn btn-outline btn-lg" href="/portfolio" data-sq="Foleja & raste të tjera" data-en="Foleja & other cases">Foleja & raste të tjera</a>
+      </div>
+    </div>
+    <div data-reveal data-reveal-delay="2">
+      <div class="ec-scene" aria-hidden="true">
+        <div class="ec-cart" id="ec-cart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 4h2l2.2 11h10l2-8H6"/><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><span data-sq="Shporta" data-en="Cart">Shporta</span><b id="ec-count">0</b></div>
+        <div class="scard ec-prod" id="ec-prod">
+          <div class="simg" id="ec-img" style="background:linear-gradient(135deg,#1b4dff,#5b3df5);position:relative;"><span id="ec-glyph" style="display:grid;place-items:center;"></span><button class="ec-next" id="ec-next">→</button></div>
+          <div class="sbody"><b id="ec-name">Bluza Urban</b><span id="ec-meta" data-sq="Stoku: 14 · sync live me ERP" data-en="Stock: 14 · live ERP sync">Stoku: 14 · sync live me ERP</span>
+            <div class="sprice"><span><s id="ec-old" style="display:none;color:var(--muted);font-weight:500;font-size:.78rem;">89.00 €</s> <b id="ec-price">89.00 €</b></span><span class="ec-badge" id="ec-badge" data-sq="-20% OFERTË" data-en="-20% OFFER">-20% OFERTË</span></div>
+          </div>
+        </div>
+        <div class="ec-ghost" id="ec-ghost">◆</div>
+        <div class="ec-toast" id="ec-toast">✓ Porosia → OMS · stoku u zbrit në ERP</div>
+        <div class="ec-cursor" id="ec-cursor"><svg viewBox="0 0 24 24"><path d="M4 2l16 8-7 2-3 7z" fill="#0e0e10" stroke="#fff" stroke-width="1.4"/></svg></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Dy platforma, një standard" data-en="Two platforms, one standard">Dy platforma, një standard</span>
+      <h2 data-sq="Shopware kur duhet thellësi, Shopify kur duhet shpejtësi" data-en="Shopware when you need depth, Shopify when you need speed">Shopware kur duhet thellësi, Shopify kur duhet shpejtësi</h2>
+    </div>
+    <div class="plat-split">
+      <div class="plat plat-sw" data-reveal>
+        <span class="pl-tag">SHOPWARE 6</span>
+        <h3 data-sq="Për B2B, marketplace dhe katalogë kompleksë" data-en="For B2B, marketplaces and complex catalogues">Për B2B, marketplace dhe katalogë kompleksë</h3>
+        <ul>
+          <li data-sq="Plugin-e të certifikuara për Shopware 6 — pagesa, abonime, çmime specifike për klientë — të ndërtuara mbi app system, jo hack në core." data-en="Certified Shopware 6 plugins — payments, subscriptions, customer-specific pricing — built on the app system, not core hacks.">Plugin-e të certifikuara për Shopware 6 — pagesa, abonime, çmime specifike për klientë — të ndërtuara mbi app system, jo hack në core.</li>
+          <li data-sq="B2B: çmimore për klientë, limite krediti, porosi të shpejta me CSV, rrjedha aprovimi për blerësit e korporatave." data-en="B2B: per-customer price lists, credit limits, quick CSV ordering, approval flows for corporate buyers.">B2B: çmimore për klientë, limite krediti, porosi të shpejta me CSV, rrjedha aprovimi për blerësit e korporatave.</li>
+          <li data-sq="Marketplace me multi-vendor — onboarding shitësish, ndarje pagesash dhe logjistikë e integruar, siç e ndërtuam për Foleja-n." data-en="Multi-vendor marketplaces — seller onboarding, payment splitting and integrated logistics, as we built for Foleja.">Marketplace me multi-vendor — onboarding shitësish, ndarje pagesash dhe logjistikë e integruar, siç e ndërtuam për Foleja-n.</li>
+          <li data-sq="Migrime nga Shopware 5, Magento e OXID me hartë të plotë të dhënash dhe URL redirect 1:1 — pa humbje SEO." data-en="Migrations from Shopware 5, Magento and OXID with a full data map and 1:1 URL redirects — no SEO loss.">Migrime nga Shopware 5, Magento e OXID me hartë të plotë të dhënash dhe URL redirect 1:1 — pa humbje SEO.</li>
+        </ul>
+      </div>
+      <div class="plat plat-sh" data-reveal data-reveal-delay="1">
+        <span class="pl-tag">SHOPIFY</span>
+        <h3 data-sq="Për D2C që duhet të lëshohet dje" data-en="For D2C that needed to launch yesterday">Për D2C që duhet të lëshohet dje</h3>
+        <ul>
+          <li data-sq="Tema të personalizuara me Liquid dhe storefront headless me Storefront API kur kërkohet përvojë plotësisht e dizajnuar." data-en="Custom Liquid themes and headless storefronts on the Storefront API when a fully designed experience is required.">Tema të personalizuara me Liquid dhe storefront headless me Storefront API kur kërkohet përvojë plotësisht e dizajnuar.</li>
+          <li data-sq="Aplikacione private për logjikën që Shopify s'e ka — çmime të dinamikës, bundle kompleksë, integrime me sisteme lokale." data-en="Private apps for the logic Shopify lacks — dynamic pricing, complex bundles, local-system integrations.">Aplikacione private për logjikën që Shopify s'e ka — çmime të dinamikës, bundle kompleksë, integrime me sisteme lokale.</li>
+          <li data-sq="Optimizim conversion-i me matje reale: checkout i shkurtuar, rikuperim i shportave, A/B teste — +28% conversion te Banana-style projektet tona." data-en="Conversion work with real measurement: shortened checkout, cart recovery, A/B tests — +28% conversion on our beauty-brand projects.">Optimizim conversion-i me matje reale: checkout i shkurtuar, rikuperim i shportave, A/B teste — +28% conversion te projektet tona të bukurisë.</li>
+          <li data-sq="Migrime Shopify ⇄ Shopware kur biznesi ndryshon shkallë — me plan kthimi dhe periudhë paralele." data-en="Shopify ⇄ Shopware migrations when the business changes scale — with a rollback plan and a parallel-run period.">Migrime Shopify ⇄ Shopware kur biznesi ndryshon shkallë — me plan kthimi dhe periudhë paralele.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="sync-band" data-reveal>
+      <h3 data-sq="Integrimi ERP ⇄ Dyqan: katër rryma, zero Excel" data-en="ERP ⇄ store integration: four streams, zero Excel">Integrimi ERP ⇄ Dyqan: katër rryma, zero Excel</h3>
+      <div class="sync-grid">
+        <div class="syncell"><code>STOCK →</code><p data-sq="Stoku i shitshëm publikohet me buffer për kanal dhe përditësohet me ngjarje, jo me cron çdo natë — mbishitja pamundësohet me dizajn." data-en="Sellable stock publishes with a per-channel buffer and updates by events, not a nightly cron — overselling is impossible by design.">Stoku i shitshëm publikohet me buffer për kanal dhe përditësohet me ngjarje, jo me cron çdo natë — mbishitja pamundësohet me dizajn.</p></div>
+        <div class="syncell"><code>PRICE →</code><p data-sq="Çmimet dhe promocionet burojnë nga ERP me kohë hyrjeje në fuqi — fushata e mesnatës aktivizohet vetë, saktë në sekondë." data-en="Prices and promotions originate in the ERP with effective-from times — the midnight campaign activates itself, to the second.">Çmimet dhe promocionet burojnë nga ERP me kohë hyrjeje në fuqi — fushata e mesnatës aktivizohet vetë, saktë në sekondë.</p></div>
+        <div class="syncell"><code>← ORDER</code><p data-sq="Porositë zbresin me radhë të qëndrueshme dhe çelësa idempotence — asnjë porosi e dyfishuar, asnjë e humbur, edhe kur API-t dështojnë." data-en="Orders flow down over durable queues with idempotency keys — none duplicated, none lost, even when APIs fail.">Porositë zbresin me radhë të qëndrueshme dhe çelësa idempotence — asnjë porosi e dyfishuar, asnjë e humbur, edhe kur API-t dështojnë.</p></div>
+        <div class="syncell"><code>← RETURN</code><p data-sq="Kthimet hyjnë si RMA me arsye të koduara — rimbursimi, stoku dhe financat përditësohen në një transaksion të vetëm logjik." data-en="Returns enter as coded RMAs — refund, stock and finance update in one logical transaction.">Kthimet hyjnë si RMA me arsye të koduara — rimbursimi, stoku dhe financat përditësohen në një transaksion të vetëm logjik.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Performanca si kontratë" data-en="Performance as a contract">Performanca si kontratë</span>
+      <h2 data-sq="Buxhete Core Web Vitals, jo premtime" data-en="Core Web Vitals budgets, not promises">Buxhete Core Web Vitals, jo premtime</h2>
+    </div>
+    <div class="cwv">
+      <div class="cw" data-reveal><b>&lt; 1.8s</b><span>LCP</span><p data-sq="Imazhe responsive AVIF/WebP, CDN edge caching dhe CSS kritik inline — i matur në pajisje reale 4G, jo në laptopin tonë." data-en="Responsive AVIF/WebP images, CDN edge caching and inline critical CSS — measured on real 4G devices, not our laptop.">Imazhe responsive AVIF/WebP, CDN edge caching dhe CSS kritik inline — i matur në pajisje reale 4G, jo në laptopin tonë.</p></div>
+      <div class="cw" data-reveal data-reveal-delay="1"><b>&lt; 0.1</b><span>CLS</span><p data-sq="Hapësirë e rezervuar për çdo imazh, banner e widget — faqja nuk kërcen kurrë nën gishtin e blerësit." data-en="Reserved space for every image, banner and widget — the page never jumps under the shopper's thumb.">Hapësirë e rezervuar për çdo imazh, banner e widget — faqja nuk kërcen kurrë nën gishtin e blerësit.</p></div>
+      <div class="cw" data-reveal data-reveal-delay="2"><b>&lt; 200ms</b><span>INP</span><p data-sq="Skripta të palëve të treta të audituara e të vonuara, hydration selektiv — filtrimi e shporta reagojnë menjëherë." data-en="Third-party scripts audited and deferred, selective hydration — filters and cart respond instantly.">Skripta të palëve të treta të audituara e të vonuara, hydration selektiv — filtrimi e shporta reagojnë menjëherë.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container-wide">
+    <p class="center" style="font-family:var(--ff-head);font-weight:600;color:var(--muted);margin-bottom:36px;" data-reveal data-sq="Dyqane online që rriten me ne" data-en="Online stores growing with us">Dyqane online që rriten me ne</p>
+    <div class="logo-wall logo-wall-strip" data-reveal><span class="logo-item">Torima</span><span class="logo-item">1TREND</span><span class="logo-item">Millky way</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:linear-gradient(135deg,#7a2408,#ff5a1f);">
+      <h2 data-sq="Sa po të kushton dyqani i ngadaltë?" data-en="What is your slow store costing you?">Sa po të kushton dyqani i ngadaltë?</h2>
+      <p data-sq="Audit falas: Core Web Vitals, checkout dhe integrimet — me listë konkrete prioritetesh sipas ndikimit në shitje." data-en="Free audit: Core Web Vitals, checkout and integrations — with a concrete priority list ranked by sales impact.">Audit falas: Core Web Vitals, checkout dhe integrimet — me listë konkrete prioritetesh sipas ndikimit në shitje.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-light btn-lg" href="/contact" data-sq="Kërko audit falas" data-en="Request a free audit">Kërko audit falas</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style is:global>
+.ec-hero{background:#fff8f3;padding-block:clamp(60px,8vw,104px);position:relative;overflow:hidden;}
+.ec-hero::before{content:"";pointer-events:none;position:absolute;inset:auto -80px -120px auto;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,90,31,.15),transparent 65%);}
+.ec-kicker{font-family:var(--ff-head);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#ff5a1f;display:inline-block;margin-bottom:20px;}
+.shop-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;transform:rotate(2deg);}
+.scard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 24px 50px rgba(14,14,16,.12);font-family:var(--ff-head);}
+.scard .simg{aspect-ratio:4/3;display:grid;place-items:center;font-size:2rem;color:#fff;}
+.scard .sbody{padding:14px 16px;}
+.scard .sbody b{font-size:.86rem;display:block;}
+.scard .sbody span{font-size:.74rem;color:var(--muted);}
+.scard .sprice{display:flex;justify-content:space-between;align-items:center;margin-top:10px;}
+.scard .sprice b{color:#ff5a1f;}
+.scard .scart{background:#0e0e10;color:#fff;border-radius:99px;font-size:.66rem;padding:6px 12px;font-weight:600;}
+.plat-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.5vw,32px);}
+@media (max-width:860px){.plat-split{grid-template-columns:1fr;}}
+.plat{border-radius:var(--r-lg);padding:clamp(28px,3.5vw,44px);}
+.plat-sw{background:#0d2b52;color:#fff;}
+.plat-sw h3,.plat-sw h4{color:#fff;}
+.plat-sh{background:#e9f7ee;}
+.plat .pl-tag{display:inline-block;font-family:var(--ff-head);font-weight:700;font-size:.72rem;letter-spacing:.1em;padding:6px 14px;border-radius:99px;margin-bottom:20px;}
+.plat-sw .pl-tag{background:rgba(126,180,255,.18);color:#9fc8ff;}
+.plat-sh .pl-tag{background:#12a150;color:#fff;}
+.plat ul{display:grid;gap:13px;margin-top:20px;}
+.plat li{display:flex;gap:11px;font-size:.92rem;line-height:1.55;}
+.plat-sw li{color:rgba(222,235,250,.85);}
+.plat-sh li{color:#2c4a38;}
+.plat li::before{content:"▸";flex:none;font-weight:700;}
+.plat-sw li::before{color:#9fc8ff;}
+.plat-sh li::before{color:#12a150;}
+.sync-band{background:#0e0e10;color:#fff;border-radius:var(--r-xl);padding:clamp(30px,4vw,52px);}
+.sync-band h3{color:#fff;margin-bottom:24px;}
+.sync-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media (max-width:900px){.sync-grid{grid-template-columns:repeat(2,1fr);}}
+.syncell{border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:18px;}
+.syncell code{font-family:ui-monospace,Menlo,monospace;font-size:.68rem;color:#ffb46b;letter-spacing:.08em;display:block;margin-bottom:8px;}
+.syncell p{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.55;}
+.cwv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+@media (max-width:760px){.cwv{grid-template-columns:1fr;}}
+.cw{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;text-align:center;}
+.cw b{font-family:var(--ff-head);font-size:2rem;color:#12a150;display:block;letter-spacing:-.02em;}
+.cw span{font-family:var(--ff-head);font-weight:600;font-size:.85rem;display:block;margin-top:4px;}
+.cw p{font-size:.8rem;color:var(--muted);margin-top:8px;}
+a{color:inherit;}a:hover{color:var(--primary);}
+.ec-scene{position:relative;height:420px;font-family:var(--ff-head);}
+.ec-prod{position:absolute;left:4%;top:52px;width:min(250px,68%);}
+.ec-next{position:absolute;right:10px;bottom:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.92);border:none;font-weight:700;font-size:1rem;}
+.ec-cart{position:absolute;right:2%;top:8px;display:flex;align-items:center;gap:9px;background:#0e0e10;color:#fff;border-radius:99px;padding:12px 18px;font-weight:600;font-size:.8rem;z-index:5;}
+.ec-cart svg{width:17px;height:17px;}
+.ec-cart b{background:#ff5a1f;border-radius:99px;min-width:22px;height:22px;display:grid;place-items:center;font-size:.7rem;}
+.ec-cart.bump{animation:ecBump .45s;}
+@keyframes ecBump{30%{transform:scale(1.12);}}
+.ec-badge{background:#ff5a1f;color:#fff;font-size:.6rem;font-weight:700;border-radius:6px;padding:4px 8px;opacity:0;transform:scale(.5);transition:.35s var(--ease);white-space:nowrap;}
+.ec-badge.on{opacity:1;transform:none;}
+.ec-ghost{position:absolute;width:58px;height:58px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:1.5rem;opacity:0;z-index:8;transition:left .9s cubic-bezier(.5,0,.3,1),top .9s cubic-bezier(.5,0,.3,1),opacity .3s;box-shadow:0 14px 30px rgba(14,14,16,.35);}
+.ec-toast{position:absolute;left:50%;bottom:4px;transform:translateX(-50%) translateY(8px);background:#0e0e10;color:#7dffa8;font-family:ui-monospace,Menlo,monospace;font-size:.66rem;padding:9px 14px;border-radius:8px;opacity:0;transition:.4s;white-space:nowrap;}
+.ec-toast.on{opacity:1;transform:translateX(-50%);}
+.ec-cursor{position:absolute;left:70%;top:80%;z-index:9;width:22px;height:22px;transition:left .85s cubic-bezier(.55,0,.25,1),top .85s cubic-bezier(.55,0,.25,1);filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));}
+.ec-cursor.click{animation:ecClick .3s;}
+@keyframes ecClick{40%{transform:scale(.7);}}
+@media (prefers-reduced-motion:reduce){.ec-cursor,.ec-ghost{display:none;}.ec-badge{opacity:1;transform:none;}}
+.ec-w .bg-soft{background:#fff3ea;}
+.ec-w .eyebrow{background:#ffe4d1;color:#c2410c;padding:7px 14px;border-radius:8px 8px 8px 0;position:relative;}
+.ec-w .eyebrow::after{content:"";position:absolute;left:0;bottom:-6px;border:3px solid transparent;border-top-color:#ffe4d1;border-left-color:#ffe4d1;}
+</style>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function $(id){return document.getElementById(id);}
+  var scene=document.querySelector('.ec-scene'); if(!scene) return;
+  var cur=$('ec-cursor'), ghost=$('ec-ghost'), toast=$('ec-toast'), badge=$('ec-badge');
+  var P=[
+    {sq:'Bluza Urban',en:'Urban Tee',pr:29,bg:'linear-gradient(135deg,#1b4dff,#5b3df5)',
+     svg:'<svg viewBox="0 0 64 64" width="96" height="96"><path d="M23 9l-14 8 6.5 11 5-2.6V52h23V25.4l5 2.6L55 17 41 9a9 7 0 01-18 0z" fill="#fff" opacity=".95"/><circle cx="32" cy="33" r="6" fill="#1b4dff"/></svg>'},
+    {sq:'Bluza Retro',en:'Retro Tee',pr:24,bg:'linear-gradient(135deg,#12a150,#1fc46b)',
+     svg:'<svg viewBox="0 0 64 64" width="96" height="96"><path d="M23 9l-14 8 6.5 11 5-2.6V52h23V25.4l5 2.6L55 17 41 9a9 7 0 01-18 0z" fill="#fff" opacity=".95"/><rect x="21" y="30" width="22" height="4.5" fill="#12a150"/><rect x="21" y="38" width="22" height="4.5" fill="#ffce1a"/></svg>'},
+    {sq:'Kufje Sonic X',en:'Sonic X Headset',pr:129,bg:'linear-gradient(135deg,#0e0e10,#5a5a66)',
+     svg:'<svg viewBox="0 0 64 64" width="92" height="92"><path d="M14 42v-8a18 18 0 0136 0v8" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round"/><rect x="9" y="38" width="11" height="17" rx="5" fill="#fff"/><rect x="44" y="38" width="11" height="17" rx="5" fill="#fff"/><rect x="12" y="41" width="5" height="11" rx="2.5" fill="#ff5a1f"/><rect x="47" y="41" width="5" height="11" rx="2.5" fill="#ff5a1f"/></svg>'},
+    {sq:'Ora Pulse',en:'Pulse Watch',pr:99,bg:'linear-gradient(135deg,#ff5a1f,#ffce1a)',
+     svg:'<svg viewBox="0 0 64 64" width="88" height="88"><rect x="24" y="4" width="16" height="12" rx="4" fill="#fff" opacity=".9"/><rect x="24" y="48" width="16" height="12" rx="4" fill="#fff" opacity=".9"/><rect x="17" y="14" width="30" height="36" rx="10" fill="#fff"/><rect x="21" y="18" width="22" height="28" rx="7" fill="#0e0e10"/><path d="M25 32h4l2-5 3 9 2-4h4" stroke="#7dffa8" stroke-width="2" fill="none"/></svg>'}
+  ];
+  var vi=0;
+  function L(){try{return localStorage.getItem('icode-lang')||'sq';}catch(e){return 'sq';}}
+  function pos(el){var r=el.getBoundingClientRect(),s=scene.getBoundingClientRect();return {x:r.left-s.left+r.width/2,y:r.top-s.top+r.height/2};}
+  function moveTo(el,dx,dy){var p=pos(el);cur.style.left=(p.x+(dx||0))+'px';cur.style.top=(p.y+(dy||0))+'px';}
+  function click(){cur.classList.add('click');setTimeout(function(){cur.classList.remove('click');},320);}
+  function applyVariant(){
+    var v=P[vi];
+    $('ec-img').style.background=v.bg; $('ec-glyph').innerHTML=v.svg;
+    $('ec-name').textContent=L()==='sq'?v.sq:v.en;
+    $('ec-old').style.display='none'; badge.classList.remove('on');
+    $('ec-price').textContent=v.pr.toFixed(2)+' €';
+  }
+  function discount(){
+    var v=P[vi], nw=v.pr*0.8, old=$('ec-old');
+    old.textContent=v.pr.toFixed(2)+' €'; old.style.display='inline'; badge.classList.add('on');
+    var t0=performance.now();
+    (function step(n){var k=Math.min(1,(n-t0)/500);$('ec-price').textContent=(v.pr-(v.pr-nw)*k).toFixed(2)+' €';if(k<1)requestAnimationFrame(step);})(t0);
+  }
+  function loop(){
+    moveTo($('ec-next'));
+    setTimeout(function(){ click(); vi=(vi+1)%P.length; applyVariant(); },950);
+    setTimeout(function(){ moveTo($('ec-price'),20,0); },1500);
+    setTimeout(function(){ click(); discount(); },2400);
+    setTimeout(function(){ moveTo($('ec-img')); },3100);
+    setTimeout(function(){
+      var p=pos($('ec-img')); ghost.style.background=P[vi].bg; ghost.innerHTML='<span style="transform:scale(.5);display:grid;">'+P[vi].svg+'</span>';
+      ghost.style.left=(p.x-29)+'px'; ghost.style.top=(p.y-29)+'px'; ghost.style.opacity=1;
+    },4000);
+    setTimeout(function(){ var c=pos($('ec-cart')); ghost.style.left=(c.x-29)+'px'; ghost.style.top=(c.y-29)+'px'; moveTo($('ec-cart')); },4350);
+    setTimeout(function(){
+      ghost.style.opacity=0; var ct=$('ec-count'); ct.textContent=+ct.textContent+1;
+      var cart=$('ec-cart'); cart.classList.add('bump'); setTimeout(function(){cart.classList.remove('bump');},500);
+      toast.textContent=L()==='sq'?'✓ Porosia → OMS · stoku u zbrit në ERP':'✓ Order → OMS · stock decremented in ERP';
+      toast.classList.add('on');
+    },5400);
+    setTimeout(function(){ toast.classList.remove('on'); moveTo($('ec-prod'),0,90); },7000);
+    setTimeout(loop,7800);
+  }
+  applyVariant();
+  setTimeout(loop,900);
+})();
+</script>

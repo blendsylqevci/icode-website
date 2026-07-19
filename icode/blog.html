@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>Blog — iCode LLC</title>
+<meta name="description" content="Mendime, udhëzues dhe lajme nga ekipi i iCode rreth zhvillimit, dizajnit, e-commerce dhe marketingut digjital.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,34px);}
+@media (max-width:900px){.post-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.post-grid{grid-template-columns:1fr;}}
+.post{display:block;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);background:#fff;transition:.3s;}
+.post:hover{transform:translateY(-5px);box-shadow:var(--shadow);}
+.post-media{aspect-ratio:16/10;}
+.post-body{padding:24px 26px 28px;}
+.post-cat{font-family:var(--ff-head);font-weight:600;font-size:.78rem;color:var(--primary);text-transform:uppercase;letter-spacing:.04em;}
+.post h3{font-size:1.3rem;margin:10px 0;}
+.post .meta{color:var(--muted);font-size:.86rem;}
+.feature-post{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,3vw,48px);align-items:center;border:1px solid var(--line);border-radius:var(--r-xl);overflow:hidden;background:#fff;}
+.feature-post .fp-media{min-height:340px;height:100%;}
+.feature-post .fp-body{padding:clamp(28px,4vw,52px);}
+@media (max-width:820px){.feature-post{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="page-hero">
+  <div class="container-wide">
+    <div class="crumbs"><a href="index.html" data-sq="Ballina" data-en="Home">Ballina</a><span class="sep">/</span><span data-sq="Blog" data-en="Blog">Blog</span></div>
+    <h1 data-reveal data-sq="Mendime, udhëzues dhe lajme" data-en="Insights, guides and news">Mendime, udhëzues dhe lajme</h1>
+    <p class="lead" data-reveal data-reveal-delay="1" data-sq="Çfarë mësojmë gjatë ndërtimit të produkteve — për teknologjinë, dizajnin dhe rritjen digjitale." data-en="What we learn while building products — about technology, design and digital growth.">Çfarë mësojmë gjatë ndërtimit të produkteve — për teknologjinë, dizajnin dhe rritjen digjitale.</p>
+  </div>
+</section>
+
+<!-- featured -->
+<section class="section">
+  <div class="container-wide">
+    <a class="feature-post" href="#" data-reveal>
+      <div class="fp-media ph" data-label="[ Foto: artikull kryesor ]"></div>
+      <div class="fp-body">
+        <span class="post-cat" data-sq="Zhvillim" data-en="Development">Zhvillim</span>
+        <h2 style="font-size:clamp(1.6rem,2.6vw,2.3rem);margin:14px 0;" data-sq="Si të zgjedhësh teknologjinë e duhur për produktin tënd" data-en="How to choose the right technology for your product">Si të zgjedhësh teknologjinë e duhur për produktin tënd</h2>
+        <p style="color:var(--muted);" data-sq="Një udhëzues praktik për të vendosur mes web, mobile dhe cross-platform — pa u mbytur në terma teknikë." data-en="A practical guide to deciding between web, mobile and cross-platform — without drowning in technical terms.">Një udhëzues praktik për të vendosur mes web, mobile dhe cross-platform — pa u mbytur në terma teknikë.</p>
+        <div class="meta mt-m" data-sq="10 Qershor 2026 · 6 min lexim" data-en="June 10, 2026 · 6 min read">10 Qershor 2026 · 6 min lexim</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container-wide">
+    <div class="post-grid" id="post-grid"></div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container" style="max-width:640px;text-align:center;">
+    <div data-reveal>
+      <h2 data-sq="Merr risitë në email" data-en="Get updates by email">Merr risitë në email</h2>
+      <p class="lead mt-m" data-sq="Pa spam — vetëm artikuj të dobishëm rreth teknologjisë dhe rritjes digjitale." data-en="No spam — just useful articles about technology and digital growth.">Pa spam — vetëm artikuj të dobishëm rreth teknologjisë dhe rritjes digjitale.</p>
+      <form class="mt-l" style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;" onsubmit="return false;">
+        <input type="email" required data-sq-ph="Email-i yt" data-en-ph="Your email" placeholder="Email-i yt" style="flex:1;min-width:240px;padding:15px 18px;border:1.5px solid var(--line-2);border-radius:var(--pill);">
+        <button class="btn btn-primary" type="submit" data-sq="Abonohu" data-en="Subscribe">Abonohu</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var posts=[
+    {cat:['Dizajn','Design'],t:'7 parime UX që rrisin konvertimin',te:'7 UX principles that boost conversion',g:'linear-gradient(135deg,#1b4dff,#60a5fa)',m:['8 Qershor 2026 · 5 min','June 8, 2026 · 5 min']},
+    {cat:['E-Commerce','E-Commerce'],t:'Si ta përgatisësh dyqanin për sezonin e shitjeve',te:'How to prepare your store for the sales season',g:'linear-gradient(135deg,#12a150,#4ade80)',m:['1 Qershor 2026 · 7 min','June 1, 2026 · 7 min']},
+    {cat:['Mobile','Mobile'],t:'Native apo cross-platform? Si të vendosësh',te:'Native or cross-platform? How to decide',g:'linear-gradient(135deg,#7c3aed,#c084fc)',m:['25 Maj 2026 · 6 min','May 25, 2026 · 6 min']},
+    {cat:['Marketing','Marketing'],t:'Google Ads për biznese të vogla në Kosovë',te:'Google Ads for small businesses in Kosovo',g:'linear-gradient(135deg,#ff5a1f,#ff9356)',m:['18 Maj 2026 · 5 min','May 18, 2026 · 5 min']},
+    {cat:['3D','3D'],t:'Pse konfiguratorët 3D rrisin shitjet',te:'Why 3D configurators boost sales',g:'linear-gradient(135deg,#0e0e10,#3a3a40)',m:['10 Maj 2026 · 4 min','May 10, 2026 · 4 min']},
+    {cat:['Zhvillim','Development'],t:'Performanca e web-it: pse rëndësia është reale',te:'Web performance: why it really matters',g:'linear-gradient(135deg,#e6332a,#ff7a73)',m:['2 Maj 2026 · 6 min','May 2, 2026 · 6 min']}
+  ];
+  var lang='sq';try{lang=localStorage.getItem('icode-lang')||'sq';}catch(e){}
+  var g=document.getElementById('post-grid');
+  g.innerHTML=posts.map(function(p,i){
+    return '<a class="post" href="#" data-reveal data-reveal-delay="'+((i%3)+1)+'"><div class="post-media" style="background:'+p.g+';"></div><div class="post-body"><span class="post-cat" data-sq="'+p.cat[0]+'" data-en="'+p.cat[1]+'">'+p.cat[0]+'</span><h3 data-sq="'+p.t+'" data-en="'+p.te+'">'+p.t+'</h3><div class="meta" data-sq="'+p.m[0]+'" data-en="'+p.m[1]+'">'+p.m[0]+'</div></div></a>';
+  }).join('');
+  g.querySelectorAll('[data-sq]').forEach(function(el){var v=el.getAttribute('data-'+lang);if(v!=null)el.textContent=v;});
+  if(window.ICODE_scan)window.ICODE_scan();
+})();
+</script>
+</body>
+</html>

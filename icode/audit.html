@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>Audit Falas — iCode LLC</title>
+<meta name="description" content="Audit falas ekspert i uebfaqes, dyqanit online ose sistemit tënd: UX, performancë, SEO, shëndet teknik dhe gatishmëri për AI search.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.audit-hero{background:var(--dark);padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px);}
+.audit-hero h1{color:#fff;}
+.audit-hero .lead{color:var(--on-dark-muted);max-width:54ch;}
+.audit-split{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(40px,6vw,90px);align-items:center;}
+@media (max-width:940px){.audit-split{grid-template-columns:1fr;}}
+.audit-form-label{display:flex;align-items:center;gap:10px;font-family:var(--ff-head);font-weight:600;color:#fff;margin:36px 0 16px;}
+.audit-form-label svg{width:18px;height:18px;color:var(--orange);}
+.audit-input{display:flex;align-items:center;gap:8px;background:#fff;border-radius:var(--pill);padding:8px 8px 8px 26px;max-width:640px;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+.audit-input input{flex:1;min-width:0;border:0;outline:0;background:none;font-size:1.02rem;font-family:var(--ff-body);color:var(--ink);padding:12px 0;}
+.audit-input input::placeholder{color:var(--muted-2);}
+.audit-input .btn{flex:none;}
+.audit-note{display:none;margin-top:16px;padding:14px 18px;background:rgba(31,196,107,.12);border:1px solid rgba(31,196,107,.4);border-radius:13px;color:#7ee2ab;font-weight:600;font-family:var(--ff-head);max-width:640px;}
+.audit-note.show{display:block;}
+.audit-trust{margin-top:44px;}
+.audit-trust p{font-family:var(--ff-head);font-weight:600;font-size:.88rem;color:var(--on-dark-muted);margin-bottom:18px;}
+.audit-trust .row{display:flex;flex-wrap:wrap;gap:14px 34px;font-family:var(--ff-head);font-weight:700;font-size:1.05rem;color:#8b8b94;letter-spacing:-.02em;}
+.report-stack{display:flex;flex-direction:column;gap:22px;}
+.report-card{background:#fff;border-radius:18px;padding:20px 22px;box-shadow:0 24px 70px rgba(0,0,0,.4);}
+.report-card .rc-head{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.report-card .rc-head .sq{width:12px;height:12px;background:var(--primary);border-radius:3px;flex:none;}
+.report-card .rc-head b{font-family:var(--ff-head);font-size:1.02rem;color:var(--ink);flex:1;}
+.rc-tag{font-family:var(--ff-head);font-weight:700;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:var(--pill);}
+.rc-tag.now{background:#fdeaea;color:#c0392b;}
+.rc-tag.prop{background:#e7f8ee;color:#12713e;}
+.rc-body{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;}
+.rc-lines{display:flex;flex-direction:column;gap:8px;}
+.rc-lines i{display:block;height:8px;border-radius:4px;background:var(--bg-soft-2,#ececf0);}
+.rc-lines i:nth-child(1){width:92%;}.rc-lines i:nth-child(2){width:78%;}.rc-lines i:nth-child(3){width:85%;}.rc-lines i:nth-child(4){width:60%;}
+.rc-shot{border:1px solid var(--line);border-radius:10px;padding:8px;display:flex;flex-direction:column;gap:6px;}
+.rc-shot .bar{height:7px;border-radius:4px;background:var(--primary);opacity:.85;}
+.rc-shot .px{flex:1;min-height:44px;border-radius:6px;background:linear-gradient(135deg,#eef1ff,#dfe6ff);}
+@media (max-width:940px){.report-stack{display:none;}}
+.check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.check-grid .cell{background:#fff;padding:clamp(24px,3vw,38px);}
+.check-grid .cell svg{width:28px;height:28px;stroke-width:1.7;color:var(--ink);margin-bottom:18px;}
+.check-grid .cell h3{font-size:1.18rem;margin-bottom:12px;}
+.check-grid .cell p{color:var(--muted);font-size:.96rem;}
+@media (max-width:940px){.check-grid{grid-template-columns:1fr;}}
+.why-split{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,5vw,80px);align-items:start;margin-bottom:clamp(36px,5vw,60px);}
+@media (max-width:880px){.why-split{grid-template-columns:1fr;}}
+.audit-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);}
+@media (max-width:880px){.audit-stats{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+<header id="site-header"></header>
+
+<section class="audit-hero" data-screen-label="Audit Hero">
+  <div class="container-wide">
+    <div class="crumbs" style="color:var(--on-dark-muted);"><a href="index.html" style="color:var(--on-dark-muted);" data-sq="Ballina" data-en="Home">Ballina</a><span class="sep">/</span><span data-sq="Audit Falas" data-en="Free Audit">Audit Falas</span></div>
+    <div class="audit-split">
+      <div data-reveal>
+        <h1 data-sq="Merr një audit falas ekspert të platformës sate digjitale." data-en="Get a free expert audit of your digital platform.">Merr një audit falas ekspert të platformës sate digjitale.</h1>
+        <p class="lead" data-sq="Rishikojmë UX, SEO, kërkimin në faqe dhe performancën — për të identifikuar çfarë po e frenon rritjen tënde." data-en="We review your UX, SEO, on-site search and performance to identify what's limiting your growth.">Rishikojmë UX, SEO, kërkimin në faqe dhe performancën — për të identifikuar çfarë po e frenon rritjen tënde.</p>
+        <div class="audit-form-label"><span data-sq="Shkruaj adresën për të filluar" data-en="Enter your site to get started">Shkruaj adresën për të filluar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7l10 10M17 8v9H8"/></svg></div>
+        <form id="audit-form" onsubmit="return false;">
+          <div class="audit-input">
+            <input type="url" required id="audit-url" data-sq-ph="Shkruaj URL-në e uebfaqes*" data-en-ph="Enter your website URL*" placeholder="Shkruaj URL-në e uebfaqes*">
+            <button class="btn btn-primary" type="submit" data-sq="Merr auditin falas" data-en="Get your free audit">Merr auditin falas</button>
+          </div>
+          <div class="audit-note" id="audit-note" data-sq="Faleminderit! E morëm adresën — auditin e parë e merr me email brenda 2 ditëve pune." data-en="Thank you! We got your URL — you'll receive your first audit by email within 2 business days.">Faleminderit! E morëm adresën — auditin e parë e merr me email brenda 2 ditëve pune.</div>
+        </form>
+        <div class="audit-trust">
+          <p data-sq="Të besuar nga 40+ biznese për platforma &amp; integrime:" data-en="Trusted by 40+ businesses for platforms &amp; integrations:">Të besuar nga 40+ biznese për platforma &amp; integrime:</p>
+          <div class="row"><span>Resort Planet</span><span>1TREND</span><span>Olymp Haus</span><span>MADERA</span><span>iData+</span></div>
+        </div>
+      </div>
+      <div class="report-stack" data-reveal data-reveal-delay="1">
+        <div class="report-card">
+          <div class="rc-head"><span class="sq"></span><b data-sq="Faqja e produktit" data-en="Product page">Faqja e produktit</b><span class="rc-tag now" data-sq="Gjendja aktuale" data-en="Current state">Gjendja aktuale</span></div>
+          <div class="rc-body"><div class="rc-lines"><i></i><i></i><i></i><i></i></div><div class="rc-shot"><span class="bar"></span><span class="px"></span></div></div>
+        </div>
+        <div class="report-card">
+          <div class="rc-head"><span class="sq"></span><b data-sq="Ballina" data-en="Home page">Ballina</b><span class="rc-tag prop" data-sq="Propozim" data-en="Proposal">Propozim</span></div>
+          <div class="rc-body"><div class="rc-lines"><i></i><i></i><i></i><i></i></div><div class="rc-shot"><span class="bar"></span><span class="px"></span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-screen-label="Çfarë kontrollojmë">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <h2 data-sq="Çfarë kontrollojmë në auditin tënd" data-en="What we check in your audit">Çfarë kontrollojmë në auditin tënd</h2>
+    </div>
+    <div class="check-grid" data-reveal>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></svg>
+        <h3 data-sq="Përvoja e Përdoruesit" data-en="User Experience">Përvoja e Përdoruesit</h3>
+        <p data-sq="Analizojmë navigimin, faqet e listimit e të produktit dhe UX-in mobil, për të gjetur fërkimet që bllokojnë konvertimet." data-en="We analyze navigation, listing and product pages, and mobile UX to identify friction that blocks conversions.">Analizojmë navigimin, faqet e listimit e të produktit dhe UX-in mobil, për të gjetur fërkimet që bllokojnë konvertimet.</p>
+      </div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6a6 6 0 1 0 6 6"/><path d="M12 12l6-6"/></svg>
+        <h3 data-sq="Performanca &amp; Core Web Vitals" data-en="Performance &amp; Core Web Vitals">Performanca &amp; Core Web Vitals</h3>
+        <p data-sq="Zbulojmë pengesat e shpejtësisë dhe lexojmë Core Web Vitals — si ndikon performanca te përdoruesit dhe të hyrat." data-en="We uncover speed bottlenecks and review Core Web Vitals to understand how performance impacts users and revenue.">Zbulojmë pengesat e shpejtësisë dhe lexojmë Core Web Vitals — si ndikon performanca te përdoruesit dhe të hyrat.</p>
+      </div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="6" width="8" height="12" rx="4"/><path d="M12 2v4M4 10h4M4 14h4M16 10h4M16 14h4M9 18l-2 3M15 18l2 3"/></svg>
+        <h3 data-sq="Shëndeti Teknik i Faqes" data-en="Technical Website Health">Shëndeti Teknik i Faqes</h3>
+        <p data-sq="Vlerësojmë stabilitetin teknik, nxjerrim gabimet e paralajmërimet dhe shënojmë problemet që prekin besueshmërinë." data-en="We assess technical stability, surface errors and warnings, and flag issues that affect reliability and scale.">Vlerësojmë stabilitetin teknik, nxjerrim gabimet e paralajmërimet dhe shënojmë problemet që prekin besueshmërinë.</p>
+      </div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>
+        <h3 data-sq="Struktura SEO &amp; Dukshmëria" data-en="SEO Structure &amp; Visibility">Struktura SEO &amp; Dukshmëria</h3>
+        <p data-sq="Rishikojmë metadata, schema, indeksimin dhe renditjet — për të gjetur boshllëqet e dukshmërisë dhe problemet strukturore." data-en="We review metadata, schema, indexing, and rankings to identify visibility gaps and structural SEO issues.">Rishikojmë metadata, schema, indeksimin dhe renditjet — për të gjetur boshllëqet e dukshmërisë dhe problemet strukturore.</p>
+      </div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.7 4.6L18 9.3l-4.3 1.7L12 15.6l-1.7-4.6L6 9.3l4.3-1.7L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg>
+        <h3 data-sq="AI Search &amp; AEO" data-en="AI Search &amp; AEO">AI Search &amp; AEO</h3>
+        <p data-sq="Vlerësojmë sa e gatshme është faqja jote për kërkimet me AI — përvoja si ChatGPT, Claude dhe Gemini." data-en="We evaluate how well your site is prepared for AI-driven search experiences like ChatGPT, Claude and Gemini.">Vlerësojmë sa e gatshme është faqja jote për kërkimet me AI — përvoja si ChatGPT, Claude dhe Gemini.</p>
+      </div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9l1.5 1.5L11 8M13 9.5h4M7 15l1.5 1.5L11 14M13 15.5h4"/></svg>
+        <h3 data-sq="Përmbledhje &amp; Prioritete" data-en="Summary &amp; Priorities">Përmbledhje &amp; Prioritete</h3>
+        <p data-sq="I bashkojmë gjetjet në një plan të qartë veprimi, të prioritizuar sipas ndikimit në biznes." data-en="We consolidate findings into a clear, prioritized action plan focused on business impact.">I bashkojmë gjetjet në një plan të qartë veprimi, të prioritizuar sipas ndikimit në biznes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-soft);" data-screen-label="Pse iCode">
+  <div class="container-wide">
+    <div class="why-split">
+      <h2 data-reveal data-sq="Pse klientët zgjedhin iCode" data-en="Why clients choose iCode">Pse klientët zgjedhin iCode</h2>
+      <p class="lead" data-reveal data-sq="Auditin e bën ekipi që ndërton çdo ditë platforma ERP, POS e dyqane online — jo një mjet automatik. Merr gjetje konkrete dhe hapa që zbatohen." data-en="Your audit is done by the team that builds ERP platforms, POS and online stores every day — not an automated tool. You get concrete findings and actionable steps.">Auditin e bën ekipi që ndërton çdo ditë platforma ERP, POS e dyqane online — jo një mjet automatik. Merr gjetje konkrete dhe hapa që zbatohen.</p>
+    </div>
+    <div class="audit-stats" data-reveal>
+      <div><div class="stat-num">10+</div><div class="stat-label" data-sq="vite përvojë" data-en="years of experience">vite përvojë</div></div>
+      <div><div class="stat-num">120+</div><div class="stat-label" data-sq="projekte të realizuara" data-en="projects delivered">projekte të realizuara</div></div>
+      <div><div class="stat-num">40+</div><div class="stat-label" data-sq="klientë aktivë" data-en="active clients">klientë aktivë</div></div>
+      <div><div class="stat-num">98%</div><div class="stat-label" data-sq="kthehen për projektin e radhës" data-en="return for their next project">kthehen për projektin e radhës</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-screen-label="CTA">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal>
+      <h2 data-sq="Preferon bisedë direkte?" data-en="Prefer to talk directly?">Preferon bisedë direkte?</h2>
+      <p data-sq="Cakto një konsultë falas 30-minutëshe — pa angazhim." data-en="Book a free 30-minute consultation — no strings attached.">Cakto një konsultë falas 30-minutëshe — pa angazhim.</p>
+      <a class="btn btn-light btn-lg" href="contact.html" data-sq="Na kontakto" data-en="Get in touch">Na kontakto</a>
+    </div>
+  </div>
+</section>
+
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var f=document.getElementById('audit-form');
+  if(f) f.addEventListener('submit',function(){
+    var note=document.getElementById('audit-note');
+    note.classList.add('show');
+    document.getElementById('audit-url').value='';
+    setTimeout(function(){note.classList.remove('show');},6000);
+  });
+})();
+</script>
+</body>
+</html>

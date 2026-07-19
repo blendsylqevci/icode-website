@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Projekte — iCode LLC"
+  description="Projekte të zgjedhura nga iCode — konfiguratorë 3D, marketplace, aplikacione mobile, dyqane online dhe sisteme me porosi."
+>
+
+<section class="page-hero">
+  <div class="container-wide">
+    <div class="crumbs"><a href="/" data-sq="Ballina" data-en="Home">Ballina</a><span class="sep">/</span><span data-sq="Projekte" data-en="Work">Projekte</span></div>
+    <h1 data-reveal data-sq="Projekte që sjellin rezultate reale" data-en="Projects that deliver real results">Projekte që sjellin rezultate reale</h1>
+    <p class="lead" data-reveal data-reveal-delay="1" data-sq="Një përzgjedhje e punëve tona në industri të ndryshme. Çdo projekt nis me një problem dhe mbaron me një produkt që funksionon." data-en="A selection of our work across industries. Every project starts with a problem and ends with a product that works.">Një përzgjedhje e punëve tona në industri të ndryshme. Çdo projekt nis me një problem dhe mbaron me një produkt që funksionon.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="filter-bar" id="filters"></div>
+    <div class="work-grid" id="work-grid"></div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="grid cols-4" style="gap:30px;" data-reveal>
+      <div><div class="stat-num" data-count="120" data-suffix="+">120+</div><div class="stat-label" data-sq="Projekte të lëshuara" data-en="Projects shipped">Projekte të lëshuara</div></div>
+      <div><div class="stat-num" data-count="40" data-suffix="+">40+</div><div class="stat-label" data-sq="Klientë" data-en="Clients">Klientë</div></div>
+      <div><div class="stat-num" data-count="10">10</div><div class="stat-label" data-sq="Vite" data-en="Years">Vite</div></div>
+      <div><div class="stat-num" data-count="8">8</div><div class="stat-label" data-sq="Industri" data-en="Industries">Industri</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal>
+      <h2 data-sq="Projekti yt mund të jetë i radhës" data-en="Your project could be next">Projekti yt mund të jetë i radhës</h2>
+      <p data-sq="Na trego çfarë do të ndërtosh dhe si mund të ndihmojmë." data-en="Tell us what you want to build and how we can help.">Na trego çfarë do të ndërtosh dhe si mund të ndihmojmë.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-primary btn-lg" href="/contact" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style is:global>
+.filter-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px;}
+.filter-chip{font-family:var(--ff-head);font-weight:600;font-size:.92rem;padding:11px 20px;border-radius:var(--pill);border:1.5px solid var(--line-2);color:var(--ink);transition:.2s;}
+.filter-chip.on,.filter-chip:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px);}
+@media (max-width:820px){.work-grid{grid-template-columns:1fr;}}
+</style>
+
+<script>
+import '../scripts/site.js';
+(function(){
+  var cats=[['all','Të gjitha','All'],['erp','ERP & POS','ERP & POS'],['web','Web & Portale','Web & Portals'],['mobile','Mobile','Mobile'],['ecommerce','E-Commerce','E-Commerce'],['3d','Game & 3D','Game & 3D'],['software','Custom Software','Custom Software']];
+  var projects=[
+    {cat:'erp',t:'RetailOS — ERP për zinxhir retail',te:'RetailOS — ERP for a retail chain',g:'linear-gradient(135deg,#0d3b8f,#1b4dff)',lbl:'RetailOS',tags:[['12 module live','12 modules live'],['-40% punë manuale','-40% manual work']],d:'Financat, inventari dhe blerjet në një sistem, me raportim live.',de:'Finance, inventory and purchasing in one system, with live reporting.'},
+    {cat:'erp',t:'MarketPOS — POS për 24 lokacione',te:'MarketPOS — POS across 24 locations',g:'linear-gradient(135deg,#ff5a1f,#ff8a3d)',lbl:'MarketPOS',tags:[['Offline-first','Offline-first'],['Mbyllje 5 min','5-min closing']],d:'Pikë shitjeje offline-first e sinkronizuar me ERP.',de:'An offline-first point of sale synced with the ERP.'},
+    {cat:'erp',t:'LogiTrack — WMS & OMS',te:'LogiTrack — WMS & OMS',g:'linear-gradient(135deg,#5b3df5,#8b6cf7)',lbl:'LogiTrack',tags:[['99.8% saktësi','99.8% accuracy'],['Barcode','Barcode']],d:'Depo qendrore me pick & pack dhe gjurmim në kohë reale.',de:'A central warehouse with pick & pack and real-time tracking.'},
+    {cat:'mobile',t:'TeamHR — Mobile HR',te:'TeamHR — Mobile HR',g:'linear-gradient(135deg,#b8860b,#ffce1a)',lbl:'TeamHR',tags:[['iOS & Android','iOS & Android'],['ERP sync','ERP sync']],d:'Prezenca, pushimet dhe pagat në telefonin e punonjësit.',de:'Attendance, leave and payslips on the employee’s phone.'},
+    {cat:'3d',t:'Konfigurator 3D i Apartamenteve',te:'3D Apartment Configurator',g:'linear-gradient(135deg,#1b4dff,#5b3df5)',lbl:'Apartment3D',tags:[['+38% shitje','+38% sales'],['Three.js','Three.js']],d:'Blerësit personalizojnë apartamentin në kohë reale.',de:'Buyers personalise their apartment in real time.'},
+    {cat:'ecommerce',t:'Platformë Marketplace',te:'Marketplace Platform',g:'linear-gradient(135deg,#12a150,#1fc46b)',lbl:'Foleja',tags:[['Mijëra shitës','Thousands of sellers'],['Pagesa','Payments']],d:'Lidh mijëra shitës me pagesa të integruara.',de:'Connects thousands of sellers with integrated payments.'},
+    {cat:'mobile',t:'MediCare — App për Klinika',te:'MediCare — Clinic App',g:'linear-gradient(135deg,#7c3aed,#c084fc)',lbl:'MediCare',tags:[['iOS & Android','iOS & Android'],['Terminë','Bookings']],d:'Menaxhim terminësh dhe pacientësh në mobile.',de:'Appointment and patient management on mobile.'},
+    {cat:'web',t:'EduPro — Platformë Mësimi',te:'EduPro — Learning Platform',g:'linear-gradient(135deg,#ff5a1f,#ff9356)',lbl:'EduPro',tags:[['Web app','Web app'],['+50% regjistrime','+50% signups']],d:'Platformë e-learning me kurse dhe certifikata.',de:'An e-learning platform with courses and certificates.'},
+    {cat:'software',t:'NovaPay — Sistem Faturimi',te:'NovaPay — Billing System',g:'linear-gradient(135deg,#0e0e10,#3a3a40)',lbl:'NovaPay',tags:[['Automatizim','Automation'],['ERP','ERP']],d:'Sistem i dedikuar faturimi dhe raportimi.',de:'A bespoke billing and reporting system.'},
+    {cat:'ecommerce',t:'GreenLeaf — Dyqan Online',te:'GreenLeaf — Online Store',g:'linear-gradient(135deg,#16a34a,#86efac)',lbl:'GreenLeaf',tags:[['Shopify','Shopify'],['+28% konvertim','+28% conversion']],d:'Dyqan online i shpejtë me checkout të optimizuar.',de:'A fast online store with optimised checkout.'},
+    {cat:'web',t:'UrbanBuild — Faqe Korporative',te:'UrbanBuild — Corporate Site',g:'linear-gradient(135deg,#1b4dff,#60a5fa)',lbl:'UrbanBuild',tags:[['CMS','CMS'],['SEO','SEO']],d:'Faqe korporative me portofol projektesh ndërtimi.',de:'A corporate site with a construction project portfolio.'},
+    {cat:'3d',t:'AutoView — Konfigurator Veturash',te:'AutoView — Car Configurator',g:'linear-gradient(135deg,#e6332a,#ff7a73)',lbl:'AutoView',tags:[['WebGL','WebGL'],['360°','360°']],d:'Vizualizim 3D i veturave me ngjyra dhe opsione.',de:'3D car visualisation with colours and options.'}
+  ];
+  var lang='sq';try{lang=localStorage.getItem('icode-lang')||'sq';}catch(e){}
+  var check='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L19 7"/></svg>';
+  var fb=document.getElementById('filters');
+  fb.innerHTML=cats.map(function(c,i){return '<button class="filter-chip'+(i===0?' on':'')+'" data-cat="'+c[0]+'" data-sq="'+c[1]+'" data-en="'+c[2]+'">'+c[1]+'</button>';}).join('');
+  var grid=document.getElementById('work-grid');
+  function render(cat){
+    grid.innerHTML=projects.filter(function(p){return cat==='all'||p.cat===cat;}).map(function(p,i){
+      var tags=p.tags.map(function(t){return '<span class="check-tag"><span class="ct">'+check+'</span><span data-sq="'+t[0]+'" data-en="'+t[1]+'">'+t[0]+'</span></span>';}).join('');
+      return '<a class="case-card" href="/contact" data-reveal data-reveal-delay="'+((i%2)+1)+'"><div class="case-media" style="background:'+p.g+';"><span class="logo-over">'+p.lbl+'</span></div><h3 data-sq="'+p.t+'" data-en="'+p.te+'">'+p.t+'</h3><div class="check-tags">'+tags+'</div><p data-sq="'+p.d+'" data-en="'+p.de+'">'+p.d+'</p></a>';
+    }).join('');
+    grid.querySelectorAll('[data-sq]').forEach(function(el){var v=el.getAttribute('data-'+lang);if(v!=null)el.textContent=v;});
+    if(window.ICODE_scan)window.ICODE_scan();
+  }
+  function fromHash(){var m=(location.hash||'').match(/cat=([a-z0-9]+)/);return (m&&fb.querySelector('[data-cat="'+m[1]+'"]'))?m[1]:'all';}
+  function activate(cat){fb.querySelectorAll('.filter-chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-cat')===cat);});render(cat);}
+  activate(fromHash());
+  window.addEventListener('hashchange',function(){activate(fromHash());});
+  fb.addEventListener('click',function(e){var b=e.target.closest('[data-cat]');if(!b)return;var c=b.getAttribute('data-cat');if(c==='all'){history.replaceState(null,'',location.pathname);}else{history.replaceState(null,'','#cat='+c);}activate(c);});
+})();
+</script>

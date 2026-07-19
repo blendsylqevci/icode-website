@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://icode-ks.com/sitemap-index.xml

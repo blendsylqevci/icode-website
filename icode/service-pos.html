@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>Sistem POS — iCode LLC</title>
+<meta name="description" content="POS offline-first me sinkronizim event-based në ERP — skanim nën 100ms, store-and-forward, ESC/POS, mbyllje arke që poston direkt në financa.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+body.pos-world{background:#faf7f0;}
+.pos-mono{font-family:ui-monospace,'SF Mono','Cascadia Code',Menlo,Consolas,monospace;}
+.pos-hero{background:#faf7f0;padding-block:clamp(64px,8vw,110px);position:relative;overflow:hidden;}
+.pos-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(14,14,16,.06) 1px,transparent 1px);background-size:22px 22px;}
+.pos-hero .container-wide{position:relative;}
+.pos-kicker{display:inline-flex;align-items:center;gap:9px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;letter-spacing:.12em;background:#0e0e10;color:#7dffa8;padding:9px 16px;border-radius:6px;margin-bottom:24px;}
+.pos-kicker i{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:posBlink 2s infinite;}
+@keyframes posBlink{50%{opacity:.35;}}
+@media (prefers-reduced-motion:reduce){.pos-kicker i{animation:none;}}
+.receipt{background:#fff;width:min(360px,100%);margin-inline:auto;padding:28px 26px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;line-height:1.7;color:#222;box-shadow:0 30px 60px rgba(14,14,16,.16);position:relative;transform:rotate(1.5deg);}
+.receipt::before,.receipt::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle at 10px -4px,transparent 8px,#fff 8px);background-size:20px 12px;}
+.receipt::before{top:-9px;transform:rotate(180deg);}
+.receipt::after{bottom:-9px;}
+.receipt .rl{display:flex;justify-content:space-between;gap:12px;}
+.receipt hr{border:none;border-top:1.5px dashed #bbb;margin:12px 0;}
+.receipt .rt{text-align:center;font-weight:700;letter-spacing:.15em;}
+.receipt .big{font-size:1.05rem;font-weight:700;}
+.receipt .led{display:flex;justify-content:space-between;align-items:center;background:#0e0e10;color:#7dffa8;padding:8px 12px;border-radius:5px;margin-top:12px;font-size:.72rem;letter-spacing:.1em;}
+.pos-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px);}
+@media (max-width:760px){.pos-stats{grid-template-columns:1fr;}}
+.pstat{border:2px solid #0e0e10;border-radius:16px;padding:30px 28px;background:#fff;box-shadow:6px 6px 0 #0e0e10;}
+.pstat b{font-family:var(--ff-head);font-size:clamp(1.7rem,2.6vw,2.4rem);letter-spacing:-.02em;display:block;}
+.pstat span{color:var(--muted);font-size:.92rem;}
+.sync-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;}
+@media (max-width:820px){.sync-flow{grid-template-columns:1fr;}.sync-flow .sf-arrow{transform:rotate(90deg);justify-self:center;}}
+.sf-node{border:2px solid #0e0e10;border-radius:14px;background:#fff;padding:22px;}
+.sf-node b{font-family:var(--ff-head);display:block;margin-bottom:8px;}
+.sf-node p{font-size:.85rem;color:var(--muted);line-height:1.55;}
+.sf-node .tagm{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:.68rem;background:#0e0e10;color:#7dffa8;padding:3px 8px;border-radius:4px;margin-bottom:10px;letter-spacing:.08em;}
+.sf-arrow{font-size:1.4rem;color:#0e0e10;text-align:center;}
+.hw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+@media (max-width:900px){.hw-grid{grid-template-columns:repeat(2,1fr);}}
+.hw{border:1.5px solid var(--line-2);border-radius:14px;padding:24px;background:#fff;transition:transform .25s var(--ease),box-shadow .25s;}
+.hw:hover{transform:translateY(-4px);box-shadow:6px 6px 0 #0e0e10;border-color:#0e0e10;}
+.hw b{font-family:var(--ff-head);display:block;margin-bottom:8px;font-size:1rem;}
+.hw p{font-size:.84rem;color:var(--muted);line-height:1.55;}
+.hw .hm{font-family:ui-monospace,Menlo,monospace;font-size:.66rem;letter-spacing:.1em;color:#16a34a;display:block;margin-bottom:10px;}
+.zline{display:flex;justify-content:space-between;gap:14px;padding:16px 4px;border-bottom:1.5px dashed var(--line-2);font-size:.95rem;align-items:baseline;}
+.zline b{font-family:var(--ff-head);white-space:nowrap;}
+.zline span{color:var(--muted);text-align:right;}
+a{color:inherit;}a:hover{color:var(--primary);}
+.printer-scene{width:min(360px,100%);margin-inline:auto;position:relative;}
+.payterm{display:flex;justify-content:space-between;align-items:center;background:#0e0e10;color:#fff;border-radius:12px;padding:14px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;margin-bottom:14px;letter-spacing:.06em;}
+.payterm #pt-st{color:#febc2e;transition:color .3s;}
+.payterm.ok #pt-st{color:#7dffa8;}
+.printer{height:28px;background:linear-gradient(#2c2c31,#0e0e10);border-radius:10px 10px 5px 5px;position:relative;z-index:3;box-shadow:0 8px 20px rgba(14,14,16,.35);}
+.printer i{position:absolute;left:14px;right:14px;bottom:5px;height:4px;background:#000;border-radius:2px;}
+.rslot{overflow:hidden;padding:0 12px 6px;margin-top:-2px;}
+.receipt2{transform:translateY(-104%);margin:0 auto;}
+.receipt2.printing{transition:transform 4.8s cubic-bezier(.25,.6,.35,1);transform:translateY(0);}
+.rqr{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;width:78px;margin:10px auto 6px;}
+.rqr i{aspect-ratio:1;background:#111;}
+.rqr i.o{background:transparent;}
+.sef{text-align:center;font-size:.64rem;letter-spacing:.12em;font-weight:700;}
+.sef.ok2{color:#16a34a;}
+.bill .rl{display:flex;justify-content:space-between;gap:12px;}
+.pos-stage{position:relative;min-height:492px;}
+.bill{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(320px,100%);background:#fff;border:1.5px solid var(--line-2);border-radius:14px;box-shadow:0 24px 50px rgba(14,14,16,.14);padding:22px 22px 18px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;line-height:1.75;color:#222;transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.bill.gone{opacity:0;transform:translateX(-50%) translateY(-18px);pointer-events:none;}
+.bill .bt{text-align:center;font-weight:700;letter-spacing:.12em;margin-bottom:6px;}
+.bill .bsub{text-align:center;font-size:.62rem;color:#888;letter-spacing:.08em;margin-bottom:10px;}
+.paybtn{width:100%;margin-top:14px;background:#0e0e10;color:#fff;border-radius:10px;padding:13px;font-family:var(--ff-head);font-weight:700;font-size:.8rem;letter-spacing:.08em;border:none;transition:transform .15s,background .3s;}
+.paybtn.pressed{transform:scale(.95);background:#16a34a;}
+.fiscal-wrap{position:absolute;inset:0;opacity:0;transition:opacity .4s;}
+.fiscal-wrap.on{opacity:1;}
+.rfh{text-align:center;font-weight:700;letter-spacing:.14em;border:1.5px solid #111;border-radius:4px;padding:3px 0;margin-bottom:8px;font-size:.72rem;}
+.rfs{font-size:.6rem;color:#555;}
+.pos-cur{position:absolute;left:74%;top:82%;z-index:9;width:22px;height:22px;transition:left .85s cubic-bezier(.55,0,.25,1),top .85s cubic-bezier(.55,0,.25,1);filter:drop-shadow(0 3px 6px rgba(0,0,0,.35));}
+.pos-cur.click{animation:ecClick2 .3s;}
+@keyframes ecClick2{40%{transform:scale(.7);}}
+@media (prefers-reduced-motion:reduce){.pos-cur{display:none;}.bill{display:none;}.fiscal-wrap{opacity:1;}}
+@media (prefers-reduced-motion:reduce){.receipt2{transform:none;}.receipt2.printing{transition:none;}}
+.receipt .rl.new{animation:rlIn .45s var(--ease);}
+@keyframes rlIn{from{opacity:0;transform:translateY(5px);}}
+.pos-world .eyebrow{font-family:ui-monospace,Menlo,Consolas,monospace;background:#0e0e10;color:#7dffa8;padding:7px 13px;border-radius:6px;letter-spacing:.14em;font-size:.7rem;text-transform:uppercase;}
+</style>
+</head>
+<body class="pos-world">
+<header id="site-header"></header>
+
+<section class="pos-hero" data-screen-label="POS Hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="pos-kicker"><i></i>OFFLINE MODE · SALES CONTINUE</span>
+      <h1 data-sq="Arka që s'pyet a ka internet" data-en="The till that doesn't ask if there's internet">Arka që s'pyet a ka internet</h1>
+      <p class="lead mt-m" data-sq="Çdo shitje regjistrohet lokalisht si ngjarje e pandryshueshme dhe sinkronizohet në ERP sapo kthehet lidhja — pa dyfishime, pa humbje, pa radhë të bllokuara në orën e pikut." data-en="Every sale is recorded locally as an immutable event and syncs to the ERP the moment the connection returns — no duplicates, no losses, no frozen queues at rush hour.">Çdo shitje regjistrohet lokalisht si ngjarje e pandryshueshme dhe sinkronizohet në ERP sapo kthehet lidhja — pa dyfishime, pa humbje, pa radhë të bllokuara në orën e pikut.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-dark btn-lg" href="contact.html" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a>
+        <a class="btn btn-outline btn-lg" href="service-erp.html" data-sq="I lidhur me ERP →" data-en="Wired into the ERP →">I lidhur me ERP →</a>
+      </div>
+    </div>
+    <div data-reveal data-reveal-delay="2">
+      <div class="printer-scene" aria-hidden="true">
+        <div class="payterm" id="payterm"><span>5.60 €</span><span id="pt-st">FATURA E HAPUR</span></div>
+        <div class="pos-stage">
+          <div class="bill" id="bill">
+            <div class="bt">FATURA</div>
+            <div class="bsub">TAVOLINA 4 · OP: BLERTA · <span id="rc-date">--</span></div>
+            <hr style="border:none;border-top:1.5px dashed #bbb;margin:8px 0;">
+            <div class="rl"><span>2× Espresso dopio</span><span>3.00 €</span></div>
+            <div class="rl"><span>1× Kroasan gjalpi</span><span>1.80 €</span></div>
+            <div class="rl"><span>1× Ujë 0.5L</span><span>0.80 €</span></div>
+            <hr style="border:none;border-top:1.5px dashed #bbb;margin:8px 0;">
+            <div class="rl big"><span>TOTALI</span><span>5.60 €</span></div>
+            <button class="paybtn" id="paybtn">PAGUAJ FATURËN</button>
+          </div>
+          <div class="fiscal-wrap" id="fwrap">
+            <div class="printer"><i></i></div>
+            <div class="rslot">
+              <div class="receipt receipt2" id="rc2">
+                <div class="rfh">KUPON FISKAL</div>
+                <div class="rfs" style="text-align:center;">iCode Sh.p.k. · NUI 811-XXX-XXX · Gjilan<br>Kasa 03 · Operator: BLERTA</div>
+                <hr>
+                <div class="rl"><span>2× Espresso dopio</span><span>3.00 €</span></div>
+                <div class="rl"><span>1× Kroasan gjalpi</span><span>1.80 €</span></div>
+                <div class="rl"><span>1× Ujë 0.5L</span><span>0.80 €</span></div>
+                <hr>
+                <div class="rl"><span>Baza 18%</span><span>4.75 €</span></div>
+                <div class="rl"><span>TVSH 18%</span><span>0.85 €</span></div>
+                <div class="rl big"><span>TOTALI</span><span>5.60 €</span></div>
+                <div class="rl"><span>PAGUAR: KARTELË ····4921</span><span>APPROVED</span></div>
+                <hr>
+                <div class="rl rfs"><span>NIVF:</span><span>84F3-1C29-7B0A-4E</span></div>
+                <div class="rl rfs"><span>NSLF:</span><span>A1B2C3D4E5F60718</span></div>
+                <div class="rqr"><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i class="o"></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i></div>
+                <div class="sef" id="sef-st">SEF · KUPON FISKAL I DIGJITALIZUAR</div>
+              </div>
+            </div>
+          </div>
+          <div class="pos-cur" id="pos-cur"><svg viewBox="0 0 24 24"><path d="M4 2l16 8-7 2-3 7z" fill="#0e0e10" stroke="#fff" stroke-width="1.4"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section" style="padding-top:clamp(40px,5vw,70px);">
+  <div class="container-wide">
+    <div class="pos-stats">
+      <div class="pstat" data-reveal><b>&lt; 100 ms</b><span data-sq="Nga skanimi te rreshti në faturë — i matur, jo i premtuar. Ndërfaqja mban ritmin e kasierit më të shpejtë." data-en="Scan-to-line latency — measured, not promised. The UI keeps pace with your fastest cashier.">Nga skanimi te rreshti në faturë — i matur, jo i premtuar. Ndërfaqja mban ritmin e kasierit më të shpejtë.</span></div>
+      <div class="pstat" data-reveal data-reveal-delay="1"><b data-sq="0 shitje të humbura" data-en="0 lost sales">0 shitje të humbura</b><span data-sq="Store-and-forward: ngjarjet ruhen në bazën lokale dhe dorëzohen exactly-once me çelësa idempotence." data-en="Store-and-forward: events persist in the local DB and deliver exactly-once with idempotency keys.">Store-and-forward: ngjarjet ruhen në bazën lokale dhe dorëzohen exactly-once me çelësa idempotence.</span></div>
+      <div class="pstat" data-reveal data-reveal-delay="2"><b data-sq="5 min mbyllje" data-en="5-min closing">5 min mbyllje</b><span data-sq="Z-raporti dhe numërimi i verbër i arkës — diferencat evidentohen aty për aty dhe postohen direkt në financa." data-en="Z-report and blind cash count — variances surface on the spot and post straight to finance.">Z-raporti dhe numërimi i verbër i arkës — diferencat evidentohen aty për aty dhe postohen direkt në financa.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Si funksionon offline" data-en="How offline works">Si funksionon offline</span>
+      <h2 data-sq="Ngjarje, jo gjendje — prandaj s'prishet kurrë" data-en="Events, not state — that's why it never breaks">Ngjarje, jo gjendje — prandaj s'prishet kurrë</h2>
+    </div>
+    <div class="sync-flow" data-reveal>
+      <div class="sf-node"><span class="tagm">TERMINAL</span><b data-sq="Regjistër lokal ngjarjesh" data-en="Local event journal">Regjistër lokal ngjarjesh</b><p data-sq="Çdo shitje, kthim e anulim shkruhet si ngjarje e renditur në bazën lokale — burimi i së vërtetës i terminalit edhe pa rrjet." data-en="Every sale, return and void is written as an ordered event in the local DB — the terminal's source of truth even with no network.">Çdo shitje, kthim e anulim shkruhet si ngjarje e renditur në bazën lokale — burimi i së vërtetës i terminalit edhe pa rrjet.</p></div>
+      <div class="sf-arrow">→</div>
+      <div class="sf-node"><span class="tagm">SYNC ENGINE</span><b data-sq="Dorëzim exactly-once" data-en="Exactly-once delivery">Dorëzim exactly-once</b><p data-sq="Radha store-and-forward me çelësa idempotence dhe backoff eksponencial — ritenton vetë, pa dyfishuar asnjë faturë." data-en="A store-and-forward queue with idempotency keys and exponential backoff — retries itself without ever duplicating a receipt.">Radha store-and-forward me çelësa idempotence dhe backoff eksponencial — ritenton vetë, pa dyfishuar asnjë faturë.</p></div>
+      <div class="sf-arrow">→</div>
+      <div class="sf-node"><span class="tagm">ERP</span><b data-sq="Postim automatik" data-en="Automatic posting">Postim automatik</b><p data-sq="Shitjet zbresin stokun, mbyllja e arkës poston në financa, çmimet e reja kthehen te terminalet — një cikël i vetëm i besueshëm." data-en="Sales decrement stock, till closings post to finance, new prices flow back to terminals — one dependable loop.">Shitjet zbresin stokun, mbyllja e arkës poston në financa, çmimet e reja kthehen te terminalet — një cikël i vetëm i besueshëm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#f1ede3;">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Pajisjet & fiskalizimi" data-en="Hardware & fiscalisation">Pajisjet & fiskalizimi</span>
+      <h2 data-sq="Flet me çdo pajisje të banakut" data-en="Speaks to everything on the counter">Flet me çdo pajisje të banakut</h2>
+    </div>
+    <div class="hw-grid">
+      <div class="hw" data-reveal><span class="hm">ESC/POS</span><b data-sq="Printerë faturash" data-en="Receipt printers">Printerë faturash</b><p data-sq="Printim direkt ESC/POS me shabllone të konfigurueshme — logo, TVSH, QR fiskal — dhe rezervë në printer të dytë." data-en="Direct ESC/POS printing with configurable templates — logo, VAT, fiscal QR — and failover to a second printer.">Printim direkt ESC/POS me shabllone të konfigurueshme — logo, TVSH, QR fiskal — dhe rezervë në printer të dytë.</p></div>
+      <div class="hw" data-reveal><span class="hm">HID / SERIAL</span><b data-sq="Skanerë & peshore" data-en="Scanners & scales">Skanerë & peshore</b><p data-sq="Barcode 1D/2D, peshore me protokoll serial për artikuj me peshë, dhe kodifikim i brendshëm për artikuj pa barkod." data-en="1D/2D barcodes, serial-protocol scales for weighed items, and internal codes for unbarcoded products.">Barcode 1D/2D, peshore me protokoll serial për artikuj me peshë, dhe kodifikim i brendshëm për artikuj pa barkod.</p></div>
+      <div class="hw" data-reveal><span class="hm">TERMINAL API</span><b data-sq="Terminale pagese" data-en="Payment terminals">Terminale pagese</b><p data-sq="Integrim protokolar me terminalet bankare — shuma kalon vetë, statusi kthehet në faturë, pa shtypje të dyfishtë manuale." data-en="Protocol-level integration with bank terminals — the amount passes automatically, the status returns to the receipt, no double keying.">Integrim protokolar me terminalet bankare — shuma kalon vetë, statusi kthehet në faturë, pa shtypje të dyfishtë manuale.</p></div>
+      <div class="hw" data-reveal><span class="hm">FISCAL READY</span><b data-sq="Fiskalizimi" data-en="Fiscalisation">Fiskalizimi</b><p data-sq="Arkitekturë e gatshme për fiskalizim — numërim rendor i pandërprerë, QR në faturë dhe raportim sipas rregullativës lokale." data-en="Fiscalisation-ready architecture — unbroken sequential numbering, QR on the receipt and reporting per local regulation.">Arkitekturë e gatshme për fiskalizim — numërim rendor i pandërprerë, QR në faturë dhe raportim sipas rregullativës lokale.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:880px;">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Operimi ditor" data-en="Daily operations">Operimi ditor</span>
+      <h2 data-sq="Kontroll i plotë mbi arkën dhe stafin" data-en="Full control over till and staff">Kontroll i plotë mbi arkën dhe stafin</h2>
+    </div>
+    <div data-reveal>
+      <div class="zline"><b data-sq="Ndërrime & role" data-en="Shifts & roles">Ndërrime & role</b><span data-sq="Hapje/mbyllje ndërrimi për operator, leje granulare (zbritje, anulime, kthime) me PIN ose kartelë" data-en="Per-operator shift open/close, granular permissions (discounts, voids, returns) via PIN or card">Hapje/mbyllje ndërrimi për operator, leje granulare (zbritje, anulime, kthime) me PIN ose kartelë</span></div>
+      <div class="zline"><b data-sq="Numërim i verbër" data-en="Blind count">Numërim i verbër</b><span data-sq="Kasieri numëron pa e parë shifrën e pritur — diferencat regjistrohen me arsye dhe auditohen" data-en="The cashier counts without seeing the expected figure — variances log with a reason and are audited">Kasieri numëron pa e parë shifrën e pritur — diferencat regjistrohen me arsye dhe auditohen</span></div>
+      <div class="zline"><b>Z-Report</b><span data-sq="Mbyllja e ditës me përmbledhje për mënyra pagese, TVSH e kategori — postohet automatikisht në financa" data-en="End-of-day summary by tender, VAT and category — posts automatically to finance">Mbyllja e ditës me përmbledhje për mënyra pagese, TVSH e kategori — postohet automatikisht në financa</span></div>
+      <div class="zline"><b data-sq="Audit i plotë" data-en="Full audit trail">Audit i plotë</b><span data-sq="Çdo veprim i gjurmueshëm te operatori, terminali dhe koha — i pandryshueshëm, i gatshëm për kontroll" data-en="Every action traceable to operator, terminal and time — immutable, inspection-ready">Çdo veprim i gjurmueshëm te operatori, terminali dhe koha — i pandryshueshëm, i gatshëm për kontroll</span></div>
+      <div class="zline"><b data-sq="Multi-lokacion" data-en="Multi-location">Multi-lokacion</b><span data-sq="Çmime e promocione per lokacion nga qendra; terminale të reja provizionohen me një konfigurim" data-en="Per-location prices and promotions from HQ; new terminals provision from a single config">Çmime e promocione per lokacion nga qendra; terminale të reja provizionohen me një konfigurim</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm" data-screen-label="Klientë">
+  <div class="container-wide">
+    <p class="center" style="font-family:var(--ff-head);font-weight:600;color:var(--muted);margin-bottom:36px;" data-reveal data-sq="Biznese që shesin çdo ditë me POS-in tonë" data-en="Businesses selling every day on our POS">Biznese që shesin çdo ditë me POS-in tonë</p>
+    <div class="logo-wall logo-wall-strip" data-reveal><span class="logo-item">ALDI Group</span><span class="logo-item">Basimetzg</span><span class="logo-item">Timoni Garden</span><span class="logo-item">Kpuctar Agimi</span><span class="logo-item">Arena Fitness &amp; Healthy food</span><span class="logo-item">Qumshtorja KABI</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:#0e0e10;" data-comment-anchor="c85d1182c1-div">
+      <h2 data-sq="Provoje me internetin e fikur" data-en="Try it with the internet switched off">Provoje me internetin e fikur</h2>
+      <p data-sq="Në demo e shkëputim rrjetin dhe vazhdojmë të shesim — pastaj e sheh sinkronizimin live në ERP." data-en="In the demo we pull the network and keep selling — then you watch it sync live into the ERP.">Në demo e shkëputim rrjetin dhe vazhdojmë të shesim — pastaj e sheh sinkronizimin live në ERP.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-primary btn-lg" href="contact.html" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var rc=document.getElementById('rc2'), bill=document.getElementById('bill'); if(!rc) return;
+  var d=new Date();
+  document.getElementById('rc-date').textContent=String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  var pt=document.getElementById('payterm'), st=document.getElementById('pt-st'), sef=document.getElementById('sef-st');
+  var cur=document.getElementById('pos-cur'), btn=document.getElementById('paybtn'), fw=document.getElementById('fwrap');
+  var stage=document.querySelector('.pos-stage');
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){st.textContent='APPROVED ✓';pt.classList.add('ok');rc.classList.add('printing');sef.classList.add('ok2');return;}
+  function L(){try{return localStorage.getItem('icode-lang')||'sq';}catch(e){return 'sq';}}
+  function moveTo(el){var r=el.getBoundingClientRect(),sr=stage.getBoundingClientRect();cur.style.left=(r.left-sr.left+r.width/2)+'px';cur.style.top=(r.top-sr.top+r.height/2)+'px';}
+  function cycle(){
+    var sq=L()==='sq';
+    pt.classList.remove('ok'); sef.classList.remove('ok2');
+    sef.textContent='SEF · KUPON FISKAL I DIGJITALIZUAR';
+    fw.classList.remove('on'); rc.classList.remove('printing'); void rc.offsetWidth;
+    bill.classList.remove('gone'); btn.classList.remove('pressed');
+    st.textContent=sq?'FATURA E HAPUR':'BILL OPEN';
+    cur.style.left='74%'; cur.style.top='82%';
+    setTimeout(function(){ moveTo(btn); },700);
+    setTimeout(function(){ cur.classList.add('click'); btn.classList.add('pressed'); setTimeout(function(){cur.classList.remove('click');},320); st.textContent=sq?'PRIT KARTELËN…':'PRESENT CARD…'; },1700);
+    setTimeout(function(){ st.textContent=sq?'DUKE LEXUAR…':'READING…'; },2600);
+    setTimeout(function(){ pt.classList.add('ok'); st.textContent='APPROVED ✓'; },3400);
+    setTimeout(function(){ bill.classList.add('gone'); cur.style.left='84%'; cur.style.top='10%'; },4000);
+    setTimeout(function(){ fw.classList.add('on'); rc.classList.add('printing'); st.textContent=sq?'DUKE FISKALIZUAR…':'FISCALISING…'; },4600);
+    setTimeout(function(){ sef.classList.add('ok2'); sef.textContent=sq?'SEF ✓ FISKALIZUAR · QR AKTIV':'SEF ✓ FISCALISED · QR ACTIVE'; st.textContent=sq?'KUPONI FISKAL ✓':'FISCAL COUPON ✓'; },9800);
+    setTimeout(cycle,13000);
+  }
+  cycle();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+---
+// Server-rendered site header: utility bar (with SQ/EN toggle + audit badge),
+// main nav with mega dropdowns, left-side burger, full-width accordion drawer.
+// Active state is computed at build time.
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const ACT = {
+  platforms: ['/erp-platform', '/pos-system', '/wms-oms', '/ecommerce', '/ai-cloud'],
+  services: ['/services', '/web-development', '/mobile-apps', '/custom-software', '/ui-ux-design', '/game-engine-3d'],
+  work: ['/portfolio'],
+  company: ['/about', '/process', '/industries', '/blog', '/careers', '/contact'],
+};
+const active = (group) => (ACT[group].includes(path) ? ' active' : '');
+const activeHome = path === '/' ? ' active' : '';
+---
+
+<div class="utility-bar">
+  <div class="container-wide"><div class="u-inner">
+    <div class="u-left"><b style="color:var(--ink);font-weight:600;letter-spacing:.02em;">Gjilan, KOSOVË</b><span style="color:var(--muted-2);">·</span><span id="u-clock" style="font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);">--:--:--</span></div>
+    <div class="u-right">
+      <a class="u-phone" href="tel:+38348331333">+383 48 331 333</a>
+      <a href="mailto:info@icode-ks.com">info@icode-ks.com</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-setlang="sq">SQ</button><button data-setlang="en">EN</button>
+      </div>
+      <a class="u-badge" href="/audit"><span data-sq="Kërko audit falas" data-en="Request free audit">Kërko audit falas</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div></div>
+</div>
+
+<header id="site-header" class="site-header">
+  <div class="container-wide"><div class="bar">
+    <button class="menu-toggle" aria-label="Menu"><span></span></button>
+    <a class="brand" href="/"><img class="brand-logo" src="/brand/logo-black.png" alt="iCode" width="1042" height="361" /></a>
+    <nav class="nav"><ul style="display:flex;gap:2px;">
+
+      <li class="nav-item"><a class={`nav-link${activeHome}`} href="/" data-sq="Ballina" data-en="Home">Ballina</a></li>
+
+      <li class="nav-item"><a class={`nav-link${active('platforms')}`} href="/services">
+        <span data-sq="Platformat" data-en="Platforms">Platformat</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown"><div class="dd-wrap dd-cols">
+          <div><div class="dd-title" data-sq="PLATFORMAT" data-en="PLATFORMS">PLATFORMAT</div><div class="dd-list">
+            <a class="dd-a" href="/erp-platform"><i>›</i><span data-sq="Platformë ERP" data-en="ERP Platform">Platformë ERP</span></a>
+            <a class="dd-a" href="/pos-system"><i>›</i><span data-sq="Sistem POS" data-en="POS System">Sistem POS</span></a>
+            <a class="dd-a" href="/wms-oms"><i>›</i><span data-sq="WMS & OMS" data-en="WMS & OMS">WMS & OMS</span></a>
+            <a class="dd-a" href="/ecommerce"><i>›</i><span data-sq="E-Commerce" data-en="E-Commerce">E-Commerce</span></a>
+            <a class="dd-a" href="/ai-cloud"><i>›</i><span data-sq="Integrime AI & Cloud" data-en="AI & Cloud">Integrime AI & Cloud</span></a>
+          </div></div>
+          <div><div class="dd-title" data-sq="SI PUNOJMË" data-en="HOW WE WORK">SI PUNOJMË</div><div class="dd-list">
+            <a class="dd-a" href="/process"><i>›</i><span data-sq="Procesi ynë" data-en="Our process">Procesi ynë</span></a>
+            <a class="dd-a" href="/industries"><i>›</i><span data-sq="Industritë" data-en="Industries">Industritë</span></a>
+            <a class="dd-a" href="/portfolio#cat=erp"><i>›</i><span data-sq="Raste ERP & POS" data-en="ERP & POS cases">Raste ERP & POS</span></a>
+          </div></div>
+          <div class="dd-cta"><h4 data-sq="Nis me një demo të platformës." data-en="Start with a platform demo.">Nis me një demo të platformës.</h4>
+            <div class="dd-cta-rows">
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="12 module ERP mbi një bazë të dhënash" data-en="12 ERP modules on one database">12 module ERP mbi një bazë të dhënash</b></span>
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="POS offline-first" data-en="An offline-first POS">POS offline-first</b></span>
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="SLA 99.9% & mbështetje 24/7" data-en="99.9% SLA & 24/7 support">SLA 99.9% & mbështetje 24/7</b></span>
+            </div>
+            <a class="btn btn-primary" href="/contact" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a></div>
+        </div></div>
+      </li>
+
+      <li class="nav-item"><a class={`nav-link${active('services')}`} href="/services">
+        <span data-sq="Shërbimet" data-en="Services">Shërbimet</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown"><div class="dd-wrap dd-cols">
+          <div><div class="dd-title" data-sq="ZHVILLIMI" data-en="DEVELOPMENT">ZHVILLIMI</div><div class="dd-list">
+            <a class="dd-a" href="/web-development"><i>›</i><span data-sq="Zhvillim Web" data-en="Web Development">Zhvillim Web</span></a>
+            <a class="dd-a" href="/mobile-apps"><i>›</i><span data-sq="Aplikacione Mobile" data-en="Mobile Apps">Aplikacione Mobile</span></a>
+            <a class="dd-a" href="/custom-software"><i>›</i><span data-sq="Custom Software" data-en="Custom Software">Custom Software</span></a>
+          </div></div>
+          <div><div class="dd-title" data-sq="DIZAJNI & 3D" data-en="DESIGN & 3D">DIZAJNI & 3D</div><div class="dd-list">
+            <a class="dd-a" href="/ui-ux-design"><i>›</i><span data-sq="UI/UX Design" data-en="UI/UX Design">UI/UX Design</span></a>
+            <a class="dd-a" href="/game-engine-3d"><i>›</i><span data-sq="Game Engine & 3D" data-en="Game Engine & 3D">Game Engine & 3D</span></a>
+            <a class="dd-a" href="/services"><i>›</i><span data-sq="Të gjitha shërbimet" data-en="All services">Të gjitha shërbimet</span></a>
+          </div></div>
+          <div class="dd-cta"><h4 data-sq="Nuk je i sigurt çfarë të duhet?" data-en="Not sure what you need?">Nuk je i sigurt çfarë të duhet?</h4>
+            <div class="dd-cta-rows">
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="Bisedë falas 15-minutëshe" data-en="A free 15-minute call">Bisedë falas 15-minutëshe</b></span>
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="Plan i qartë, pa detyrime" data-en="A clear plan, no obligations">Plan i qartë, pa detyrime</b></span>
+            </div>
+            <a class="btn btn-primary" href="/contact" data-sq="Konsultë falas" data-en="Free consultation">Konsultë falas</a></div>
+        </div></div>
+      </li>
+
+      <li class="nav-item"><a class={`nav-link${active('work')}`} href="/portfolio">
+        <span data-sq="Projektet" data-en="Work">Projektet</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown"><div class="dd-wrap dd-cols">
+          <div><div class="dd-title" data-sq="KATEGORITË" data-en="CATEGORIES">KATEGORITË</div><div class="dd-list">
+            <a class="dd-a" href="/portfolio#cat=erp"><i>›</i><span data-sq="ERP & POS" data-en="ERP & POS">ERP & POS</span></a>
+            <a class="dd-a" href="/portfolio#cat=web"><i>›</i><span data-sq="Web & Portale" data-en="Web & Portals">Web & Portale</span></a>
+            <a class="dd-a" href="/portfolio#cat=mobile"><i>›</i><span data-sq="Mobile" data-en="Mobile">Mobile</span></a>
+            <a class="dd-a" href="/portfolio#cat=ecommerce"><i>›</i><span data-sq="E-Commerce" data-en="E-Commerce">E-Commerce</span></a>
+            <a class="dd-a" href="/portfolio#cat=3d"><i>›</i><span data-sq="Game & 3D" data-en="Game & 3D">Game & 3D</span></a>
+            <a class="dd-a" href="/portfolio#cat=software"><i>›</i><span data-sq="Custom Software" data-en="Custom Software">Custom Software</span></a>
+            <a class="dd-a" href="/portfolio"><i>›</i><span data-sq="Të gjitha projektet" data-en="All projects">Të gjitha projektet</span></a>
+          </div></div>
+          <div class="dd-cta"><h4 data-sq="Projekti yt mund të jetë i radhës." data-en="Your project could be next.">Projekti yt mund të jetë i radhës.</h4>
+            <div class="dd-cta-rows">
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="120+ projekte të lëshuara" data-en="120+ projects shipped">120+ projekte të lëshuara</b></span>
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b data-sq="98% e klientëve rikthehen" data-en="98% of clients come back">98% e klientëve rikthehen</b></span>
+            </div>
+            <a class="btn btn-primary" href="/contact" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a></div>
+        </div></div>
+      </li>
+
+      <li class="nav-item"><a class={`nav-link${active('company')}`} href="/about">
+        <span data-sq="Kompania" data-en="Company">Kompania</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown"><div class="dd-wrap dd-cols">
+          <div><div class="dd-title" data-sq="KOMPANIA" data-en="COMPANY">KOMPANIA</div><div class="dd-list">
+            <a class="dd-a" href="/about"><i>›</i><span data-sq="Rreth nesh" data-en="About us">Rreth nesh</span></a>
+            <a class="dd-a" href="/process"><i>›</i><span data-sq="Procesi" data-en="Process">Procesi</span></a>
+            <a class="dd-a" href="/industries"><i>›</i><span data-sq="Industritë" data-en="Industries">Industritë</span></a>
+          </div></div>
+          <div><div class="dd-title" data-sq="MË SHUMË" data-en="MORE">MË SHUMË</div><div class="dd-list">
+            <a class="dd-a" href="/blog"><i>›</i><span data-sq="Blog" data-en="Blog">Blog</span></a>
+            <a class="dd-a" href="/careers"><i>›</i><span data-sq="Karriera" data-en="Careers">Karriera</span></a>
+            <a class="dd-a" href="/contact"><i>›</i><span data-sq="Kontakti" data-en="Contact">Kontakti</span></a>
+          </div></div>
+          <div class="dd-cta"><h4 data-sq="Cakto një bisedë falas 15-minutëshe." data-en="Book a free 15-minute call.">Cakto një bisedë falas 15-minutëshe.</h4>
+            <div class="dd-cta-rows">
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b>+383 48 331 333</b></span>
+              <span class="dd-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" style="width:13px;height:13px;"><path d="M5 12l5 5L19 7"/></svg><b>info@icode-ks.com</b></span>
+            </div>
+            <a class="btn btn-primary" href="/contact" data-sq="Cakto takim" data-en="Book a call">Cakto takim</a></div>
+        </div></div>
+      </li>
+
+    </ul></nav>
+    <div class="header-actions">
+      <a class="btn btn-primary" href="/contact" data-sq="Konsultë falas" data-en="Free consultation">Konsultë falas</a>
+    </div>
+  </div></div>
+</header>
+
+<div class="nav-overlay"></div>
+<div class="mobile-nav">
+  <div class="lang-toggle" role="group" aria-label="Language"><button data-setlang="sq">SQ</button><button data-setlang="en">EN</button></div>
+  <a href="/" data-sq="Ballina" data-en="Home">Ballina</a>
+  <div class="m-item"><a href="/services" data-sq="Platformat" data-en="Platforms">Platformat</a><button class="m-chev" data-mtoggle aria-label="Expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  <div class="m-subs">
+    <a class="sub" href="/erp-platform" data-sq="Platformë ERP" data-en="ERP Platform">Platformë ERP</a>
+    <a class="sub" href="/pos-system" data-sq="Sistem POS" data-en="POS System">Sistem POS</a>
+    <a class="sub" href="/wms-oms" data-sq="WMS & OMS" data-en="WMS & OMS">WMS & OMS</a>
+    <a class="sub" href="/ecommerce" data-sq="E-Commerce" data-en="E-Commerce">E-Commerce</a>
+    <a class="sub" href="/ai-cloud" data-sq="Integrime AI & Cloud" data-en="AI & Cloud">Integrime AI & Cloud</a>
+  </div>
+  <div class="m-item"><a href="/services" data-sq="Shërbimet" data-en="Services">Shërbimet</a><button class="m-chev" data-mtoggle aria-label="Expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  <div class="m-subs">
+    <a class="sub" href="/web-development" data-sq="Zhvillim Web" data-en="Web Development">Zhvillim Web</a>
+    <a class="sub" href="/mobile-apps" data-sq="Aplikacione Mobile" data-en="Mobile Apps">Aplikacione Mobile</a>
+    <a class="sub" href="/custom-software" data-sq="Custom Software" data-en="Custom Software">Custom Software</a>
+    <a class="sub" href="/ui-ux-design" data-sq="UI/UX Design" data-en="UI/UX Design">UI/UX Design</a>
+    <a class="sub" href="/game-engine-3d" data-sq="Game Engine & 3D" data-en="Game Engine & 3D">Game Engine & 3D</a>
+  </div>
+  <div class="m-item"><a href="/portfolio" data-sq="Projektet" data-en="Work">Projektet</a><button class="m-chev" data-mtoggle aria-label="Expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  <div class="m-subs">
+    <a class="sub" href="/portfolio#cat=erp" data-sq="ERP & POS" data-en="ERP & POS">ERP & POS</a>
+    <a class="sub" href="/portfolio#cat=web" data-sq="Web & Portale" data-en="Web & Portals">Web & Portale</a>
+    <a class="sub" href="/portfolio#cat=mobile" data-sq="Mobile" data-en="Mobile">Mobile</a>
+    <a class="sub" href="/portfolio#cat=ecommerce" data-sq="E-Commerce" data-en="E-Commerce">E-Commerce</a>
+    <a class="sub" href="/portfolio#cat=3d" data-sq="Game & 3D" data-en="Game & 3D">Game & 3D</a>
+    <a class="sub" href="/portfolio#cat=software" data-sq="Custom Software" data-en="Custom Software">Custom Software</a>
+  </div>
+  <div class="m-item"><a href="/about" data-sq="Kompania" data-en="Company">Kompania</a><button class="m-chev" data-mtoggle aria-label="Expand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button></div>
+  <div class="m-subs">
+    <a class="sub" href="/about" data-sq="Rreth nesh" data-en="About us">Rreth nesh</a>
+    <a class="sub" href="/process" data-sq="Procesi" data-en="Process">Procesi</a>
+    <a class="sub" href="/industries" data-sq="Industritë" data-en="Industries">Industritë</a>
+    <a class="sub" href="/blog" data-sq="Blog" data-en="Blog">Blog</a>
+    <a class="sub" href="/careers" data-sq="Karriera" data-en="Careers">Karriera</a>
+    <a class="sub" href="/contact" data-sq="Kontakti" data-en="Contact">Kontakti</a>
+  </div>
+  <a class="btn btn-primary" href="/contact" data-sq="Na kontakto" data-en="Get in touch">Na kontakto</a>
+</div>

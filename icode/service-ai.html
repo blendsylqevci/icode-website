@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>Integrime AI & Cloud — iCode LLC</title>
+<meta name="description" content="AI me evals dhe guardrails mbi të dhënat e kompanisë — RAG me citim burimi, PII redaction, Azure landing zone me IaC, SLO dhe FinOps.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.ai-hero{background:#07131f;color:#fff;padding-block:clamp(70px,9vw,126px);position:relative;overflow:hidden;}
+.ai-hero::before{content:"";pointer-events:none;position:absolute;inset:-40%;background:conic-gradient(from 200deg at 70% 40%,transparent 0deg,rgba(64,164,255,.22) 60deg,rgba(157,132,255,.2) 130deg,rgba(45,212,168,.16) 200deg,transparent 280deg);filter:blur(60px);animation:aiAurora 14s linear infinite;}
+@keyframes aiAurora{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce){.ai-hero::before{animation:none;}}
+.ai-hero .container-wide{position:relative;}
+.ai-hero h1{color:#fff;}
+.ai-hero .lead{color:rgba(214,232,248,.82);}
+.ai-kicker{font-family:ui-monospace,Menlo,monospace;font-size:.74rem;letter-spacing:.16em;color:#6ee7c8;display:inline-block;margin-bottom:22px;}
+.chat{background:rgba(6,16,26,.88);border:1px solid rgba(110,231,200,.28);border-radius:16px;padding:22px;backdrop-filter:blur(6px);font-size:.84rem;box-shadow:0 30px 70px rgba(0,10,20,.5);}
+.chat .ct{font-family:ui-monospace,Menlo,monospace;font-size:.64rem;letter-spacing:.16em;color:#6ee7c8;margin-bottom:14px;display:flex;justify-content:space-between;}
+.msg{border-radius:12px;padding:12px 15px;margin-bottom:10px;line-height:1.55;}
+.msg.q{background:rgba(64,164,255,.14);border:1px solid rgba(64,164,255,.25);color:#cfe7ff;margin-left:36px;}
+.msg.a{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:rgba(235,244,250,.9);margin-right:36px;}
+.msg .src{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:.62rem;background:rgba(110,231,200,.14);color:#6ee7c8;border-radius:5px;padding:2px 8px;margin-top:8px;margin-right:6px;}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);}
+@media (max-width:900px){.ai-grid{grid-template-columns:1fr;}}
+.aic{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;border-top:4px solid #0ea5e9;}
+.aic:nth-child(2){border-top-color:#8b5cf6;}
+.aic:nth-child(3){border-top-color:#10b981;}
+.aic h3{font-size:1.12rem;margin-bottom:10px;}
+.aic p{font-size:.88rem;color:var(--muted);line-height:1.6;}
+.aic code{font-family:ui-monospace,Menlo,monospace;font-size:.64rem;letter-spacing:.12em;color:#0ea5e9;display:block;margin-bottom:12px;}
+.aic:nth-child(2) code{color:#8b5cf6;}
+.aic:nth-child(3) code{color:#10b981;}
+.guard{background:#07131f;color:#fff;border-radius:var(--r-xl);padding:clamp(28px,4vw,50px);}
+.guard h3{color:#fff;margin-bottom:8px;}
+.guard>p{color:rgba(214,232,248,.7);max-width:70ch;}
+.guard-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
+@media (max-width:900px){.guard-grid{grid-template-columns:repeat(2,1fr);}}
+.gcell{border:1px solid rgba(110,231,200,.25);border-radius:12px;padding:18px;}
+.gcell b{font-family:ui-monospace,Menlo,monospace;font-size:.7rem;letter-spacing:.14em;color:#6ee7c8;display:block;margin-bottom:8px;}
+.gcell p{font-size:.82rem;color:rgba(214,232,248,.72);line-height:1.55;}
+.cloud-rows{display:grid;gap:0;}
+.crow{display:grid;grid-template-columns:190px 1fr;gap:20px;padding:22px 4px;border-bottom:1px solid var(--line);align-items:baseline;}
+@media (max-width:700px){.crow{grid-template-columns:1fr;gap:6px;}}
+.crow b{font-family:var(--ff-head);font-size:1.02rem;}
+.crow p{color:var(--muted);font-size:.93rem;}
+a{color:inherit;}a:hover{color:var(--primary);}
+.chat-msgs{max-height:250px;overflow-y:auto;scrollbar-width:none;}
+.chat-in{display:flex;gap:8px;margin-top:12px;}
+.chat-in input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(110,231,200,.3);border-radius:10px;padding:11px 14px;color:#fff;font-size:.84rem;}
+.chat-in input::placeholder{color:rgba(214,232,248,.4);}
+.chat-in button{background:#6ee7c8;color:#06202a;border:none;border-radius:10px;padding:0 16px;font-weight:700;font-family:var(--ff-head);cursor:pointer;font-size:.8rem;}
+.qchips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+.qchip{font-family:var(--ff-head);font-size:.68rem;font-weight:600;color:#6ee7c8;border:1px solid rgba(110,231,200,.35);border-radius:99px;padding:6px 12px;cursor:pointer;background:transparent;}
+.qchip:hover{background:rgba(110,231,200,.1);}
+.typing i{display:inline-block;width:5px;height:5px;border-radius:50%;background:#6ee7c8;margin-right:3px;animation:tpg 1s infinite;}
+.typing i:nth-child(2){animation-delay:.15s;}.typing i:nth-child(3){animation-delay:.3s;}
+@keyframes tpg{50%{opacity:.25;transform:translateY(-2px);}}
+body.ai-w{background:#07131f;}
+.ai-w .section h2{color:#fff;}
+.ai-w .sec-head .lead{color:rgba(214,232,248,.72);}
+.ai-w .aic{background:#0b1d2e;border-color:rgba(255,255,255,.1);}
+.ai-w .aic h3{color:#fff;}
+.ai-w .aic p{color:rgba(214,232,248,.68);}
+.ai-w .bg-soft{background:transparent;}
+.ai-w .guard{border:1px solid rgba(110,231,200,.25);}
+.ai-w .crow{border-color:rgba(255,255,255,.12);}
+.ai-w .crow b{color:#fff;}
+.ai-w .crow p{color:rgba(214,232,248,.68);}
+.ai-w .related-card{background:#0b1d2e;border-color:rgba(255,255,255,.14);}
+.ai-w .related-card b{color:#fff;}
+.ai-w .related-card:hover{border-color:#6ee7c8;}
+</style>
+</head>
+<body class="ai-w">
+<header id="site-header"></header>
+
+<section class="ai-hero" data-screen-label="AI Hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="ai-kicker">AI · CLOUD · AZURE</span>
+      <h1 data-sq="AI që përgjigjet me burim, jo me fantazi" data-en="AI that answers with sources, not fantasies">AI që përgjigjet me burim, jo me fantazi</h1>
+      <p class="lead mt-m" data-sq="Integrime AI mbi të dhënat e kompanisë tënde — me evals që e masin saktësinë para çdo release-i, guardrails që mbrojnë të dhënat, dhe infrastrukturë Azure të ndërtuar si kod. Vlera matet në orë të kursyera, jo në demo mbresëlënëse." data-en="AI integrations over your company's data — with evals that measure accuracy before every release, guardrails that protect the data, and Azure infrastructure built as code. Value is measured in hours saved, not impressive demos.">Integrime AI mbi të dhënat e kompanisë tënde — me evals që e masin saktësinë para çdo release-i, guardrails që mbrojnë të dhënat, dhe infrastrukturë Azure të ndërtuar si kod. Vlera matet në orë të kursyera, jo në demo mbresëlënëse.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-light btn-lg" href="contact.html" data-sq="Diskuto një rast" data-en="Discuss a use case">Diskuto një rast</a>
+        <a class="btn btn-outline-light btn-lg" href="service-erp.html" data-sq="AI brenda ERP-së →" data-en="AI inside the ERP →">AI brenda ERP-së →</a>
+      </div>
+    </div>
+    <div class="chat" data-reveal data-reveal-delay="2">
+      <div class="ct"><span data-sq="ASISTENTI · PROVOJE VËRTET" data-en="THE ASSISTANT · TRY IT FOR REAL">ASISTENTI · PROVOJE VËRTET</span><span>groundedness 0.97</span></div>
+      <div class="chat-msgs" id="ai-msgs">
+        <div class="msg q" data-sq="Sa ishte marzhi për klientin Arta Group në Q2, dhe pse ra?" data-en="What was the Q2 margin for Arta Group, and why did it drop?">Sa ishte marzhi për klientin Arta Group në Q2, dhe pse ra?</div>
+        <div class="msg a"><span data-sq="Marzhi Q2: 23.4% (−3.1pp nga Q1). Rënia vjen nga 2 porosi me zbritje jashtë politikës, aprovuar me përjashtim më 14 maj." data-en="Q2 margin: 23.4% (−3.1pp vs Q1). The drop comes from 2 orders discounted outside policy, approved by exception on May 14.">Marzhi Q2: 23.4% (−3.1pp nga Q1). Rënia vjen nga 2 porosi me zbritje jashtë politikës, aprovuar me përjashtim më 14 maj.</span><br><span class="src">ERP · Shitjet/Q2</span><span class="src">CRM · #4817</span></div>
+      </div>
+      <div class="qchips">
+        <button class="qchip" data-aq-sq="Çfarë modulesh ka ERP-ja?" data-aq-en="What modules does the ERP have?" data-sq="Çfarë modulesh ka ERP-ja?" data-en="What modules does the ERP have?">Çfarë modulesh ka ERP-ja?</button>
+        <button class="qchip" data-aq-sq="A punon POS-i offline?" data-aq-en="Does the POS work offline?" data-sq="A punon POS-i offline?" data-en="Does the POS work offline?">A punon POS-i offline?</button>
+        <button class="qchip" data-aq-sq="Sa zgjat një implementim?" data-aq-en="How long does implementation take?" data-sq="Sa zgjat një implementim?" data-en="How long does implementation take?">Sa zgjat një implementim?</button>
+      </div>
+      <div class="chat-in"><input id="ai-in" data-sq-ph="Shkruaj pyetjen tënde këtu…" data-en-ph="Type your question here…" placeholder="Shkruaj pyetjen tënde këtu…"><button id="ai-send" data-sq="Dërgo" data-en="Send">Dërgo</button></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Tri rryma vlere" data-en="Three value streams">Tri rryma vlere</span>
+      <h2 data-sq="Ku e fusim AI-në — dhe ku jo" data-en="Where we put AI — and where we don't">Ku e fusim AI-në — dhe ku jo</h2>
+    </div>
+    <div class="ai-grid">
+      <div class="aic" data-reveal><code>DOCUMENT AI</code><h3 data-sq="Automatizim dokumentesh" data-en="Document automation">Automatizim dokumentesh</h3><p data-sq="Fatura, porosi dhe kontrata lexohen, klasifikohen dhe hidhen në ERP me konfidencë të matur — çdo rast nën pragun e besimit shkon te njeriu, jo në gabim të heshtur. Three-way matching bëhet nga sekondat, jo nga pasditet." data-en="Invoices, orders and contracts are read, classified and posted to the ERP with measured confidence — anything below the threshold routes to a human, not into a silent error. Three-way matching takes seconds, not afternoons.">Fatura, porosi dhe kontrata lexohen, klasifikohen dhe hidhen në ERP me konfidencë të matur — çdo rast nën pragun e besimit shkon te njeriu, jo në gabim të heshtur. Three-way matching bëhet nga sekondat, jo nga pasditet.</p></div>
+      <div class="aic" data-reveal data-reveal-delay="1"><code>RAG ASSISTANTS</code><h3 data-sq="Asistentë mbi të dhënat tuaja" data-en="Assistants over your data">Asistentë mbi të dhënat tuaja</h3><p data-sq="Retrieval mbi ERP, dokumente dhe politika të brendshme — çdo përgjigje me citim burimi dhe të drejta qasjeje të trashëguara nga RBAC: shitësi s'i sheh dot pagat, as përmes AI-së. Groundedness matet me suite evals në çdo ndryshim." data-en="Retrieval over the ERP, documents and internal policies — every answer cites its source and inherits RBAC permissions: a salesperson can't see payroll, not even through the AI. Groundedness is measured by an eval suite on every change.">Retrieval mbi ERP, dokumente dhe politika të brendshme — çdo përgjigje me citim burimi dhe të drejta qasjeje të trashëguara nga RBAC: shitësi s'i sheh dot pagat, as përmes AI-së. Groundedness matet me suite evals në çdo ndryshim.</p></div>
+      <div class="aic" data-reveal data-reveal-delay="2"><code>FORECASTING</code><h3 data-sq="Parashikime operative" data-en="Operational forecasting">Parashikime operative</h3><p data-sq="Parashikim kërkese për blerje dhe stok mbi historikun real të shitjeve, me sezonalitet dhe promocione — i krahasuar gjithmonë me baseline naive: nëse modeli s'e mund mesataren e thjeshtë, s'hyn në prodhim." data-en="Demand forecasting for purchasing and stock on real sales history, with seasonality and promotions — always benchmarked against a naive baseline: if the model can't beat a simple average, it doesn't ship.">Parashikim kërkese për blerje dhe stok mbi historikun real të shitjeve, me sezonalitet dhe promocione — i krahasuar gjithmonë me baseline naive: nëse modeli s'e mund mesataren e thjeshtë, s'hyn në prodhim.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="guard" data-reveal>
+      <h3 data-sq="Guardrails: AI e sigurt është kërkesë inxhinierike" data-en="Guardrails: safe AI is an engineering requirement">Guardrails: AI e sigurt është kërkesë inxhinierike</h3>
+      <p data-sq="Para se një asistent të prekë të dhëna reale, kalon nëpër katër mburoja të verifikueshme:" data-en="Before an assistant touches real data, it passes four verifiable shields:">Para se një asistent të prekë të dhëna reale, kalon nëpër katër mburoja të verifikueshme:</p>
+      <div class="guard-grid">
+        <div class="gcell"><b>PII REDACTION</b><p data-sq="Të dhënat personale maskohen para se t'i dërgohen modelit — dhe modelet qëndrojnë në rajonin e BE-së përmes Azure private endpoints." data-en="Personal data is masked before reaching the model — and models stay in the EU region via Azure private endpoints.">Të dhënat personale maskohen para se t'i dërgohen modelit — dhe modelet qëndrojnë në rajonin e BE-së përmes Azure private endpoints.</p></div>
+        <div class="gcell"><b>EVALS NË CI</b><p data-sq="Suite testesh me raste reale — saktësi, groundedness, refuzime — ekzekutohet para çdo release-i; regresi e bllokon deploy-in." data-en="A test suite of real cases — accuracy, groundedness, refusals — runs before every release; a regression blocks the deploy.">Suite testesh me raste reale — saktësi, groundedness, refuzime — ekzekutohet para çdo release-i; regresi e bllokon deploy-in.</p></div>
+        <div class="gcell"><b>HUMAN-IN-LOOP</b><p data-sq="Veprimet me pasoja — postime financiare, email drejt klientëve — kërkojnë konfirmim njerëzor derisa saktësia e matur ta meritojë autonominë." data-en="Consequential actions — financial postings, customer-facing email — require human sign-off until measured accuracy earns autonomy.">Veprimet me pasoja — postime financiare, email drejt klientëve — kërkojnë konfirmim njerëzor derisa saktësia e matur ta meritojë autonominë.</p></div>
+        <div class="gcell"><b>AUDIT LOG</b><p data-sq="Çdo prompt, kontekst dhe përgjigje regjistrohet — kur dikush pyet 'pse tha kështu AI-ja?', përgjigjja gjendet, jo hamendësohet." data-en="Every prompt, context and answer is logged — when someone asks 'why did the AI say that?', the answer is found, not guessed.">Çdo prompt, kontekst dhe përgjigje regjistrohet — kur dikush pyet 'pse tha kështu AI-ja?', përgjigjja gjendet, jo hamendësohet.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:920px;">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Themeli cloud" data-en="The cloud foundation">Themeli cloud</span>
+      <h2 data-sq="Azure si kod, jo si klikime në portal" data-en="Azure as code, not portal clicks">Azure si kod, jo si klikime në portal</h2>
+    </div>
+    <div class="cloud-rows" data-reveal>
+      <div class="crow"><b>Landing zone</b><p data-sq="Abonime, rrjete, identitete dhe policy të strukturuara që dita e parë — mjediset DEV/UAT/PROD identike me definicion, jo me kujdes manual." data-en="Subscriptions, networks, identities and policies structured from day one — DEV/UAT/PROD identical by definition, not by manual care.">Abonime, rrjete, identitete dhe policy të strukturuara që dita e parë — mjediset DEV/UAT/PROD identike me definicion, jo me kujdes manual.</p></div>
+      <div class="crow"><b>IaC — Bicep/Terraform</b><p data-sq="E gjithë infrastruktura e versionuar në Git me review — rikrijimi i një mjedisi të plotë është një pipeline run, jo një javë pune." data-en="All infrastructure versioned in Git with review — recreating a full environment is one pipeline run, not a week of work.">E gjithë infrastruktura e versionuar në Git me review — rikrijimi i një mjedisi të plotë është një pipeline run, jo një javë pune.</p></div>
+      <div class="crow"><b>SLO & alarme</b><p data-sq="Objektiva shërbimi të matur (latencë, gabime, disponueshmëri) me error budget — alarmi bie kur rrezikohet objektivi, jo kur bie serveri." data-en="Measured service objectives (latency, errors, availability) with error budgets — alerts fire when the objective is at risk, not when the server is already down.">Objektiva shërbimi të matur (latencë, gabime, disponueshmëri) me error budget — alarmi bie kur rrezikohet objektivi, jo kur bie serveri.</p></div>
+      <div class="crow"><b>FinOps</b><p data-sq="Kosto për mjedis e për veçori, buxhete me alarme dhe rishikim mujor — fatura e cloud-it shpjegohet rresht për rresht, kurrë surprizë." data-en="Cost per environment and per feature, budgets with alerts and a monthly review — the cloud bill explains itself line by line, never a surprise.">Kosto për mjedis e për veçori, buxhete me alarme dhe rishikim mujor — fatura e cloud-it shpjegohet rresht për rresht, kurrë surprizë.</p></div>
+      <div class="crow"><b>Siguria</b><p data-sq="Sekretet në Key Vault, identitete të menaxhuara në vend të fjalëkalimeve, skanim varësish në CI dhe patch të planifikuara — siguria si proces, jo si audit vjetor." data-en="Secrets in Key Vault, managed identities instead of passwords, dependency scanning in CI and scheduled patching — security as a process, not a yearly audit.">Sekretet në Key Vault, identitete të menaxhuara në vend të fjalëkalimeve, skanim varësish në CI dhe patch të planifikuara — siguria si proces, jo si audit vjetor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal><span class="eyebrow" data-sq="Të lidhura" data-en="Related">Të lidhura</span><h2 data-sq="AI-ja punon më mirë mbi platformë të rregullt" data-en="AI works best on a solid platform">AI-ja punon më mirë mbi platformë të rregullt</h2></div>
+    <div class="grid cols-3"><a class="related-card" href="service-erp.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span><div><b data-sq="Platformë ERP" data-en="ERP Platform">Platformë ERP</b></div></a><a class="related-card" href="service-software.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span><div><b data-sq="Custom Software" data-en="Custom Software">Custom Software</b></div></a><a class="related-card" href="service-wms.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span><div><b>WMS & OMS</b></div></a></div>
+  </div>
+</section>
+
+<section class="section-sm" data-screen-label="Klientë">
+  <div class="container-wide">
+    <p class="center" style="font-family:var(--ff-head);font-weight:600;color:var(--muted);margin-bottom:36px;" data-reveal data-sq="Zgjidhje AI në produksion" data-en="AI solutions in production">Zgjidhje AI në produksion</p>
+    <div class="logo-wall logo-wall-strip" data-reveal><span class="logo-item">Botagent</span><span class="logo-item">iData+</span><span class="logo-item">iLiving APP</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:linear-gradient(135deg,#03202f,#0e5e63);">
+      <h2 data-sq="Cili proces po ju han më shumë orë?" data-en="Which process is eating the most hours?">Cili proces po ju han më shumë orë?</h2>
+      <p data-sq="Workshop 1-orësh falas: identifikojmë 3 rastet me kthimin më të lartë dhe masim vlerën para se të shkruhet kod." data-en="A free 1-hour workshop: we identify the 3 highest-return use cases and quantify the value before any code is written.">Workshop 1-orësh falas: identifikojmë 3 rastet me kthimin më të lartë dhe masim vlerën para se të shkruhet kod.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-light btn-lg" href="contact.html" data-sq="Rezervo workshop" data-en="Book the workshop">Rezervo workshop</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  var box=document.getElementById('ai-msgs'), inp=document.getElementById('ai-in'), btn=document.getElementById('ai-send');
+  if(!box) return;
+  function L(){try{return localStorage.getItem('icode-lang')||'sq';}catch(e){return 'sq';}}
+  var KB=[
+    {k:['erp','modul','financ','kontabil','pagat','inventar'],sq:'ERP-ja jonë ka 12 module mbi një bazë të dhënash — Financa, CRM, Prodhimi, Operacionet, Inventari, Shitjet, HR & Pagat, Logjistika, Blerjet, E-Commerce, Marketingu dhe POS. Aktivizohen sipas nevojës dhe raportojnë në kohë reale.',en:'Our ERP has 12 modules on one database — Finance, CRM, Manufacturing, Operations, Inventory, Sales, HR & Payroll, Logistics, Purchasing, E-Commerce, Marketing and POS. Switch them on as needed; reporting is real-time.',s:['ERP · Modulet','Arkitektura']},
+    {k:['pos','arka','kasa','offline','fiskal'],sq:'Po — POS-i është offline-first: shitjet regjistrohen lokalisht si ngjarje dhe sinkronizohen exactly-once në ERP kur kthehet rrjeti. Skanim→rresht nën 100ms, Z-raport që poston direkt në financa.',en:'Yes — the POS is offline-first: sales record locally as events and sync exactly-once to the ERP when the network returns. Scan-to-line under 100ms, Z-reports posting straight to finance.',s:['POS · Offline','Sync Engine']},
+    {k:['wms','depo','oms','porosi','magazin'],sq:'WMS-i mbulon pranim→putaway→pick→pack→ship me skanim në çdo hap, FEFO/FIFO me lote e seri dhe numërim ciklik ABC — saktësi porosish 99.8%. OMS-i i orkestron porositë nga çdo kanal me rregulla rutimi.',en:'The WMS covers receive→putaway→pick→pack→ship with scanning at every step, FEFO/FIFO with lots & serials and ABC cycle counting — 99.8% order accuracy. The OMS orchestrates orders from every channel with routing rules.',s:['WMS · Flows','OMS · Rules']},
+    {k:['mobile','ios','android','app ','aplikacion'],sq:'Aplikacione iOS & Android me React Native — offline-first me delta sync, biometrikë mbi OIDC dhe 99.9% crash-free të matur në prodhim. Përfshirë HR mobile për prezencën dhe pushimet.',en:'iOS & Android apps with React Native — offline-first with delta sync, biometrics over OIDC and 99.9% crash-free measured in production. Including mobile HR for attendance and leave.',s:['Mobile · Stack']},
+    {k:['shopify','shopware','ecommerce','e-commerce','dyqan','online'],sq:'Ndërtojmë dhe migrojmë dyqane Shopware 6 dhe Shopify, të lidhura me ERP-në me 4 rryma: stoku→, çmimet→, ←porositë, ←kthimet — me radhë të qëndrueshme, pa mbishitje.',en:'We build and migrate Shopware 6 and Shopify stores, wired to the ERP over 4 streams: stock→, prices→, ←orders, ←returns — durable queues, no overselling.',s:['E-Commerce · Sync']},
+    {k:['çmim','cmim','kosto','price','kushton','buxhet'],sq:'Çmimi varet nga fushëveprimi — por gjithmonë transparent: vlerësim me faza pas një bisede 15-minutëshe falas. Pa kosto të fshehura, pa surpriza.',en:'Price depends on scope — but it is always transparent: a phased estimate after a free 15-minute call. No hidden costs, no surprises.',s:['Kontakti']},
+    {k:['kohë','kohe','afat','zgjat','long','javë','jave'],sq:'Një implementim tipik ERP: 1–3 javë zbulim, 4–8 konfigurim & migrim, 9–12 UAT, pastaj go-live me plan orë-për-orë dhe 30 ditë hypercare. Projektet web/mobile: 8–16 javë.',en:'A typical ERP rollout: weeks 1–3 discovery, 4–8 configuration & migration, 9–12 UAT, then an hour-by-hour go-live and 30 days of hypercare. Web/mobile projects: 8–16 weeks.',s:['Procesi · Fazat']},
+    {k:['ai','asistent','automatiz','rag','model'],sq:'Fusim AI aty ku matet vlera: document AI për faturat, asistentë RAG mbi të dhënat tuaja (me citim burimi dhe RBAC) dhe parashikime kërkese — me evals në CI dhe PII redaction.',en:'We put AI where value is measurable: document AI for invoices, RAG assistants over your data (source citations and RBAC) and demand forecasting — with evals in CI and PII redaction.',s:['AI · Guardrails']},
+    {k:['tung','përshendetje','pershendetje','hi','hello','hej'],sq:'Tung! Pyetmë për ERP, POS, WMS, mobile, e-commerce, AI — ose sa zgjat e sa kushton një projekt.',en:'Hi! Ask me about ERP, POS, WMS, mobile, e-commerce, AI — or how long and how much a project takes.',s:[]}
+  ];
+  var DEF={sq:'Për këtë s’kam burim të verifikuar — dhe nuk shpik përgjigje. Ekipi real përgjigjet brenda ditës: info@icode-ks.com · +383 48 331 333.',en:'I have no verified source for that — and I don’t invent answers. The real team replies within the day: info@icode-ks.com · +383 48 331 333.',s:['Kontakti']};
+  function add(cls,html){var d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;box.appendChild(d);box.scrollTop=box.scrollHeight;return d;}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function reply(q){
+    var ql=q.toLowerCase(), hit=null;
+    for(var i=0;i<KB.length;i++){ if(KB[i].k.some(function(k){return ql.indexOf(k)>-1;})){hit=KB[i];break;} }
+    if(!hit) hit=DEF;
+    var t=add('a typing','<i></i><i></i><i></i>');
+    setTimeout(function(){
+      var lang=L(), txt=lang==='sq'?hit.sq:hit.en;
+      t.classList.remove('typing');
+      t.innerHTML=esc(txt)+(hit.s&&hit.s.length?'<br>'+hit.s.map(function(s){return '<span class="src">'+s+'</span>';}).join(''):'');
+      box.scrollTop=box.scrollHeight;
+    },850);
+  }
+  function send(q){ q=(q||inp.value).trim(); if(!q) return; add('q',esc(q)); inp.value=''; reply(q); }
+  btn.addEventListener('click',function(){send();});
+  inp.addEventListener('keydown',function(e){if(e.key==='Enter')send();});
+  document.querySelectorAll('[data-aq-sq]').forEach(function(c){c.addEventListener('click',function(){send(L()==='sq'?c.getAttribute('data-aq-sq'):c.getAttribute('data-aq-en'));});});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Shërbimet — iCode LLC"
+  description="Shërbimet e iCode: platforma ERP, POS, WMS & OMS, aplikacione mobile, e-commerce, custom software, UI/UX, game engine & 3D dhe integrime AI & cloud."
+>
+
+<section class="page-hero">
+  <div class="container-wide">
+    <div class="crumbs"><a href="/" data-sq="Ballina" data-en="Home">Ballina</a><span class="sep">/</span><span data-sq="Shërbimet" data-en="Services">Shërbimet</span></div>
+    <h1 data-reveal data-sq="Shërbime që mbulojnë gjithë ciklin digjital" data-en="Services that cover the whole digital cycle">Shërbime që mbulojnë gjithë ciklin digjital</h1>
+    <p class="lead" data-reveal data-reveal-delay="1" data-sq="Nga platformat ERP, POS e WMS te aplikacionet mobile dhe game engine — një ekip i vetëm që ndërton, lëshon dhe mirëmban sistemet e tua." data-en="From ERP, POS and WMS platforms to mobile apps and game engines — a single team that builds, launches and maintains your systems.">Nga platformat ERP, POS e WMS te aplikacionet mobile dhe game engine — një ekip i vetëm që ndërton, lëshon dhe mirëmban sistemet e tua.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="grid cols-3" id="svc-grid"></div>
+  </div>
+</section>
+
+<!-- approach -->
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="split">
+      <div data-reveal>
+        <span class="eyebrow" data-sq="Si bashkëpunojmë" data-en="How we engage">Si bashkëpunojmë</span>
+        <h2 data-sq="Zgjedh modelin që të përshtatet" data-en="Choose the model that fits you">Zgjedh modelin që të përshtatet</h2>
+        <p class="lead mt-m" data-sq="Çdo biznes është ndryshe. Prandaj ofrojmë mënyra fleksibile bashkëpunimi — nga projekte me çmim fiks te ekipe të dedikuara." data-en="Every business is different. That's why we offer flexible ways to work — from fixed-price projects to dedicated teams.">Çdo biznes është ndryshe. Prandaj ofrojmë mënyra fleksibile bashkëpunimi — nga projekte me çmim fiks te ekipe të dedikuara.</p>
+      </div>
+      <div class="grid" style="gap:18px;" data-reveal data-reveal-delay="2">
+        <div class="card"><h3 style="font-size:1.2rem;" data-sq="Projekt me çmim fiks" data-en="Fixed-price project">Projekt me çmim fiks</h3><p data-sq="Fushëveprim i qartë, afat dhe buxhet i përcaktuar. Ideale për produkte të definuara mirë." data-en="Clear scope, defined timeline and budget. Ideal for well-defined products.">Fushëveprim i qartë, afat dhe buxhet i përcaktuar. Ideale për produkte të definuara mirë.</p></div>
+        <div class="card"><h3 style="font-size:1.2rem;" data-sq="Ekip i dedikuar" data-en="Dedicated team">Ekip i dedikuar</h3><p data-sq="Zhvillues dhe dizajnerë që punojnë vetëm për ty, si zgjatim i ekipit tënd." data-en="Developers and designers working only for you, as an extension of your team.">Zhvillues dhe dizajnerë që punojnë vetëm për ty, si zgjatim i ekipit tënd.</p></div>
+        <div class="card"><h3 style="font-size:1.2rem;" data-sq="Mbështetje & rritje" data-en="Support & growth">Mbështetje & rritje</h3><p data-sq="Mirëmbajtje e vazhdueshme, përmirësime dhe optimizim pas lëshimit." data-en="Continuous maintenance, improvements and optimisation after launch.">Mirëmbajtje e vazhdueshme, përmirësime dhe optimizim pas lëshimit.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal>
+      <h2 data-sq="Nuk je i sigurt çfarë të duhet?" data-en="Not sure what you need?">Nuk je i sigurt çfarë të duhet?</h2>
+      <p data-sq="Na shkruaj çfarë do të arrish. Të ndihmojmë të zgjedhësh rrugën e duhur — pa detyrime." data-en="Tell us what you want to achieve. We'll help you choose the right path — no obligations.">Na shkruaj çfarë do të arrish. Të ndihmojmë të zgjedhësh rrugën e duhur — pa detyrime.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-primary btn-lg" href="/contact" data-sq="Konsultë falas" data-en="Free consultation">Konsultë falas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<script>
+import '../scripts/site.js';
+(function(){
+  var S=window.ICODE_SERVICES, IC=window.ICODE_ICON;
+  var dSq={erp:'Platformë ERP me 12 module — nga financat te prodhimi dhe pagat.',pos:'Pikë shitjeje që punon edhe offline dhe lidhet direkt me ERP-në.',wms:'Depo, porosi dhe logjistikë nën kontroll të plotë, në kohë reale.',mobile:'Aplikacione iOS dhe Android me React Native — përfshirë HR mobile.',ecommerce:'Dyqane online dhe integrime me Shopify e Shopware.',software:'Sisteme të dedikuara mbi arkitekturë të pastër e modulare.',web:'Faqe dhe web apps të shpejta, të sigurta dhe të shkallëzueshme.',uiux:'Dizajn produktesh intuitiv dhe i orientuar te përdoruesi.',game:'Lojëra, simulime dhe përvoja interaktive 3D.',ai:'AI në procese biznesi dhe infrastrukturë cloud në Azure.'};
+  var dEn={erp:'An ERP platform with 12 modules — from finance to manufacturing and payroll.',pos:'A point of sale that works offline and talks directly to the ERP.',wms:'Warehouse, orders and logistics under full control, in real time.',mobile:'iOS and Android apps with React Native — including mobile HR.',ecommerce:'Online stores and Shopify & Shopware integrations.',software:'Bespoke systems on a clean, modular architecture.',web:'Fast, secure and scalable websites and web apps.',uiux:'Intuitive, user-centred product design.',game:'Games, simulations and interactive 3D experiences.',ai:'AI in business workflows and Azure cloud infrastructure.'};
+  var g=document.getElementById('svc-grid');
+  g.innerHTML=S.map(function(s,i){return '<a class="card" href="'+s.href+'" data-reveal data-reveal-delay="'+((i%3)+1)+'"><div class="line-ico">'+IC[s.ico]+'</div><h3 data-sq="'+s.sq+'" data-en="'+s.en+'">'+s.sq+'</h3><p data-sq="'+dSq[s.key]+'" data-en="'+dEn[s.key]+'">'+dSq[s.key]+'</p><span class="card-link"><span data-sq="Mëso më shumë" data-en="Learn more">Mëso më shumë</span>'+IC.arrow+'</span></a>';}).join('');
+  var lang='sq';try{lang=localStorage.getItem('icode-lang')||'sq';}catch(e){}
+  g.querySelectorAll('[data-sq]').forEach(function(el){var v=el.getAttribute('data-'+lang);if(v!=null)el.textContent=v;});
+  if(window.ICODE_scan)window.ICODE_scan();
+})();
+</script>

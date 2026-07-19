@@ -1,0 +1,251 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Game Engine & 3D — iCode LLC"
+  description="Lojëra dhe përvoja 3D me Unity, Unreal e WebGL — buxhet frame 16.6ms, LOD & instancing, asete Draco/KTX2 dhe konfiguratorë që rrisin shitjet."
+  bodyClass="game-world"
+>
+
+<section class="game-hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="game-kicker">PRESS START · GAME ENGINE & 3D</span>
+      <h1 data-sq="60 fps ose s'ka lëshim" data-en="60 fps or it doesn't ship">60 fps ose s'ka lëshim</h1>
+      <p class="lead mt-m" data-sq="Lojëra, simulime industriale dhe konfiguratorë 3D — me buxhet të prerë frame-i prej 16.6 milisekondash. Sepse një përvojë 3D që ngec nuk është përvojë, është demo e dështuar." data-en="Games, industrial simulations and 3D configurators — with a hard frame budget of 16.6 milliseconds. Because a 3D experience that stutters isn't an experience, it's a failed demo.">Lojëra, simulime industriale dhe konfiguratorë 3D — me buxhet të prerë frame-i prej 16.6 milisekondash. Sepse një përvojë 3D që ngec nuk është përvojë, është demo e dështuar.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-primary btn-lg" href="/contact" style="background:#5b3df5;" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a>
+        <a class="btn btn-outline-light btn-lg" href="/portfolio" data-sq="Apartment3D — rasti ynë" data-en="Apartment3D — our case">Apartment3D — rasti ynë</a>
+      </div>
+    </div>
+    <div class="gwrap" data-reveal data-reveal-delay="2" aria-hidden="true">
+      <canvas id="gcv"></canvas>
+      <div class="ghud"><span id="g-score">SCORE 0000</span><span>NEON RUNNER · DEMO REEL</span><span id="g-fps">60 FPS</span></div>
+      <div class="gnm" id="g-nm">NEAR MISS ×2</div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section game-dark" style="padding-top:0;">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Tri fusha loje" data-en="Three arenas">Tri fusha loje</span>
+      <h2 data-sq="Nga argëtimi te industria" data-en="From entertainment to industry">Nga argëtimi te industria</h2>
+    </div>
+    <div class="gg">
+      <div class="gcard" data-reveal><code>UNITY · UNREAL</code><h3 data-sq="Lojëra" data-en="Games">Lojëra</h3><p data-sq="Nga game design dokumenti te publikimi në store: loop-e loje të testuara me playtest-e reale, ekonomi e brendshme e balancuar me të dhëna, analitikë retention-i (D1/D7/D30) dhe live-ops pas lëshimit — jo 'e lëshojmë e shohim'." data-en="From the game design document to store release: game loops proven in real playtests, an in-game economy balanced with data, retention analytics (D1/D7/D30) and post-launch live-ops — not 'ship it and see'.">Nga game design dokumenti te publikimi në store: loop-e loje të testuara me playtest-e reale, ekonomi e brendshme e balancuar me të dhëna, analitikë retention-i (D1/D7/D30) dhe live-ops pas lëshimit — jo 'e lëshojmë e shohim'.</p></div>
+      <div class="gcard" data-reveal data-reveal-delay="1"><code>SIMULATION</code><h3 data-sq="Simulime & trajnime" data-en="Simulations & training">Simulime & trajnime</h3><p data-sq="Binjakë digjitalë të linjave të prodhimit dhe skenarë trajnimi me fizikë reale — operatori gabon në makinën virtuale, jo në atë prej 2 milionësh. Me matje të progresit të trajnimit dhe skenarë të përsëritshëm incidentesh." data-en="Digital twins of production lines and training scenarios with real physics — the operator makes mistakes on the virtual machine, not the €2M one. With training-progress metrics and repeatable incident scenarios.">Binjakë digjitalë të linjave të prodhimit dhe skenarë trajnimi me fizikë reale — operatori gabon në makinën virtuale, jo në atë prej 2 milionësh. Me matje të progresit të trajnimit dhe skenarë të përsëritshëm incidentesh.</p></div>
+      <div class="gcard" data-reveal data-reveal-delay="2"><code>WEBGL · WEBGPU</code><h3 data-sq="Konfiguratorë 3D" data-en="3D configurators">Konfiguratorë 3D</h3><p data-sq="Produkte e apartamente të personalizueshme live në browser — pa instalim, të lidhur me çmimet dhe stokun e ERP-së në kohë reale. Konfiguratori ynë i apartamenteve e rriti shitjen +38% sepse blerësi e sheh, jo e imagjinon." data-en="Products and apartments customisable live in the browser — no install, wired to ERP prices and stock in real time. Our apartment configurator lifted sales +38% because the buyer sees it instead of imagining it.">Produkte e apartamente të personalizueshme live në browser — pa instalim, të lidhur me çmimet dhe stokun e ERP-së në kohë reale. Konfiguratori ynë i apartamenteve e rriti shitjen +38% sepse blerësi e sheh, jo e imagjinon.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section game-dark" style="padding-top:0;">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Disiplina teknike" data-en="Technical discipline">Disiplina teknike</span>
+      <h2 data-sq="Buxhetet që e mbajnë 3D-në të butë" data-en="The budgets that keep 3D smooth">Buxhetet që e mbajnë 3D-në të butë</h2>
+    </div>
+    <div class="budget" data-reveal>
+      <div class="bd"><b>16.6 ms</b><span data-sq="Buxheti i frame-it në 60fps — CPU dhe GPU profilizohen veç, çdo sprint, në pajisjen më të dobët të targetuar." data-en="The frame budget at 60fps — CPU and GPU profiled separately, every sprint, on the weakest target device.">Buxheti i frame-it në 60fps — CPU dhe GPU profilizohen veç, çdo sprint, në pajisjen më të dobët të targetuar.</span></div>
+      <div class="bd"><b>LOD + instancing</b><span data-sq="Nivele detaji për çdo asset dhe GPU instancing për përsëritjet — miliona trekëndësha në ekran, me koston e qindra mijërave." data-en="Per-asset levels of detail and GPU instancing for repeats — millions of triangles on screen at the cost of hundreds of thousands.">Nivele detaji për çdo asset dhe GPU instancing për përsëritjet — miliona trekëndësha në ekran, me koston e qindra mijërave.</span></div>
+      <div class="bd"><b>Draco · KTX2</b><span data-sq="Gjeometri e kompresuar dhe tekstura GPU-native për web — konfiguratori hapet në sekonda edhe në 4G, jo në minuta." data-en="Compressed geometry and GPU-native textures for the web — the configurator opens in seconds on 4G, not minutes.">Gjeometri e kompresuar dhe tekstura GPU-native për web — konfiguratori hapet në sekonda edhe në 4G, jo në minuta.</span></div>
+      <div class="bd"><b>0 GC spikes</b><span data-sq="Object pooling dhe alokime zero në loop-in e lojës — asnjë ngrirje e çastit nga garbage collector-i në mes të aksionit." data-en="Object pooling and zero allocations in the game loop — no split-second freezes from the garbage collector mid-action.">Object pooling dhe alokime zero në loop-in e lojës — asnjë ngrirje e çastit nga garbage collector-i në mes të aksionit.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section game-dark" style="padding-top:0;">
+  <div class="container" style="max-width:940px;">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Prodhimi" data-en="The pipeline">Prodhimi</span>
+      <h2 data-sq="Pipeline i plotë asetesh dhe kodi" data-en="A complete asset & code pipeline">Pipeline i plotë asetesh dhe kodi</h2>
+    </div>
+    <div class="gpath" data-reveal>
+      <div class="gp"><code>CONCEPT</code><p><b data-sq="Prototip i luajtshëm në 2–3 javë:" data-en="A playable prototype in 2–3 weeks:">Prototip i luajtshëm në 2–3 javë:</b> <span data-sq="mekanika thelbësore me grey-box — vendimi vazhdojmë/ndalojmë merret mbi diçka që luhet, jo mbi slide." data-en="the core mechanic in grey-box — the go/no-go decision is made on something playable, not on slides.">mekanika thelbësore me grey-box — vendimi vazhdojmë/ndalojmë merret mbi diçka që luhet, jo mbi slide.</span></p></div>
+      <div class="gp"><code>ART</code><p><b data-sq="Modelim me buxhet poligoni:" data-en="Modelling to a polygon budget:">Modelim me buxhet poligoni:</b> <span data-sq="high-poly → bake në normal maps → PBR materiale në Blender; çdo asset kalon kontroll automatik madhësie para se të hyjë në build." data-en="high-poly → baked normal maps → PBR materials in Blender; every asset passes an automated size check before entering the build.">high-poly → bake në normal maps → PBR materiale në Blender; çdo asset kalon kontroll automatik madhësie para se të hyjë në build.</span></p></div>
+      <div class="gp"><code>BUILD</code><p><b data-sq="CI edhe për lojëra:" data-en="CI for games too:">CI edhe për lojëra:</b> <span data-sq="build automatik për çdo platformë, teste smoke në pajisje reale dhe profilizim i regresionit të performancës — FPS-i që bie e ndal merge-un." data-en="automated builds per platform, smoke tests on real devices and performance-regression profiling — an FPS drop blocks the merge.">build automatik për çdo platformë, teste smoke në pajisje reale dhe profilizim i regresionit të performancës — FPS-i që bie e ndal merge-un.</span></p></div>
+      <div class="gp"><code>SHIP</code><p><b data-sq="Publikim & live-ops:" data-en="Release & live-ops:">Publikim & live-ops:</b> <span data-sq="App Store, Play, Steam ose web — me analitikë ngjarjesh, crash reporting dhe përditësime përmbajtjeje pa ribuild të plotë." data-en="App Store, Play, Steam or web — with event analytics, crash reporting and content updates without a full rebuild.">App Store, Play, Steam ose web — me analitikë ngjarjesh, crash reporting dhe përditësime përmbajtjeje pa ribuild të plotë.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section game-dark" style="padding-top:0;">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:linear-gradient(135deg,#1c1040,#5b3df5);">
+      <h2 data-sq="Ke një botë për të ndërtuar?" data-en="Got a world to build?">Ke një botë për të ndërtuar?</h2>
+      <p data-sq="Na trego idenë — të kthejmë një koncept të luajtshëm dhe një vlerësim real kohe e buxheti." data-en="Tell us the idea — we'll return a playable concept and an honest time & budget estimate.">Na trego idenë — të kthejmë një koncept të luajtshëm dhe një vlerësim real kohe e buxheti.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-light btn-lg" href="/contact" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style is:global>
+body.game-world{background:#0a0a12;}
+.game-hero{background:#0a0a12;color:#fff;padding-block:clamp(70px,9vw,130px);position:relative;overflow:hidden;}
+.game-hero::before{content:"";pointer-events:none;position:absolute;inset:0;background:radial-gradient(700px 400px at 75% 30%,rgba(91,61,245,.25),transparent 70%),radial-gradient(500px 350px at 15% 85%,rgba(255,90,31,.14),transparent 70%);}
+.game-hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.14) 3px 4px);pointer-events:none;}
+.game-hero .container-wide{position:relative;z-index:1;}
+.game-hero h1{color:#fff;text-shadow:0 0 40px rgba(91,61,245,.55);}
+.game-hero .lead{color:rgba(230,228,245,.78);}
+.game-kicker{font-family:ui-monospace,Menlo,monospace;font-size:.74rem;letter-spacing:.22em;color:#9d84ff;border:1px solid rgba(157,132,255,.4);padding:8px 16px;border-radius:4px;display:inline-block;margin-bottom:24px;background:rgba(157,132,255,.07);}
+.hud{background:rgba(10,10,20,.85);border:1px solid rgba(157,132,255,.35);border-radius:14px;padding:22px;font-family:ui-monospace,Menlo,monospace;box-shadow:0 0 60px rgba(91,61,245,.25);}
+.hud .hrow{display:flex;justify-content:space-between;font-size:.76rem;padding:8px 2px;border-bottom:1px dashed rgba(255,255,255,.12);color:rgba(230,228,245,.8);}
+.hud .hrow:last-child{border:none;}
+.hud .ok{color:#7dffa8;}
+.hud .htitle{font-size:.68rem;letter-spacing:.2em;color:#9d84ff;margin-bottom:10px;}
+.hud .fps{font-size:2rem;color:#7dffa8;font-weight:700;text-align:right;}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px);}
+@media (max-width:900px){.gg{grid-template-columns:1fr;}}
+.gcard{background:#12121e;border:1px solid rgba(157,132,255,.25);border-radius:16px;padding:30px;position:relative;overflow:hidden;}
+.gcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5b3df5,#ff5a1f);}
+.gcard h3{color:#fff;font-size:1.12rem;margin-bottom:10px;}
+.gcard p{color:rgba(230,228,245,.66);font-size:.88rem;line-height:1.6;}
+.gcard code{font-family:ui-monospace,Menlo,monospace;font-size:.64rem;letter-spacing:.14em;color:#9d84ff;display:block;margin-bottom:12px;}
+.game-dark{background:#0a0a12;color:#fff;}
+.game-dark h2{color:#fff;}
+.game-dark .eyebrow{color:#9d84ff;}
+.game-dark .lead{color:rgba(230,228,245,.72);}
+.budget{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media (max-width:860px){.budget{grid-template-columns:repeat(2,1fr);}}
+.bd{border:1px solid rgba(157,132,255,.3);border-radius:12px;padding:22px;background:rgba(157,132,255,.05);}
+.bd b{font-family:ui-monospace,Menlo,monospace;font-size:1.3rem;color:#7dffa8;display:block;}
+.bd span{font-size:.78rem;color:rgba(230,228,245,.65);display:block;margin-top:6px;line-height:1.5;}
+.gpath{display:grid;gap:12px;}
+.gp{display:grid;grid-template-columns:auto 1fr;gap:18px;background:#12121e;border:1px solid rgba(157,132,255,.22);border-radius:12px;padding:20px 24px;align-items:baseline;}
+.gp code{font-family:ui-monospace,Menlo,monospace;font-size:.7rem;color:#ff9d6b;letter-spacing:.1em;white-space:nowrap;}
+.gp p{color:rgba(230,228,245,.72);font-size:.9rem;}
+.gp p b{color:#fff;font-family:var(--ff-head);}
+a{color:inherit;}a:hover{color:#9d84ff;}
+.gwrap{position:relative;border:1px solid rgba(157,132,255,.35);border-radius:14px;overflow:hidden;box-shadow:0 0 60px rgba(91,61,245,.3);}
+#gcv{display:block;width:100%;height:350px;background:#05050c;}
+.ghud{position:absolute;top:10px;left:14px;right:14px;display:flex;justify-content:space-between;font-family:ui-monospace,Menlo,monospace;font-size:.68rem;color:#7dffa8;letter-spacing:.12em;pointer-events:none;}
+.gnm{position:absolute;left:50%;top:36%;transform:translate(-50%,-50%);font-family:var(--ff-head);font-weight:800;color:#ffce1a;text-shadow:0 0 20px rgba(255,206,26,.8);opacity:0;transition:.25s;font-size:1.15rem;letter-spacing:.12em;pointer-events:none;}
+.gnm.on{opacity:1;}
+</style>
+
+<script>
+(function(){
+  var cv=document.getElementById('gcv'); if(!cv) return;
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var ctx=cv.getContext('2d'), W=0,H=0, DPR=Math.min(devicePixelRatio||1,2);
+  function size(){W=cv.offsetWidth;H=cv.offsetHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+  size(); addEventListener('resize',size,{passive:true});
+  var stars=[]; for(var i=0;i<70;i++) stars.push([Math.random(),Math.random()*.36,Math.random()]);
+  var mts=[]; for(i=0;i<10;i++) mts.push(.12+Math.random()*.3);
+  var COLS=[['#ff5a1f','#ffa26b','#8f2c06'],['#9d84ff','#cabcff','#4c33b8'],['#ff3d8b','#ff9cc4','#98134c']];
+  var ents=[], dist=0, t=0, last=performance.now(), score=0, nm=0, shake=0, speed=.9, flash=0;
+  var ship={lane:0,x:0}, spawnT=.4, trail=[];
+  var scEl=document.getElementById('g-score'), fpsEl=document.getElementById('g-fps'), nmEl=document.getElementById('g-nm');
+  var curve=0, hz=0;
+  function proj(lane,p,cw){
+    var s=Math.pow(p,1.75);
+    var y=hz+(H-hz-24)*s;
+    var half=W*.02+W*.47*s;
+    return {x:W/2+cw*(1-p)*(1-p)*W*.42+lane*half*.55, y:y, half:half, s:s};
+  }
+  function frame(now){
+    var dt=Math.min(.05,(now-last)/1000); last=now; t+=dt; hz=H*.42;
+    speed=Math.min(1.8,.9+t*.014);
+    curve=Math.sin(t*.32)*.95+Math.sin(t*.13)*.35;
+    dist+=speed*dt*3;
+    if(fpsEl&&((now/400)|0)%2===0) fpsEl.textContent=Math.min(60,Math.round(1/Math.max(dt,.0001)))+' FPS · '+Math.round(speed*170)+' KM/H';
+    var shx=(Math.random()-.5)*shake, shy=(Math.random()-.5)*shake; shake*=.88;
+    ctx.clearRect(0,0,W,H); ctx.save(); ctx.translate(shx,shy);
+    var sky=ctx.createLinearGradient(0,0,0,hz); sky.addColorStop(0,'#0a0618'); sky.addColorStop(1,'#2b0f4a');
+    ctx.fillStyle=sky; ctx.fillRect(-9,-9,W+18,hz+9);
+    ctx.fillStyle='#fff';
+    for(i=0;i<stars.length;i++){var st=stars[i];ctx.globalAlpha=.2+.55*Math.abs(Math.sin(t*2+st[2]*9));ctx.fillRect(st[0]*W,st[1]*H,1.6,1.6);}
+    ctx.globalAlpha=1;
+    var sx=W*.5-curve*W*.1, sy=hz-H*.015, sr=H*.21;
+    ctx.save(); ctx.beginPath(); ctx.arc(sx,sy,sr,Math.PI,0); ctx.closePath(); ctx.clip();
+    var sg=ctx.createLinearGradient(0,sy-sr,0,sy); sg.addColorStop(0,'#ffd76b'); sg.addColorStop(1,'#ff3d8b');
+    ctx.fillStyle=sg; ctx.fillRect(sx-sr,sy-sr,sr*2,sr*2);
+    ctx.fillStyle='#0d081d';
+    for(var bnd=0;bnd<5;bnd++) ctx.fillRect(sx-sr, sy-sr*.06-bnd*sr*.17, sr*2, 2+bnd*1.3);
+    ctx.restore();
+    [[.5,'#1c1136',-curve*W*.07,0],[ .72,'#120a26',-curve*W*.15,.5]].forEach(function(Lr){
+      ctx.fillStyle=Lr[1]; ctx.beginPath(); ctx.moveTo(-12,hz+1);
+      for(i=0;i<mts.length;i++){ctx.lineTo(-12+(i+Lr[3])*(W+24)/(mts.length-1)+Lr[2], hz-mts[i]*H*Lr[0]);}
+      ctx.lineTo(W+12,hz+1); ctx.closePath(); ctx.fill();
+    });
+    ctx.fillStyle='#0d0a1c'; ctx.fillRect(-9,hz,W+18,H-hz+9);
+    var N=26;
+    for(var k=0;k<N;k++){
+      var p1=k/N,p2=(k+1)/N;
+      var A=proj(0,p1,curve), B=proj(0,p2,curve);
+      var band=((Math.floor((1-p1)*12+dist*2.2))%2+2)%2;
+      ctx.fillStyle=band?'#0f0b22':'#120d28'; ctx.fillRect(-9,A.y,W+18,B.y-A.y+1.2);
+      ctx.fillStyle=band?'#181330':'#1e1739';
+      ctx.beginPath();ctx.moveTo(A.x-A.half,A.y);ctx.lineTo(A.x+A.half,A.y);ctx.lineTo(B.x+B.half,B.y);ctx.lineTo(B.x-B.half,B.y);ctx.closePath();ctx.fill();
+      ctx.fillStyle=band?'#ff3d8b':'#5b3df5';
+      var w1=Math.max(1.4,A.half*.05);
+      ctx.beginPath();ctx.moveTo(A.x-A.half,A.y);ctx.lineTo(A.x-A.half+w1,A.y);ctx.lineTo(B.x-B.half+w1,B.y);ctx.lineTo(B.x-B.half,B.y);ctx.closePath();ctx.fill();
+      ctx.beginPath();ctx.moveTo(A.x+A.half,A.y);ctx.lineTo(A.x+A.half-w1,A.y);ctx.lineTo(B.x+B.half-w1,B.y);ctx.lineTo(B.x+B.half,B.y);ctx.closePath();ctx.fill();
+      if(band){ctx.fillStyle='rgba(255,255,255,.28)';[-1,1].forEach(function(sg2){
+        ctx.beginPath();ctx.moveTo(A.x+sg2*A.half*.29,A.y);ctx.lineTo(A.x+sg2*A.half*.29+2,A.y);ctx.lineTo(B.x+sg2*B.half*.29+2,B.y);ctx.lineTo(B.x+sg2*B.half*.29,B.y);ctx.closePath();ctx.fill();});}
+    }
+    spawnT-=dt;
+    if(spawnT<=0){ents.push({ring:Math.random()<.22,lane:[-1,0,1][(Math.random()*3)|0],p:0,c:COLS[(Math.random()*3)|0]});spawnT=.5+Math.random()*.5;}
+    var target=Math.round(ship.lane);
+    var threat=null;
+    ents.forEach(function(e){e.p+=speed*dt*.5; if(!e.ring&&!threat&&e.p>.5&&e.p<1&&e.lane===target) threat=e;});
+    if(threat){
+      var free=[-1,0,1].filter(function(l){return !ents.some(function(o){return !o.ring&&o.lane===l&&o.p>.4&&o.p<1;});});
+      var ringL=ents.filter(function(o){return o.ring&&o.p>.3&&o.p<.9&&free.indexOf(o.lane)>-1;});
+      ship.lane=ringL.length?ringL[0].lane:(free.length?free[(Math.random()*free.length)|0]:target*-1);
+    }
+    ents=ents.filter(function(e){
+      if(e.p>=1){
+        if(e.ring){ if(Math.abs(e.lane-ship.x)<.5){score+=50;flash=1;shake=4;nmEl.textContent='BOOST +50';nmEl.classList.add('on');setTimeout(function(){nmEl.classList.remove('on');},650);} }
+        else{ score+=10; if(Math.abs(e.lane-Math.round(ship.x))===1){nm++;shake=6;nmEl.textContent='NEAR MISS ×'+nm;nmEl.classList.add('on');setTimeout(function(){nmEl.classList.remove('on');},650);} }
+        return false;
+      } return true;
+    });
+    ents.sort(function(a2,b2){return a2.p-b2.p;}).forEach(function(e){
+      var F=proj(e.lane,e.p,curve);
+      if(e.ring){
+        var rr=F.half*.2;
+        ctx.strokeStyle='#7dffa8'; ctx.lineWidth=Math.max(1.5,3.4*F.s); ctx.shadowColor='#7dffa8'; ctx.shadowBlur=14*F.s;
+        ctx.beginPath(); ctx.ellipse(F.x,F.y-rr*.9,rr*.72,rr,0,0,7); ctx.stroke(); ctx.shadowBlur=0;
+        return;
+      }
+      var Bk=proj(e.lane,Math.max(0,e.p-.05),curve);
+      var w2=F.half*.15, h2=F.half*.24, wb2=Bk.half*.15, hb2=Bk.half*.24;
+      ctx.shadowColor=e.c[0]; ctx.shadowBlur=10*F.s;
+      ctx.fillStyle=e.c[1];
+      ctx.beginPath();ctx.moveTo(F.x-w2,F.y-h2);ctx.lineTo(F.x+w2,F.y-h2);ctx.lineTo(Bk.x+wb2,Bk.y-hb2);ctx.lineTo(Bk.x-wb2,Bk.y-hb2);ctx.closePath();ctx.fill();
+      var inner=F.x<W/2?1:-1;
+      ctx.fillStyle=e.c[2];
+      ctx.beginPath();ctx.moveTo(F.x+inner*w2,F.y-h2);ctx.lineTo(F.x+inner*w2,F.y);ctx.lineTo(Bk.x+inner*wb2,Bk.y);ctx.lineTo(Bk.x+inner*wb2,Bk.y-hb2);ctx.closePath();ctx.fill();
+      ctx.fillStyle=e.c[0]; ctx.fillRect(F.x-w2,F.y-h2,w2*2,h2);
+      ctx.shadowBlur=0;
+    });
+    ship.x+=(Math.round(ship.lane)-ship.x)*Math.min(1,dt*6);
+    var SP=proj(ship.x,.93,curve), ss=SP.half*.14, bank=(Math.round(ship.lane)-ship.x)*.7;
+    trail.push({x:SP.x,y:SP.y-ss*.1,a:1}); if(trail.length>13) trail.shift();
+    trail.forEach(function(tp,ti){ctx.globalAlpha=tp.a*(ti/trail.length)*.5;ctx.fillStyle='#7dffa8';ctx.beginPath();ctx.arc(tp.x,tp.y,ss*.16*(ti/trail.length+.2),0,7);ctx.fill();});
+    ctx.globalAlpha=1;
+    ctx.save(); ctx.translate(SP.x,SP.y-ss*.5); ctx.rotate(bank);
+    ctx.fillStyle='#ffce1a';
+    var fl=ss*(.5+Math.random()*.4);
+    ctx.beginPath();ctx.moveTo(-ss*.16,ss*.42);ctx.lineTo(0,ss*.42+fl);ctx.lineTo(ss*.16,ss*.42);ctx.closePath();ctx.fill();
+    var shg=ctx.createLinearGradient(0,-ss,0,ss); shg.addColorStop(0,'#b9ffd6'); shg.addColorStop(1,'#12a150');
+    ctx.fillStyle=shg; ctx.shadowColor='#7dffa8'; ctx.shadowBlur=18;
+    ctx.beginPath();ctx.moveTo(0,-ss);ctx.lineTo(ss*.78,ss*.45);ctx.lineTo(0,ss*.15);ctx.lineTo(-ss*.78,ss*.45);ctx.closePath();ctx.fill();
+    ctx.shadowBlur=0; ctx.fillStyle='#06202a';
+    ctx.beginPath();ctx.moveTo(0,-ss*.45);ctx.lineTo(ss*.2,ss*.05);ctx.lineTo(-ss*.2,ss*.05);ctx.closePath();ctx.fill();
+    ctx.restore();
+    if(flash>0){ctx.fillStyle='rgba(125,255,168,'+(flash*.16)+')';ctx.fillRect(-9,-9,W+18,H+18);flash-=dt*3;}
+    ctx.restore();
+    scEl.textContent='SCORE '+String(score).padStart(4,'0');
+    if(!rm) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>

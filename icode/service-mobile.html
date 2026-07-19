@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>Aplikacione Mobile — iCode LLC</title>
+<meta name="description" content="Aplikacione iOS & Android me React Native — offline-first me delta sync, push i besueshëm, biometrikë, CI/CD me release trains dhe 99.9% crash-free.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.mob-hero{background:linear-gradient(160deg,#f4f0ff 0%,#fff 55%,#eef4ff 100%);padding-block:clamp(60px,8vw,100px);position:relative;overflow:hidden;}
+.mob-hero::after{content:"";pointer-events:none;position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,61,245,.14),transparent 65%);top:-140px;right:-100px;}
+.mob-kicker{display:inline-flex;gap:8px;align-items:center;font-family:var(--ff-head);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#5b3df5;margin-bottom:20px;}
+.phone{width:min(400px,92vw);margin-inline:auto;background:#0e0e10;border-radius:50px;padding:13px;box-shadow:0 40px 90px rgba(14,14,16,.3);position:relative;}
+.phone .pnotch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:26px;background:#0e0e10;border-radius:0 0 16px 16px;z-index:2;}
+.pscreen{background:#fff;border-radius:32px;overflow:hidden;font-family:var(--ff-head);}
+.pbar{background:#5b3df5;color:#fff;padding:38px 18px 16px;font-weight:600;font-size:.92rem;display:flex;justify-content:space-between;align-items:center;}
+.pbar small{font-size:.62rem;opacity:.8;font-weight:500;}
+.pbody{padding:16px 18px 22px;display:grid;gap:10px;}
+.prow{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:.78rem;}
+.prow b{display:block;font-size:.82rem;}
+.prow small{color:var(--muted);font-size:.66rem;}
+.pbadge{font-size:.6rem;font-weight:700;padding:4px 9px;border-radius:99px;}
+.pb-ok{background:#e5f8ec;color:#12a150;}
+.pb-wait{background:#fff4e5;color:#c97a12;}
+.psync{display:flex;align-items:center;gap:8px;font-size:.64rem;color:var(--muted);justify-content:center;padding-top:4px;}
+.psync i{width:7px;height:7px;border-radius:50%;background:#12a150;}
+.mfeat{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2vw,26px);}
+@media (max-width:820px){.mfeat{grid-template-columns:1fr;}}
+.mf{border-radius:var(--r-lg);padding:32px;position:relative;overflow:hidden;}
+.mf h3{font-size:1.25rem;margin-bottom:10px;}
+.mf p{font-size:.92rem;line-height:1.6;}
+.mf-a{background:#0e0e10;color:#fff;}.mf-a h3{color:#fff;}.mf-a p{color:rgba(255,255,255,.72);}
+.mf-b{background:#efeaff;}.mf-b p{color:#4a4360;}
+.mf-c{background:#fff;border:1px solid var(--line);}.mf-c p{color:var(--muted);}
+.mf-d{background:#e8f1ff;}.mf-d p{color:#3a4a60;}
+.mf .mtag{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:.66rem;letter-spacing:.1em;padding:4px 10px;border-radius:5px;background:rgba(91,61,245,.12);color:#5b3df5;margin-bottom:14px;}
+.mf-a .mtag{background:rgba(255,255,255,.12);color:#b9a8ff;}
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+@media (max-width:900px){.pipe{grid-template-columns:1fr;}}
+.pnode{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;position:relative;}
+.pnode b{font-family:var(--ff-head);font-size:.9rem;display:block;margin-bottom:5px;}
+.pnode span{font-size:.74rem;color:var(--muted);}
+.pnode::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:#5b3df5;font-weight:700;z-index:1;}
+.pnode:last-child::after{content:none;}
+@media (max-width:900px){.pnode::after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%);}}
+a{color:inherit;}a:hover{color:var(--primary);}
+.pbar2{background:#5b3df5;color:#fff;padding:40px 18px 14px;font-family:var(--ff-head);font-weight:600;font-size:.95rem;display:flex;justify-content:space-between;align-items:center;}
+.pbar2 small{font-size:.6rem;opacity:.8;font-weight:500;display:block;}
+.papp{height:474px;overflow:hidden;position:relative;background:#f7f6fb;}
+.pscr{position:absolute;inset:0;padding:16px;display:none;overflow-y:auto;}
+.pscr.on{display:block;}
+.ptabs{display:flex;background:#fff;border-top:1px solid var(--line);}
+.ptabs button{flex:1;padding:11px 4px 14px;font-family:var(--ff-head);font-size:.6rem;font-weight:600;color:var(--muted-2);display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;}
+.ptabs button svg{width:19px;height:19px;stroke-width:1.8;}
+.ptabs button.on{color:#5b3df5;}
+.pgreet{font-family:var(--ff-head);font-weight:700;font-size:1.02rem;margin:2px 0 12px;}
+.pstat2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:10px;}
+.pstat2 div{background:#5b3df5;color:#fff;border-radius:14px;padding:12px;font-family:var(--ff-head);}
+.pstat2 div:last-child{background:#0e0e10;}
+.pstat2 b{font-size:1.1rem;display:block;}
+.pstat2 span{font-size:.58rem;opacity:.75;}
+.pcard2{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px 14px;margin-bottom:9px;font-size:.76rem;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.pcard2 b{font-size:.8rem;display:block;}
+.pcard2 small{color:var(--muted);font-size:.64rem;}
+.pbtn-big{width:150px;height:150px;border-radius:50%;background:#5b3df5;color:#fff;font-family:var(--ff-head);font-weight:700;font-size:.9rem;margin:20px auto 12px;display:grid;place-items:center;box-shadow:0 14px 34px rgba(91,61,245,.4);transition:.25s;text-align:center;line-height:1.3;cursor:pointer;border:none;}
+.pbtn-big.in{background:#12a150;box-shadow:0 14px 34px rgba(18,161,80,.4);}
+.pcenter{text-align:center;font-size:.72rem;color:var(--muted);}
+.pclock{font-family:ui-monospace,Menlo,monospace;font-size:1.4rem;text-align:center;display:block;margin-top:4px;color:var(--ink);}
+.pstep{display:flex;align-items:center;justify-content:center;gap:18px;margin:14px 0;}
+.pstep button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line-2);font-size:1.2rem;font-weight:700;background:#fff;cursor:pointer;}
+.pstep b{font-family:var(--ff-head);font-size:1.5rem;min-width:46px;text-align:center;}
+.psubmit{width:100%;padding:13px;border-radius:12px;background:#0e0e10;color:#fff;font-family:var(--ff-head);font-weight:600;font-size:.8rem;border:none;cursor:pointer;}
+.pstatus{margin-top:10px;text-align:center;font-family:var(--ff-head);font-weight:700;font-size:.74rem;padding:10px;border-radius:10px;display:none;}
+.pgame{position:relative;height:264px;background:#0e0e10;border-radius:14px;overflow:hidden;touch-action:manipulation;}
+.pgame .dot{position:absolute;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b9a8ff,#5b3df5);box-shadow:0 0 18px rgba(91,61,245,.8);cursor:pointer;transition:transform .12s;}
+.pgame .dot:active{transform:scale(.6);}
+.pgame .gs{position:absolute;top:10px;left:12px;font-family:ui-monospace,Menlo,monospace;color:#7dffa8;font-size:.7rem;z-index:2;}
+.pghint{font-size:.66rem;color:var(--muted);text-align:center;margin-top:8px;}
+.shopthumb{width:46px;height:46px;border-radius:11px;flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-family:var(--ff-head);}
+.padd{width:36px;height:36px;border-radius:10px;background:#5b3df5;color:#fff;font-weight:700;font-size:1.05rem;border:none;flex:none;cursor:pointer;}
+.cartbar{position:absolute;left:14px;right:14px;bottom:12px;background:#0e0e10;color:#fff;border-radius:12px;padding:12px 15px;display:flex;justify-content:space-between;font-family:var(--ff-head);font-weight:600;font-size:.78rem;}
+.tblrow{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.tbl{padding:8px 12px;border-radius:9px;border:1.5px solid var(--line-2);font-size:.68rem;font-weight:700;background:#fff;cursor:pointer;font-family:var(--ff-head);}
+.tbl.on{background:#0e0e10;color:#fff;border-color:#0e0e10;}
+.itmgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px;}
+.itm{border:1.5px solid var(--line-2);border-radius:10px;padding:9px 5px;font-size:.6rem;font-weight:600;text-align:center;background:#fff;cursor:pointer;font-family:var(--ff-head);color:var(--muted);}
+.itm b{display:block;font-size:.72rem;color:var(--ink);}
+.itm:active{border-color:#5b3df5;}
+.ordlist{font-size:.7rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 11px;min-height:54px;margin-bottom:8px;font-family:var(--ff-head);}
+.ordlist .ol{display:flex;justify-content:space-between;padding:2.5px 0;}
+.mob-w .eyebrow{background:#efeaff;color:#5b3df5;padding:7px 15px;border-radius:99px;margin-bottom:16px;}
+.mob-w .bg-soft{background:linear-gradient(160deg,#f4f0ff,#eef4ff);}
+</style>
+</head>
+<body class="mob-w">
+<header id="site-header"></header>
+
+<section class="mob-hero" data-screen-label="Mobile Hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="mob-kicker">iOS · Android · React Native</span>
+      <h1 data-sq="Një kod, dy platforma, zero kompromis" data-en="One codebase, two platforms, zero compromise">Një kod, dy platforma, zero kompromis</h1>
+      <p class="lead mt-m" data-sq="Aplikacione që punojnë në terren — me ose pa rrjet — dhe ndihen native në të dyja platformat. Nga HR mobile për punonjësit te aplikacionet e klientëve me mijëra përdorues aktivë." data-en="Apps that work in the field — with or without a network — and feel native on both platforms. From mobile HR for employees to customer apps with thousands of daily users.">Aplikacione që punojnë në terren — me ose pa rrjet — dhe ndihen native në të dyja platformat. Nga HR mobile për punonjësit te aplikacionet e klientëve me mijëra përdorues aktivë.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-primary btn-lg" href="contact.html" style="background:#5b3df5;" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a>
+        <a class="btn btn-outline btn-lg" href="portfolio.html" data-sq="Shiko projektet" data-en="See work">Shiko projektet</a>
+      </div>
+    </div>
+    <div data-reveal data-reveal-delay="2">
+      <div class="phone"><div class="pnotch"></div><div class="pscreen">
+        <div class="pbar2"><span id="pbar-title">iShop<small data-sq="dyqani demo — provoje" data-en="demo store — try it">dyqani demo — provoje</small></span><span id="pbar-time" style="font-family:ui-monospace,Menlo,monospace;font-size:.72rem;">--:--</span></div>
+        <div class="papp">
+          <div class="pscr on" id="scr-shop">
+            <div class="pcard2"><span style="display:flex;align-items:center;gap:11px;"><span class="shopthumb" style="background:linear-gradient(135deg,#1b4dff,#5b3df5);">T</span><span><b>Bluza Urban</b><small>29.00 € · S/M/L/XL</small></span></span><button class="padd" data-p="29">+</button></div>
+            <div class="pcard2"><span style="display:flex;align-items:center;gap:11px;"><span class="shopthumb" style="background:linear-gradient(135deg,#0e0e10,#5a5a66);">K</span><span><b>Kufje Sonic X</b><small>59.00 € · ANC</small></span></span><button class="padd" data-p="59">+</button></div>
+            <div class="pcard2"><span style="display:flex;align-items:center;gap:11px;"><span class="shopthumb" style="background:linear-gradient(135deg,#ff5a1f,#ffce1a);">O</span><span><b>Ora Pulse</b><small>99.00 € · GPS</small></span></span><button class="padd" data-p="99">+</button></div>
+            <div class="pcard2"><span style="display:flex;align-items:center;gap:11px;"><span class="shopthumb" style="background:linear-gradient(135deg,#12a150,#1fc46b);">A</span><span><b>Atlete Vega 2</b><small>89.00 € · 40–45</small></span></span><button class="padd" data-p="89">+</button></div>
+            <div class="cartbar"><span id="cart-n" data-sq="0 artikuj" data-en="0 items">0 artikuj</span><span id="cart-t">0.00 €</span></div>
+          </div>
+          <div class="pscr" id="scr-pos">
+            <div class="tblrow"><button class="tbl">T1</button><button class="tbl">T2</button><button class="tbl">T3</button><button class="tbl on">T4</button><button class="tbl">T5</button><button class="tbl">T6</button></div>
+            <div class="itmgrid">
+              <button class="itm" data-n="Espresso" data-p="1.5"><b>1.50 €</b>Espresso</button>
+              <button class="itm" data-n="Makiato" data-p="1.2"><b>1.20 €</b>Makiato</button>
+              <button class="itm" data-n="Ujë" data-p="0.8"><b>0.80 €</b>Ujë 0.5L</button>
+              <button class="itm" data-n="Pica" data-p="4.5"><b>4.50 €</b>Pica</button>
+              <button class="itm" data-n="Sallatë" data-p="3.2"><b>3.20 €</b>Sallatë</button>
+              <button class="itm" data-n="Çaj" data-p="1"><b>1.00 €</b>Çaj</button>
+            </div>
+            <div class="ordlist" id="ordlist"></div>
+            <div class="pcard2" style="justify-content:space-between;"><b data-sq="Totali" data-en="Total">Totali</b><b id="ord-t">0.00 €</b></div>
+            <button class="psubmit" id="ord-send" data-sq="Dërgo në kuzhinë → POS" data-en="Send to kitchen → POS">Dërgo në kuzhinë → POS</button>
+            <div class="pstatus" id="ord-st" style="background:#e5f8ec;color:#12a150;"></div>
+          </div>
+          <div class="pscr" id="scr-game">
+            <div class="pgame" id="pgame" style="height:330px;"><span class="gs" id="gscore">SCORE 0</span></div>
+            <p class="pghint" data-sq="Prek pikën sa më shpejt — shpejtohet!" data-en="Tap the dot fast — it speeds up!">Prek pikën sa më shpejt — shpejtohet!</p>
+          </div>
+          <div class="pscr" id="scr-portal">
+            <div class="pgreet" data-sq="Portali i punonjësit" data-en="Employee portal">Portali i punonjësit</div>
+            <div class="pstat2"><div><b>162 h</b><span data-sq="ORËT KËTË MUAJ" data-en="HOURS THIS MONTH">ORËT KËTË MUAJ</span></div><div><b>13</b><span data-sq="DITË PUSHIM TË MBETURA" data-en="LEAVE DAYS REMAINING">DITË PUSHIM TË MBETURA</span></div></div>
+            <div class="pcard2"><span><b data-sq="Prezenca" data-en="Attendance">Prezenca</b><small id="po-ci-t" data-sq="Jashtë ndërrimit" data-en="Off shift">Jashtë ndërrimit</small></span><button class="padd" id="po-ci" style="width:auto;padding:0 13px;font-size:.62rem;height:36px;border-radius:9px;font-family:var(--ff-head);">IN / OUT</button></div>
+            <div class="pcard2"><span><b data-sq="Fleta e pagës — Qershor" data-en="Payslip — June">Fleta e pagës — Qershor</b><small>PDF · 128 KB</small></span><span style="color:#5b3df5;font-weight:700;">↓</span></div>
+            <div class="pcard2"><span><b data-sq="Njoftim: takim ekipi të premten 10:00" data-en="Notice: team meeting Friday 10:00">Njoftim: takim ekipi të premten 10:00</b><small data-sq="HR · sync me ERP" data-en="HR · synced with ERP">HR · sync me ERP</small></span><span>→</span></div>
+          </div>
+        </div>
+        <div class="ptabs">
+          <button class="on" data-ptab="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 4h2l2.2 11h10l2-8H6"/><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><span>Shop</span></button>
+          <button data-ptab="pos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 9h12v6a4 4 0 01-4 4H8a4 4 0 01-4-4z"/><path d="M16 10h2a2.5 2.5 0 010 5h-2M7 5c0-1 .5-1 .5-2M11 5c0-1 .5-1 .5-2"/></svg><span data-sq="Kamarieri" data-en="Waiter">Kamarieri</span></button>
+          <button data-ptab="game"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9h12a4 4 0 014 4v3a2.5 2.5 0 01-4.5 1.5L16 15H8l-1.5 2.5A2.5 2.5 0 012 16v-3a4 4 0 014-4z"/><path d="M8 12h3M9.5 10.5v3"/></svg><span data-sq="Loja" data-en="Game">Loja</span></button>
+          <button data-ptab="portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2"/></svg><span data-sq="Portali" data-en="Portal">Portali</span></button>
+        </div>
+      </div></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Inxhinieria" data-en="The engineering">Inxhinieria</span>
+      <h2 data-sq="Ajo që s'e sheh — por e ndien çdo ditë" data-en="What you don't see — but feel every day">Ajo që s'e sheh — por e ndien çdo ditë</h2>
+    </div>
+    <div class="mfeat">
+      <div class="mf mf-a" data-reveal><span class="mtag">OFFLINE-FIRST</span><h3 data-sq="Delta sync, jo rifreskime të plota" data-en="Delta sync, not full refreshes">Delta sync, jo rifreskime të plota</h3><p data-sq="Baza lokale është burimi i parë; sinkronizohen vetëm ndryshimet, me zgjidhje konfliktesh të përcaktuar për çdo entitet — last-write-wins vetëm aty ku është e sigurt, merge i strukturuar ku s'është. Në terren pa sinjal, aplikacioni thjesht punon." data-en="The local database is the first source; only deltas sync, with a per-entity conflict policy — last-write-wins only where it's safe, structured merge where it isn't. In the field with no signal, the app simply works.">Baza lokale është burimi i parë; sinkronizohen vetëm ndryshimet, me zgjidhje konfliktesh të përcaktuar për çdo entitet — last-write-wins vetëm aty ku është e sigurt, merge i strukturuar ku s'është. Në terren pa sinjal, aplikacioni thjesht punon.</p></div>
+      <div class="mf mf-b" data-reveal data-reveal-delay="1"><span class="mtag">PUSH & BACKGROUND</span><h3 data-sq="Njoftime që arrijnë, punë që kryhet në sfond" data-en="Notifications that arrive, work that runs in the background">Njoftime që arrijnë, punë që kryhet në sfond</h3><p data-sq="Push me kanale prioritare dhe deep-link direkt te ekrani i duhur; sinkronizim në sfond i ndërgjegjshëm për baterinë dhe rrjetin — pa e vrarë telefonin e përdoruesit." data-en="Push with priority channels and deep links straight to the right screen; battery- and network-aware background sync that doesn't kill the user's phone.">Push me kanale prioritare dhe deep-link direkt te ekrani i duhur; sinkronizim në sfond i ndërgjegjshëm për baterinë dhe rrjetin — pa e vrarë telefonin e përdoruesit.</p></div>
+      <div class="mf mf-c" data-reveal><span class="mtag">SECURITY</span><h3 data-sq="Biometrikë, jo fjalëkalime në terren" data-en="Biometrics, not passwords in the field">Biometrikë, jo fjalëkalime në terren</h3><p data-sq="Face ID / fingerprint mbi token OIDC nga IdentityServer, ruajtje në Keychain/Keystore, certificate pinning për API-në dhe fshirje në distancë për pajisjet e humbura — të njëjtat role RBAC si në ERP." data-en="Face ID / fingerprint over OIDC tokens from IdentityServer, Keychain/Keystore storage, certificate pinning for the API and remote wipe for lost devices — the same RBAC roles as the ERP.">Face ID / fingerprint mbi token OIDC nga IdentityServer, ruajtje në Keychain/Keystore, certificate pinning për API-në dhe fshirje në distancë për pajisjet e humbura — të njëjtat role RBAC si në ERP.</p></div>
+      <div class="mf mf-d" data-reveal data-reveal-delay="1"><span class="mtag">QUALITY BAR</span><h3 data-sq="99.9% crash-free, e matur në prodhim" data-en="99.9% crash-free, measured in production">99.9% crash-free, e matur në prodhim</h3><p data-sq="Crash reporting dhe performance tracing në çdo release; ANR-të dhe ekranet e ngadalta trajtohen si defekte me prioritet — jo si 'ashtu janë telefonat'." data-en="Crash reporting and performance tracing on every release; ANRs and slow screens are treated as priority defects — not as 'phones being phones'.">Crash reporting dhe performance tracing në çdo release; ANR-të dhe ekranet e ngadalta trajtohen si defekte me prioritet — jo si 'ashtu janë telefonat'.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Shpërndarja" data-en="Delivery">Shpërndarja</span>
+      <h2 data-sq="Nga commit-i te App Store — pa duar" data-en="From commit to the App Store — hands-free">Nga commit-i te App Store — pa duar</h2>
+    </div>
+    <div class="pipe" data-reveal>
+      <div class="pnode"><b>Commit</b><span data-sq="PR me review + testet e njësisë" data-en="PR review + unit tests">PR me review + testet e njësisë</span></div>
+      <div class="pnode"><b>Build</b><span data-sq="CI për iOS & Android njëkohësisht" data-en="CI for iOS & Android in parallel">CI për iOS & Android njëkohësisht</span></div>
+      <div class="pnode"><b>Test</b><span data-sq="E2E në pajisje reale + snapshot UI" data-en="E2E on real devices + UI snapshots">E2E në pajisje reale + snapshot UI</span></div>
+      <div class="pnode"><b>Beta</b><span>TestFlight · Play Internal</span></div>
+      <div class="pnode"><b>Release</b><span data-sq="Rollout me faza 5%→100% + rikthim OTA" data-en="Staged rollout 5%→100% + OTA rollback">Rollout me faza 5%→100% + rikthim OTA</span></div>
+    </div>
+    <p class="lead" style="margin-top:30px;max-width:820px;" data-reveal data-sq="Release train çdo dy javë: rollout me faza që ndalon vetë nëse rriten crash-et, përditësime OTA për rregullime urgjente pa pritur review të store-it, dhe versione enterprise të shpërndara me MDM për pajisjet e kompanisë." data-en="A two-week release train: staged rollouts that halt automatically if crashes spike, OTA updates for urgent fixes without waiting on store review, and enterprise builds distributed via MDM for company devices.">Release train çdo dy javë: rollout me faza që ndalon vetë nëse rriten crash-et, përditësime OTA për rregullime urgjente pa pritur review të store-it, dhe versione enterprise të shpërndara me MDM për pajisjet e kompanisë.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal><span class="eyebrow" data-sq="Të lidhura" data-en="Related">Të lidhura</span><h2 data-sq="Mobile si pjesë e platformës" data-en="Mobile as part of the platform">Mobile si pjesë e platformës</h2></div>
+    <div class="grid cols-3"><a class="related-card" href="service-erp.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg></span><div><b data-sq="Platformë ERP" data-en="ERP Platform">Platformë ERP</b></div></a><a class="related-card" href="service-wms.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span><div><b>WMS & OMS</b></div></a><a class="related-card" href="service-game.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9h12a4 4 0 014 4v3a2.5 2.5 0 01-4.5 1.5L16 15H8l-1.5 2.5A2.5 2.5 0 012 16v-3a4 4 0 014-4z"/><path d="M8 12h3M9.5 10.5v3"/></svg></span><div><b>Game Engine & 3D</b></div></a></div>
+  </div>
+</section>
+
+<section class="section-sm" data-screen-label="Klientë">
+  <div class="container-wide">
+    <p class="center" style="font-family:var(--ff-head);font-weight:600;color:var(--muted);margin-bottom:36px;" data-reveal data-sq="Aplikacione në duart e përdoruesve" data-en="Apps in users’ hands">Aplikacione në duart e përdoruesve</p>
+    <div class="logo-wall logo-wall-strip" data-reveal><span class="logo-item">Taxi Zentrale Zurich</span><span class="logo-item">Alpen Transfer Zurich</span><span class="logo-item">Servis Jetoni</span><span class="logo-item">iLiving APP</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:linear-gradient(135deg,#2a1b6e,#5b3df5);">
+      <h2 data-sq="Çfarë duhet të bëjë aplikacioni yt në terren?" data-en="What must your app do in the field?">Çfarë duhet të bëjë aplikacioni yt në terren?</h2>
+      <p data-sq="Na trego skenarin më të vështirë — pa rrjet, me dorëza, në diell — dhe dizajnojmë për të." data-en="Tell us the hardest scenario — no signal, gloves on, in direct sun — and we design for it.">Na trego skenarin më të vështirë — pa rrjet, me dorëza, në diell — dhe dizajnojmë për të.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-light btn-lg" href="contact.html" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  function L(){try{return localStorage.getItem('icode-lang')||'sq';}catch(e){return 'sq';}}
+  var TITLES={shop:['iShop','dyqani demo — provoje','demo store — try it'],pos:['Kamarieri','porosi → POS','orders → POS'],game:['Pixel Tap','mini-lojë','mini game'],portal:['Portali','HR & njoftime','HR & notices']};
+  document.querySelectorAll('[data-ptab]').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('[data-ptab]').forEach(function(x){x.classList.remove('on');});
+      document.querySelectorAll('.pscr').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      var k=b.getAttribute('data-ptab'), s=$('scr-'+k); if(s)s.classList.add('on');
+      var t=TITLES[k]; if(t) $('pbar-title').innerHTML=t[0]+'<small>'+(L()==='sq'?t[1]:t[2])+'</small>';
+    });
+  });
+  function two(n){return n<10?'0'+n:n;}
+  setInterval(function(){var d=new Date();var bt=$('pbar-time');if(bt)bt.textContent=two(d.getHours())+':'+two(d.getMinutes());},500);
+  var cart=0,cartV=0;
+  document.querySelectorAll('#scr-shop .padd').forEach(function(b){
+    b.addEventListener('click',function(){
+      cart++;cartV+=parseFloat(b.getAttribute('data-p'));
+      $('cart-n').textContent=cart+(L()==='sq'?' artikuj':' items');
+      $('cart-t').textContent=cartV.toFixed(2)+' €';
+    });
+  });
+  var ord={},tbl='T4';
+  document.querySelectorAll('.tbl').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.tbl').forEach(function(x){x.classList.remove('on');});b.classList.add('on');tbl=b.textContent;});});
+  function renderOrd(){
+    var el=$('ordlist'),tot=0,h='';
+    Object.keys(ord).forEach(function(k){var o=ord[k];tot+=o.p*o.q;h+='<div class="ol"><span>'+o.q+'× '+k+'</span><span>'+(o.p*o.q).toFixed(2)+' €</span></div>';});
+    el.innerHTML=h||'<div class="ol" style="color:var(--muted-2);">'+(L()==='sq'?'Prek artikujt për ta ndërtuar porosinë':'Tap items to build the order')+'</div>';
+    $('ord-t').textContent=tot.toFixed(2)+' €';
+  }
+  document.querySelectorAll('.itm').forEach(function(b){
+    b.addEventListener('click',function(){var n=b.getAttribute('data-n'),p=parseFloat(b.getAttribute('data-p'));if(!ord[n])ord[n]={p:p,q:0};ord[n].q++;renderOrd();});
+  });
+  $('ord-send').addEventListener('click',function(){
+    var st=$('ord-st');st.style.display='block';
+    st.textContent='✓ '+tbl+(L()==='sq'?' → Kuzhina · u printua në POS':' → Kitchen · printed at the POS');
+    ord={};setTimeout(function(){renderOrd();st.style.display='none';},2200);
+  });
+  renderOrd();
+  var g=$('pgame'), score=0, iv=900, timer=null;
+  function spawn(){
+    if(!g) return;
+    var old=g.querySelector('.dot'); if(old) old.remove();
+    var d=document.createElement('div'); d.className='dot';
+    d.style.left=(8+Math.random()*(g.offsetWidth-54))+'px';
+    d.style.top=(30+Math.random()*(g.offsetHeight-84))+'px';
+    d.addEventListener('pointerdown',function(e){e.preventDefault();score++;$('gscore').textContent='SCORE '+score;iv=Math.max(420,iv-22);d.remove();clearTimeout(timer);timer=setTimeout(spawn,120);});
+    g.appendChild(d);
+    clearTimeout(timer); timer=setTimeout(spawn,iv);
+  }
+  if(g) spawn();
+  var inn=false, ci=$('po-ci');
+  if(ci) ci.addEventListener('click',function(){
+    inn=!inn; var d=new Date();
+    $('po-ci-t').textContent=inn?((L()==='sq'?'Në punë që nga ':'On shift since ')+two(d.getHours())+':'+two(d.getMinutes())+' · GPS ✓'):(L()==='sq'?'Jashtë ndërrimit':'Off shift');
+    ci.style.background=inn?'#12a150':'#5b3df5';
+  });
+})();
+</script>
+</body>
+</html>

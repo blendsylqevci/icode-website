@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="UI/UX Design — iCode LLC"
+  description="Dizajn produkti i bazuar në research — JTBD, teste përdorshmërie me detyra reale, design tokens të sinkronizuar me kodin dhe WCAG 2.2 si standard."
+  bodyClass="ux-w"
+>
+
+<section class="ux-hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="eyebrow" data-sq="UI/UX Design" data-en="UI/UX Design">UI/UX Design</span>
+      <h1 data-sq="Dizajn që matet me detyra të kryera, jo me 'sa bukur'" data-en="Design measured in completed tasks, not in 'how pretty'">Dizajn që matet me detyra të kryera, jo me 'sa bukur'</h1>
+      <p class="lead mt-m" data-sq="Çdo vendim dizajni fillon me një pyetje kërkimore dhe mbaron me një metrikë: sa përdorues e kryen detyrën, për sa kohë, me sa gabime. Estetika është higjena — përdorshmëria është produkti." data-en="Every design decision starts with a research question and ends with a metric: how many users complete the task, in how long, with how many errors. Aesthetics is hygiene — usability is the product.">Çdo vendim dizajni fillon me një pyetje kërkimore dhe mbaron me një metrikë: sa përdorues e kryen detyrën, për sa kohë, me sa gabime. Estetika është higjena — përdorshmëria është produkti.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-dark btn-lg" href="/contact" data-sq="Nis me një auditim UX" data-en="Start with a UX audit">Nis me një auditim UX</a>
+        <a class="btn btn-outline btn-lg" href="/portfolio" data-sq="Shiko punët" data-en="See work">Shiko punët</a>
+      </div>
+    </div>
+    <div class="canvas-mock" data-reveal data-reveal-delay="2" aria-hidden="true">
+      <div class="ux-pal">
+        <div class="ux-chip" id="chip-0"><i></i>Navbar</div>
+        <div class="ux-chip" id="chip-1"><i style="background:#dbe4ff;"></i>Hero</div>
+        <div class="ux-chip" id="chip-2"><i style="background:#ffe9d6;"></i>Cards</div>
+      </div>
+      <div class="ux-frame2">
+        <div class="ux-fhead"><i style="background:#ff5f57;"></i><i style="background:#febc2e;"></i><i style="background:#28c840;"></i></div>
+        <div class="ux-slot" id="slot-0" style="min-height:38px;"><span>NAVBAR</span><div class="fill f-nav"><b></b><i></i><i></i><i></i></div></div>
+        <div class="ux-slot" id="slot-1" style="min-height:92px;"><span>HERO</span><div class="fill f-hero"><div><i></i><i></i></div></div></div>
+        <div class="ux-slot" id="slot-2" style="min-height:56px;margin-bottom:0;"><span>CARDS</span><div class="fill f-cards"><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="ux-ghost2" id="ux-ghost"></div>
+      <div class="sticky-note pink" style="right:4%;bottom:8%;" data-sq="Testi A/B: +18% përfundim" data-en="A/B test: +18% completion">Testi A/B: +18% përfundim</div>
+      <div class="ux-toast2" id="ux-toast" data-sq="✓ Prototipi gati → test me 8 përdorues" data-en="✓ Prototype ready → testing with 8 users">✓ Prototipi gati → test me 8 përdorues</div>
+      <div class="ux-cursor" id="ux-cur" style="left:60%;top:70%;transition:left .85s cubic-bezier(.55,0,.25,1),top .85s cubic-bezier(.55,0,.25,1);"><svg viewBox="0 0 24 24"><path d="M4 2l16 8-7 2-3 7z"/></svg><span>Arta · Design</span></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Procesi" data-en="The process">Procesi</span>
+      <h2 data-sq="Nga hipoteza te dëshmia, në katër hapa" data-en="From hypothesis to evidence, in four steps">Nga hipoteza te dëshmia, në katër hapa</h2>
+    </div>
+    <div class="ux-steps">
+      <div class="uxs" data-reveal><h3>Research</h3><p data-sq="Intervista me përdorues realë të strukturuara me Jobs-to-be-Done, analizë e rrugëve reale në analytics dhe hartë e pikave të fërkimit — para se të vizatohet një piksel." data-en="Interviews with real users structured around Jobs-to-be-Done, real-path analytics review and a friction map — before a single pixel is drawn.">Intervista me përdorues realë të strukturuara me Jobs-to-be-Done, analizë e rrugëve reale në analytics dhe hartë e pikave të fërkimit — para se të vizatohet një piksel.</p></div>
+      <div class="uxs" data-reveal data-reveal-delay="1"><h3>Flows & IA</h3><p data-sq="Arkitekturë informacioni e testuar me card sorting dhe tree testing; rrjedhat kritike (checkout, onboarding, aprovime) modelohen me çdo gjendje gabimi — jo vetëm happy path." data-en="Information architecture tested with card sorting and tree testing; critical flows (checkout, onboarding, approvals) modelled with every error state — not just the happy path.">Arkitekturë informacioni e testuar me card sorting dhe tree testing; rrjedhat kritike (checkout, onboarding, aprovime) modelohen me çdo gjendje gabimi — jo vetëm happy path.</p></div>
+      <div class="uxs" data-reveal><h3 data-sq="Prototip & test" data-en="Prototype & test">Prototip & test</h3><p data-sq="Prototipe të klikueshme me detyra reale dhe protokoll të moderuar: matim shkallën e përfundimit, kohën për detyrë dhe gabimet — 5–8 përdorues për raund, raundet sa duhen." data-en="Clickable prototypes with real tasks and a moderated protocol: we measure completion rate, time-on-task and errors — 5–8 users per round, as many rounds as it takes.">Prototipe të klikueshme me detyra reale dhe protokoll të moderuar: matim shkallën e përfundimit, kohën për detyrë dhe gabimet — 5–8 përdorues për raund, raundet sa duhen.</p></div>
+      <div class="uxs" data-reveal data-reveal-delay="1"><h3 data-sq="Sistemi i dizajnit" data-en="Design system">Sistemi i dizajnit</h3><p data-sq="Komponentë me variante, gjendje dhe rregulla përdorimi në Figma — të lidhur me librarinë e kodit, që dizajni e implementimi të mos divergjojnë kurrë." data-en="Components with variants, states and usage rules in Figma — linked to the code library so design and implementation never diverge.">Komponentë me variante, gjendje dhe rregulla përdorimi në Figma — të lidhur me librarinë e kodit, që dizajni e implementimi të mos divergjojnë kurrë.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="tokens" data-reveal>
+      <div>
+        <h3 data-sq="Design tokens: një e vërtetë, dy botë" data-en="Design tokens: one truth, two worlds">Design tokens: një e vërtetë, dy botë</h3>
+        <p class="mt-m" data-sq="Ngjyrat, hapësirat dhe tipografia jetojnë si tokens të versionuar — ndryshimi në Figma kalon në kod përmes pipeline-it, jo përmes 'ma çon një screenshot'. Rebrand-i i ardhshëm bëhet ndryshim konfigurimi, jo projekt gjashtëmujor." data-en="Colours, spacing and typography live as versioned tokens — a change in Figma reaches code through a pipeline, not through 'send me a screenshot'. Your next rebrand becomes a config change, not a six-month project.">Ngjyrat, hapësirat dhe tipografia jetojnë si tokens të versionuar — ndryshimi në Figma kalon në kod përmes pipeline-it, jo përmes 'ma çon një screenshot'. Rebrand-i i ardhshëm bëhet ndryshim konfigurimi, jo projekt gjashtëmujor.</p>
+      </div>
+      <div class="tok-code" aria-hidden="true">
+<span class="tc">// tokens.json → CSS · Angular · React Native</span><br>
+<span class="tk">"color.action.primary"</span>: <span class="tv">"#1b4dff"</span>,<br>
+<span class="tk">"space.inline.m"</span>: <span class="tv">"16"</span>,<br>
+<span class="tk">"type.body.size"</span>: <span class="tv">"17"</span>,<br>
+<span class="tk">"radius.control"</span>: <span class="tv">"12"</span><br>
+<span class="tc">// 1 ndryshim → web + mobile + POS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:880px;">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Standardet tona" data-en="Our standards">Standardet tona</span>
+      <h2 data-sq="Ku s'bëjmë kompromis" data-en="Where we don't compromise">Ku s'bëjmë kompromis</h2>
+    </div>
+    <div data-reveal>
+      <div class="ux-fact"><b>WCAG 2.2 AA</b><span data-sq="Kontrasti, madhësitë e prekjes 44px+, focus i dukshëm dhe screen-reader semantika — qasshmëria është kërkesë bazë, jo veçori premium." data-en="Contrast, 44px+ touch targets, visible focus and screen-reader semantics — accessibility is a baseline requirement, not a premium feature.">Kontrasti, madhësitë e prekjes 44px+, focus i dukshëm dhe screen-reader semantika — qasshmëria është kërkesë bazë, jo veçori premium.</span></div>
+      <div class="ux-fact"><b data-sq="Gjendjet e plota" data-en="Complete states">Gjendjet e plota</b><span data-sq="Çdo ekran dorëzohet me loading, empty, error dhe offline — jo vetëm pamja perfekte me të dhëna perfekte." data-en="Every screen ships with loading, empty, error and offline states — not just the perfect view with perfect data.">Çdo ekran dorëzohet me loading, empty, error dhe offline — jo vetëm pamja perfekte me të dhëna perfekte.</span></div>
+      <div class="ux-fact"><b data-sq="UX për operatorë" data-en="Operator UX">UX për operatorë</b><span data-sq="Specialiteti ynë: ndërfaqe pune për kasierë, magazinierë e financierë — dendësi e lartë, tastierë e para, tolerancë ndaj gabimit njerëzor." data-en="Our speciality: working interfaces for cashiers, warehouse staff and accountants — high density, keyboard-first, tolerant of human error.">Specialiteti ynë: ndërfaqe pune për kasierë, magazinierë e financierë — dendësi e lartë, tastierë e para, tolerancë ndaj gabimit njerëzor.</span></div>
+      <div class="ux-fact"><b data-sq="Dorëzim i masë" data-en="Measured handoff">Dorëzim i matshëm</b><span data-sq="Specifikime me tokens, spacing dhe sjellje interaktive të dokumentuara — zhvilluesi nuk hamendëson asgjë." data-en="Specs with tokens, spacing and documented interactive behaviour — the developer guesses nothing.">Specifikime me tokens, spacing dhe sjellje interaktive të dokumentuara — zhvilluesi nuk hamendëson asgjë.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal><span class="eyebrow" data-sq="Të lidhura" data-en="Related">Të lidhura</span><h2 data-sq="Dizajni takon inxhinierinë" data-en="Design meets engineering">Dizajni takon inxhinierinë</h2></div>
+    <div class="grid cols-3"><a class="related-card" href="/web-development" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M7 12h6"/></svg></span><div><b data-sq="Zhvillim Web" data-en="Web Development">Zhvillim Web</b></div></a><a class="related-card" href="/mobile-apps" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><div><b data-sq="Aplikacione Mobile" data-en="Mobile Apps">Aplikacione Mobile</b></div></a><a class="related-card" href="/game-engine-3d" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9h12a4 4 0 014 4v3a2.5 2.5 0 01-4.5 1.5L16 15H8l-1.5 2.5A2.5 2.5 0 012 16v-3a4 4 0 014-4z"/><path d="M8 12h3M9.5 10.5v3"/></svg></span><div><b>Game Engine & 3D</b></div></a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal>
+      <h2 data-sq="Ku po i humb përdoruesit produkti yt?" data-en="Where is your product losing users?">Ku po i humb përdoruesit produkti yt?</h2>
+      <p data-sq="Auditim UX falas mbi rrjedhën tënde më kritike — me gjetje të renditura sipas ndikimit dhe kostos së rregullimit." data-en="A free UX audit of your most critical flow — findings ranked by impact and cost to fix.">Auditim UX falas mbi rrjedhën tënde më kritike — me gjetje të renditura sipas ndikimit dhe kostos së rregullimit.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-primary btn-lg" href="/contact" data-sq="Kërko auditim UX" data-en="Request a UX audit">Kërko auditim UX</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</Base>
+
+<style is:global>
+.ux-hero{background:#fdfbf7;padding-block:clamp(56px,7vw,96px);position:relative;overflow:hidden;}
+.ux-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(14,14,16,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(14,14,16,.045) 1px,transparent 1px);background-size:36px 36px;}
+.ux-hero .container-wide{position:relative;}
+.canvas-mock{position:relative;min-height:360px;font-family:var(--ff-head);}
+.frame{position:absolute;background:#fff;border:1.5px solid #b7b3a8;border-radius:10px;padding:14px;box-shadow:0 16px 40px rgba(14,14,16,.1);}
+.frame .flabel{position:absolute;top:-22px;left:0;font-size:.64rem;font-weight:600;color:#8a867a;letter-spacing:.06em;}
+.frame .fbar{height:8px;border-radius:4px;background:#e9e5da;margin-bottom:8px;}
+.frame .fbtn{height:22px;border-radius:6px;background:#1b4dff;width:60%;margin-top:10px;}
+.sticky-note{position:absolute;background:#fff3a3;padding:12px 14px;font-size:.7rem;line-height:1.5;box-shadow:0 8px 20px rgba(14,14,16,.14);transform:rotate(-3deg);font-weight:500;max-width:150px;border-radius:3px;}
+.sticky-note.pink{background:#ffd6e0;transform:rotate(2.5deg);}
+.ux-cursor{position:absolute;display:flex;align-items:center;gap:6px;z-index:3;}
+.ux-cursor svg{width:16px;height:16px;fill:#e6332a;}
+.ux-cursor span{background:#e6332a;color:#fff;font-size:.62rem;font-weight:600;padding:4px 9px;border-radius:99px;font-family:var(--ff-head);}
+.ux-steps{counter-reset:ux;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,26px);}
+@media (max-width:980px){.ux-steps{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.ux-steps{grid-template-columns:1fr;}}
+.uxs{counter-increment:ux;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;position:relative;}
+.uxs::before{content:"0" counter(ux);font-family:var(--ff-head);font-weight:800;font-size:2.4rem;letter-spacing:-.04em;color:var(--bg-soft-2);position:absolute;top:14px;right:20px;line-height:1;}
+.uxs h3{font-size:1.05rem;margin-bottom:10px;position:relative;}
+.uxs p{font-size:.86rem;color:var(--muted);line-height:1.6;position:relative;}
+.tokens{background:#0e0e10;color:#fff;border-radius:var(--r-xl);padding:clamp(28px,4vw,48px);display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,56px);align-items:center;}
+@media (max-width:860px){.tokens{grid-template-columns:1fr;}}
+.tokens h3{color:#fff;}
+.tokens p{color:rgba(255,255,255,.72);}
+.tok-code{background:#000;border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:22px 24px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;line-height:1.9;}
+.tok-code .tk{color:#ffd6e0;}
+.tok-code .tv{color:#a5e8ff;}
+.tok-code .tc{color:#666;}
+.ux-fact{display:flex;gap:16px;align-items:baseline;padding:20px 4px;border-bottom:1px solid var(--line);}
+.ux-fact b{font-family:var(--ff-head);font-size:1.15rem;flex:none;min-width:180px;}
+.ux-fact span{color:var(--muted);font-size:.94rem;}
+a{color:inherit;}a:hover{color:var(--primary);}
+.ux-pal{position:absolute;left:0;top:10%;width:138px;display:grid;gap:10px;z-index:2;}
+.ux-chip{background:#fff;border:1.5px solid #b7b3a8;border-radius:10px;padding:10px 12px;font-size:.68rem;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 8px 18px rgba(14,14,16,.08);transition:opacity .3s;}
+.ux-chip i{width:16px;height:12px;border-radius:3px;background:var(--bg-soft-2);border:1px solid #b7b3a8;flex:none;}
+.ux-chip.used{opacity:.3;}
+.ux-frame2{position:absolute;right:0;top:2%;width:min(330px,66%);background:#fff;border:1.5px solid #b7b3a8;border-radius:12px;box-shadow:0 20px 44px rgba(14,14,16,.12);padding:12px;}
+.ux-fhead{display:flex;gap:5px;margin-bottom:10px;}
+.ux-fhead i{width:8px;height:8px;border-radius:50%;background:#e9e5da;}
+.ux-slot{border:1.5px dashed #cfcabb;border-radius:8px;min-height:46px;margin-bottom:9px;display:grid;place-items:center;font-size:.6rem;color:#a49f92;letter-spacing:.1em;transition:.3s;position:relative;overflow:hidden;}
+.ux-slot .fill{position:absolute;inset:0;opacity:0;transform:translateY(10px);transition:.45s var(--ease);}
+.ux-slot.done{border:1.5px solid #1b4dff;}
+.ux-slot.done .fill{opacity:1;transform:none;}
+.ux-slot.done>span{visibility:hidden;}
+.f-nav{display:flex;align-items:center;gap:6px;padding:9px 10px;}
+.f-nav b{width:34px;height:8px;border-radius:4px;background:#0e0e10;}
+.f-nav i{width:22px;height:6px;border-radius:3px;background:#e9e5da;}
+.f-nav i:last-child{margin-left:auto;width:34px;height:14px;border-radius:7px;background:#1b4dff;}
+.f-hero{background:linear-gradient(135deg,#1b4dff,#5b3df5);height:100%;display:grid;place-items:center;}
+.f-hero div{width:70%;}
+.f-hero i{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.85);margin-bottom:6px;}
+.f-hero i:last-child{width:55%;background:rgba(255,255,255,.5);}
+.f-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:8px;}
+.f-cards i{border-radius:5px;background:#f1efe8;border:1px solid #e0dcd0;height:34px;}
+.ux-ghost2{position:absolute;z-index:8;opacity:0;transition:left .85s cubic-bezier(.5,0,.3,1),top .85s cubic-bezier(.5,0,.3,1),opacity .25s;}
+.ux-toast2{position:absolute;left:24%;bottom:0;background:#fff3a3;padding:11px 15px;font-size:.7rem;font-weight:600;box-shadow:0 10px 24px rgba(14,14,16,.16);transform:rotate(-2deg) translateY(10px);opacity:0;transition:.4s;border-radius:3px;font-family:var(--ff-head);}
+.ux-toast2.on{opacity:1;transform:rotate(-2deg);}
+@media (prefers-reduced-motion:reduce){.ux-cursor,.ux-ghost2{display:none!important;}.ux-slot{border-style:solid;}.ux-slot .fill{opacity:1;transform:none;}.ux-slot>span{visibility:hidden;}}
+.ux-w .bg-soft{background:#fdfbf7;background-image:linear-gradient(rgba(14,14,16,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,14,16,.04) 1px,transparent 1px);background-size:36px 36px;}
+.ux-w .eyebrow{background:#fff3a3;color:#0e0e10;padding:7px 14px;transform:rotate(-1.2deg);box-shadow:0 4px 10px rgba(14,14,16,.08);border-radius:3px;}
+</style>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){document.querySelectorAll('.ux-slot').forEach(function(s){s.classList.add('done');});return;}
+  var scene=document.querySelector('.canvas-mock'); if(!scene) return;
+  var cur=document.getElementById('ux-cur'), ghost=document.getElementById('ux-ghost'), toast=document.getElementById('ux-toast');
+  function pos(el){var r=el.getBoundingClientRect(),s=scene.getBoundingClientRect();return {x:r.left-s.left+r.width/2,y:r.top-s.top+r.height/2};}
+  function moveTo(el){var p=pos(el);cur.style.left=p.x+'px';cur.style.top=p.y+'px';}
+  function run(i){
+    var chip=document.getElementById('chip-'+i), slot=document.getElementById('slot-'+i);
+    moveTo(chip);
+    setTimeout(function(){
+      var p=pos(chip); ghost.innerHTML='<div class="ux-chip">'+chip.innerHTML+'</div>';
+      ghost.style.left=(p.x-55)+'px'; ghost.style.top=(p.y-17)+'px'; ghost.style.opacity=1; chip.classList.add('used');
+    },950);
+    setTimeout(function(){ var p=pos(slot); ghost.style.left=(p.x-55)+'px'; ghost.style.top=(p.y-17)+'px'; moveTo(slot); },1250);
+    setTimeout(function(){ ghost.style.opacity=0; slot.classList.add('done'); },2200);
+  }
+  function cycle(){
+    run(0);
+    setTimeout(function(){run(1);},2600);
+    setTimeout(function(){run(2);},5200);
+    setTimeout(function(){toast.classList.add('on');},7800);
+    setTimeout(function(){
+      toast.classList.remove('on');
+      [0,1,2].forEach(function(i){document.getElementById('slot-'+i).classList.remove('done');document.getElementById('chip-'+i).classList.remove('used');});
+      cur.style.left='60%';cur.style.top='70%';
+    },10600);
+    setTimeout(cycle,11600);
+  }
+  setTimeout(cycle,1000);
+})();
+</script>

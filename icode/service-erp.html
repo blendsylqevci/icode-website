@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/brand/favicon.png">
+<title>Platformë ERP — iCode LLC</title>
+<meta name="description" content="Platformë ERP me 12 module mbi një bazë të dhënash — arkitekturë Modular Monolith, IdentityServer, SQL Server AlwaysOn dhe SLA 99.9%.">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+.erp-hero{background:#081c33;color:#fff;position:relative;overflow:hidden;padding-block:clamp(70px,9vw,130px);}
+.erp-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(127,193,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,193,255,.07) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(900px 600px at 30% 40%,#000,transparent 80%);}
+.erp-hero h1{color:#fff;max-width:14ch;}
+.erp-hero .container-wide{position:relative;}
+.erp-hero .lead{color:rgba(214,232,250,.85);}
+.erp-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--ff-head);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#7fc1ff;margin-bottom:22px;}
+.erp-eyebrow::before{content:"";width:34px;height:2px;background:#7fc1ff;}
+.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(127,193,255,.25);border:1px solid rgba(127,193,255,.25);border-radius:14px;overflow:hidden;margin-top:clamp(36px,4vw,56px);}
+.kpi{background:#0b2440;padding:20px 22px;}
+.kpi b{display:block;font-family:var(--ff-head);font-weight:700;font-size:1.6rem;color:#fff;letter-spacing:-.02em;}
+.kpi span{font-size:.8rem;color:rgba(214,232,250,.6);}
+@media (max-width:760px){.kpi-strip{grid-template-columns:repeat(2,1fr);}}
+.erp-dash{background:#0b2440;border:1px solid rgba(127,193,255,.25);border-radius:18px;padding:22px;box-shadow:0 40px 80px rgba(2,10,20,.5);}
+.erp-dash .dh{display:flex;justify-content:space-between;align-items:center;font-family:var(--ff-head);font-size:.78rem;color:rgba(214,232,250,.65);margin-bottom:16px;}
+.erp-dash .dh i{width:8px;height:8px;border-radius:50%;background:#39d98a;display:inline-block;margin-right:7px;}
+.drow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.dcard{background:#081c33;border:1px solid rgba(127,193,255,.18);border-radius:12px;padding:16px;}
+.dcard span{font-size:.72rem;color:rgba(214,232,250,.55);display:block;margin-bottom:8px;font-family:var(--ff-head);letter-spacing:.05em;text-transform:uppercase;}
+.dcard b{font-family:var(--ff-head);font-size:1.25rem;color:#fff;}
+.dbars{display:flex;align-items:flex-end;gap:7px;height:64px;margin-top:12px;}
+.dbars i{flex:1;background:linear-gradient(180deg,#7fc1ff,#1b4dff);border-radius:3px 3px 0 0;animation:erpBar 2.6s ease-in-out infinite alternate;}
+@keyframes erpBar{from{transform:scaleY(.72);}to{transform:scaleY(1);}}
+.dbars i{transform-origin:bottom;}
+@media (prefers-reduced-motion:reduce){.dbars i{animation:none;}}
+.mod-x{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media (max-width:900px){.mod-x{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.mod-x{grid-template-columns:1fr;}}
+.mx{border:1px solid var(--line);border-radius:14px;padding:22px;background:#fff;transition:border-color .25s,transform .25s var(--ease);}
+.mx:hover{border-color:#1b4dff;transform:translateY(-3px);}
+.mx b{font-family:var(--ff-head);font-size:1.02rem;display:flex;align-items:baseline;gap:10px;}
+.mx b em{font-style:normal;font-size:.7rem;color:var(--muted-2);font-weight:700;letter-spacing:.06em;}
+.mx p{font-size:.86rem;color:var(--muted);margin-top:8px;line-height:1.5;}
+.arch{background:#081c33;border-radius:var(--r-xl);padding:clamp(28px,4vw,52px);color:#fff;}
+.arch h3{color:#fff;margin-bottom:26px;}
+.arch-diagram{display:grid;gap:12px;font-family:var(--ff-head);}
+.arch-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.anode{border:1px solid rgba(127,193,255,.35);border-radius:11px;padding:13px 16px;text-align:center;font-size:.85rem;font-weight:600;background:rgba(127,193,255,.06);}
+.anode small{display:block;font-weight:500;font-size:.7rem;color:rgba(214,232,250,.55);margin-top:3px;}
+.anode.hub{background:#1b4dff;border-color:#1b4dff;grid-column:1/-1;padding:18px;}
+.aconn{text-align:center;color:rgba(127,193,255,.6);font-size:.75rem;letter-spacing:.15em;}
+.phase{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.phase:last-child{border-bottom:none;}
+.phase .pw{font-family:var(--ff-head);font-weight:700;color:#1b4dff;font-size:.9rem;white-space:nowrap;}
+.phase h4{margin-bottom:6px;}
+.phase p{color:var(--muted);font-size:.95rem;max-width:66ch;}
+.sla-band{background:#081c33;color:#fff;border-radius:var(--r-xl);padding:clamp(30px,4vw,50px);display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+.sla-band b{display:block;font-family:var(--ff-head);font-size:1.5rem;color:#7fc1ff;}
+.sla-band span{font-size:.85rem;color:rgba(214,232,250,.65);}
+@media (max-width:760px){.sla-band{grid-template-columns:repeat(2,1fr);}}
+a{color:inherit;}a:hover{color:var(--primary);}
+.erp-calc{background:#0b2440;border:1px solid rgba(127,193,255,.25);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px rgba(2,10,20,.5);}
+.ctabs{display:flex;background:#061426;padding:10px 10px 0;gap:4px;overflow-x:auto;}
+.ctab{font-family:var(--ff-head);font-weight:600;font-size:.74rem;color:rgba(214,232,250,.55);padding:10px 15px;border-radius:10px 10px 0 0;cursor:pointer;background:transparent;border:none;white-space:nowrap;}
+.ctab.on{background:#0b2440;color:#fff;}
+.cbody{padding:22px;display:none;}
+.cbody.on{display:block;}
+.crow2{display:grid;grid-template-columns:1fr 120px;gap:10px;align-items:center;margin-bottom:11px;font-size:.8rem;color:rgba(214,232,250,.75);font-family:var(--ff-head);}
+.crow2 input{background:#061426;border:1px solid rgba(127,193,255,.3);border-radius:9px;color:#fff;padding:9px 12px;font-family:ui-monospace,Menlo,monospace;font-size:.85rem;width:100%;}
+.crow2 input:focus{outline:none;border-color:#7fc1ff;}
+.cres{margin-top:14px;background:#061426;border:1px solid rgba(127,193,255,.25);border-radius:12px;padding:13px 16px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+.cres span{font-size:.66rem;color:rgba(214,232,250,.6);letter-spacing:.06em;font-family:var(--ff-head);font-weight:600;}
+.cres b{font-family:ui-monospace,Menlo,monospace;font-size:1.25rem;color:#7dffa8;white-space:nowrap;}
+.cnote{font-size:.64rem;color:rgba(214,232,250,.45);margin-top:10px;font-family:var(--ff-head);}
+.erp-w .eyebrow{font-family:ui-monospace,Menlo,Consolas,monospace;letter-spacing:.18em;text-transform:uppercase;}
+.erp-w .eyebrow::before{content:"// ";opacity:.5;}
+.erp-w .bg-soft{background:#f2f6fb;}
+</style>
+</head>
+<body class="erp-w">
+<header id="site-header"></header>
+
+<section class="erp-hero" data-screen-label="ERP Hero">
+  <div class="container-wide"><div class="split" style="align-items:center;">
+    <div data-reveal>
+      <span class="erp-eyebrow" data-sq="Platforma ERP · Sistemi qendror" data-en="ERP Platform · The central system">Platforma ERP · Sistemi qendror</span>
+      <h1 data-sq="Një burim i vetëm i së vërtetës për gjithë biznesin" data-en="A single source of truth for the whole business">Një burim i vetëm i së vërtetës për gjithë biznesin</h1>
+      <p class="lead mt-m" data-sq="Jo 12 programe të lidhura me eksporte Excel-i — një platformë me 12 module mbi një model të vetëm të dhënash, ku çdo transaksion regjistrohet një herë dhe raportohet kudo, në kohë reale." data-en="Not 12 programs glued together with Excel exports — one platform with 12 modules on a single data model, where every transaction is recorded once and reported everywhere, in real time.">Jo 12 programe të lidhura me eksporte Excel-i — një platformë me 12 module mbi një model të vetëm të dhënash, ku çdo transaksion regjistrohet një herë dhe raportohet kudo, në kohë reale.</p>
+      <div class="btn-row mt-l">
+        <a class="btn btn-primary btn-lg" href="contact.html" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a>
+        <a class="btn btn-outline-light btn-lg" href="#arkitektura" data-sq="Shiko arkitekturën" data-en="See the architecture">Shiko arkitekturën</a>
+      </div>
+    </div>
+    <div class="erp-calc" data-reveal data-reveal-delay="2">
+      <div class="ctabs">
+        <button class="ctab on" data-ct="roi">ROI</button>
+        <button class="ctab" data-ct="marzh" data-sq="Marzhi" data-en="Margin">Marzhi</button>
+        <button class="ctab" data-ct="tvsh">TVSH</button>
+        <button class="ctab" data-ct="paga" data-sq="Paga" data-en="Payroll">Paga</button>
+      </div>
+      <div class="cbody on" id="cb-roi">
+        <div class="crow2"><span data-sq="Orë pune manuale / muaj" data-en="Manual work hours / month">Orë pune manuale / muaj</span><input type="number" id="roi-h" value="120" min="0"></div>
+        <div class="crow2"><span data-sq="Kosto mesatare / orë (€)" data-en="Average cost / hour (€)">Kosto mesatare / orë (€)</span><input type="number" id="roi-c" value="9" min="0"></div>
+        <div class="crow2"><span data-sq="Sa % automatizohet me ERP" data-en="% automated by the ERP">Sa % automatizohet me ERP</span><input type="number" id="roi-p" value="60" min="0" max="100"></div>
+        <div class="cres"><span data-sq="KURSIMI VJETOR" data-en="ANNUAL SAVING">KURSIMI VJETOR</span><b id="roi-out">7,776 €</b></div>
+        <p class="cnote" data-sq="Vlerësim orientues — në demo e llogarisim me proceset e tua reale." data-en="Indicative estimate — in the demo we calculate it on your real processes.">Vlerësim orientues — në demo e llogarisim me proceset e tua reale.</p>
+      </div>
+      <div class="cbody" id="cb-marzh">
+        <div class="crow2"><span data-sq="Çmimi i shitjes (€)" data-en="Selling price (€)">Çmimi i shitjes (€)</span><input type="number" id="mg-p" value="120" min="0"></div>
+        <div class="crow2"><span data-sq="Kostoja e produktit (€)" data-en="Product cost (€)">Kostoja e produktit (€)</span><input type="number" id="mg-c" value="78" min="0"></div>
+        <div class="cres"><span data-sq="MARZHI BRUTO" data-en="GROSS MARGIN">MARZHI BRUTO</span><b id="mg-out">35.0% · 42 €</b></div>
+        <p class="cnote" data-sq="Në ERP, kontrolli i marzhit ekzekutohet para konfirmimit të çdo porosie." data-en="In the ERP, the margin guard runs before every order is confirmed.">Në ERP, kontrolli i marzhit ekzekutohet para konfirmimit të çdo porosie.</p>
+      </div>
+      <div class="cbody" id="cb-tvsh">
+        <div class="crow2"><span data-sq="Shuma pa TVSH (€)" data-en="Amount excl. VAT (€)">Shuma pa TVSH (€)</span><input type="number" id="tv-n" value="1000" min="0"></div>
+        <div class="crow2"><span data-sq="Norma e TVSH-së (%)" data-en="VAT rate (%)">Norma e TVSH-së (%)</span><input type="number" id="tv-r" value="18" min="0" max="100"></div>
+        <div class="cres"><span data-sq="TVSH + TOTALI" data-en="VAT + TOTAL">TVSH + TOTALI</span><b id="tv-out">180 € · 1,180 €</b></div>
+        <p class="cnote" data-sq="Moduli i financave e llogarit dhe e raporton TVSH-në automatikisht." data-en="The finance module calculates and reports VAT automatically.">Moduli i financave e llogarit dhe e raporton TVSH-në automatikisht.</p>
+      </div>
+      <div class="cbody" id="cb-paga">
+        <div class="crow2"><span data-sq="Paga bruto mujore (€)" data-en="Gross monthly salary (€)">Paga bruto mujore (€)</span><input type="number" id="pg-b" value="800" min="0"></div>
+        <div class="cres"><span data-sq="NETO · KONTRIBUTET · TATIMI" data-en="NET · CONTRIBUTIONS · TAX">NETO · KONTRIBUTET · TATIMI</span><b id="pg-out">—</b></div>
+        <p class="cnote" data-sq="Sipas normave të Kosovës (5% kontribut, tatim progresiv 0/4/8/10%) — moduli HR & Pagat i mban gjithmonë të përditësuara." data-en="Kosovo rates (5% contribution, progressive 0/4/8/10% tax) — the HR & Payroll module keeps them always current.">Sipas normave të Kosovës (5% kontribut, tatim progresiv 0/4/8/10%) — moduli HR & Pagat i mban gjithmonë të përditësuara.</p>
+      </div>
+    </div>
+  </div>
+  <div class="kpi-strip" data-reveal data-reveal-delay="3">
+    <div class="kpi"><b>12</b><span data-sq="Module mbi një bazë të dhënash" data-en="Modules on one database">Module mbi një bazë të dhënash</span></div>
+    <div class="kpi"><b>99.9%</b><span data-sq="Disponueshmëri me SLA" data-en="SLA-backed availability">Disponueshmëri me SLA</span></div>
+    <div class="kpi"><b>RPO 15 min</b><span data-sq="Backup i vazhdueshëm i të dhënave" data-en="Continuous data backup">Backup i vazhdueshëm i të dhënave</span></div>
+    <div class="kpi"><b>24/7</b><span data-sq="Monitorim & hypercare" data-en="Monitoring & hypercare">Monitorim & hypercare</span></div>
+  </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="12 modulet" data-en="The 12 modules">12 modulet</span>
+      <h2 data-sq="Çdo modul, i thelluar në procesin që mbulon" data-en="Every module goes deep on the process it owns">Çdo modul, i thelluar në procesin që mbulon</h2>
+    </div>
+    <div class="mod-x">
+      <div class="mx" data-reveal><b><em>01</em><span data-sq="Financa" data-en="Finance">Financa</span></b><p data-sq="Libër kryesor me hyrje të dyfishtë, multi-valutë me rivlerësim, TVSH & raportim sipas standardeve lokale, mbyllje mujore me checklist të automatizuar." data-en="Double-entry general ledger, multi-currency with revaluation, VAT & local statutory reporting, month-end close with an automated checklist.">Libër kryesor me hyrje të dyfishtë, multi-valutë me rivlerësim, TVSH & raportim sipas standardeve lokale, mbyllje mujore me checklist të automatizuar.</p></div>
+      <div class="mx" data-reveal><b><em>02</em>CRM</b><p data-sq="Pipeline shitjesh me faza të konfigurueshme, historik 360° i klientit nga çdo modul, oferta që kthehen në porosi me një klik, SLA për përgjigje." data-en="Sales pipeline with configurable stages, a 360° customer history drawn from every module, quotes that convert to orders in one click, response SLAs.">Pipeline shitjesh me faza të konfigurueshme, historik 360° i klientit nga çdo modul, oferta që kthehen në porosi me një klik, SLA për përgjigje.</p></div>
+      <div class="mx" data-reveal><b><em>03</em><span data-sq="Prodhimi" data-en="Manufacturing">Prodhimi</span></b><p data-sq="BOM shumënivelëshe me versione, planifikim MRP nga porositë dhe parashikimi, urdhra pune me kosto reale për njësi, gjurmim i skarcitetit." data-en="Multi-level versioned BOMs, MRP planning driven by orders and forecast, work orders with true per-unit costing, scrap tracking.">BOM shumënivelëshe me versione, planifikim MRP nga porositë dhe parashikimi, urdhra pune me kosto reale për njësi, gjurmim i skarcitetit.</p></div>
+      <div class="mx" data-reveal><b><em>04</em><span data-sq="Operacionet" data-en="Operations">Operacionet</span></b><p data-sq="Rrjedha pune të konfigurueshme me aprovime shumë-nivelëshe, matrica përgjegjësish, KPI operative me alarme kur devijon procesi." data-en="Configurable workflows with multi-level approvals, responsibility matrices, operational KPIs with alerts when a process drifts.">Rrjedha pune të konfigurueshme me aprovime shumë-nivelëshe, matrica përgjegjësish, KPI operative me alarme kur devijon procesi.</p></div>
+      <div class="mx" data-reveal><b><em>05</em><span data-sq="Inventari" data-en="Inventory">Inventari</span></b><p data-sq="Libër stoku në kohë reale me kosto mesatare të lëvizshme ose FIFO, lote & numra serialë, rezervime ATP, numërim ciklik sipas klasifikimit ABC." data-en="A real-time stock ledger with moving-average or FIFO costing, lots & serials, ATP reservations, ABC-driven cycle counting.">Libër stoku në kohë reale me kosto mesatare të lëvizshme ose FIFO, lote & numra serialë, rezervime ATP, numërim ciklik sipas klasifikimit ABC.</p></div>
+      <div class="mx" data-reveal><b><em>06</em><span data-sq="Shitjet" data-en="Sales">Shitjet</span></b><p data-sq="Çmimore shumë-nivelëshe për klientë e kanale, kontrolle marzhi para konfirmimit, porosi B2B me limite krediti dhe bllokime automatike." data-en="Multi-tier price lists per customer and channel, margin guards before confirmation, B2B orders with credit limits and automatic holds.">Çmimore shumë-nivelëshe për klientë e kanale, kontrolle marzhi para konfirmimit, porosi B2B me limite krediti dhe bllokime automatike.</p></div>
+      <div class="mx" data-reveal><b><em>07</em><span data-sq="HR & Pagat" data-en="HR & Payroll">HR & Pagat</span></b><p data-sq="Llogaritje pagash sipas legjislacionit me kontribute e tatime, prezencë nga aplikacioni mobile, pushime me aprovime, dosje digjitale e punonjësit." data-en="Statutory payroll with contributions and taxes, attendance from the mobile app, leave with approvals, a digital employee file.">Llogaritje pagash sipas legjislacionit me kontribute e tatime, prezencë nga aplikacioni mobile, pushime me aprovime, dosje digjitale e punonjësit.</p></div>
+      <div class="mx" data-reveal><b><em>08</em><span data-sq="Logjistika" data-en="Logistics">Logjistika</span></b><p data-sq="Planifikim dërgesash me konsolidim, etiketa & manifeste transportuesish përmes API, gjurmim statusesh dhe kosto për dërgesë." data-en="Shipment planning with consolidation, carrier labels & manifests via API, status tracking and per-shipment costing.">Planifikim dërgesash me konsolidim, etiketa & manifeste transportuesish përmes API, gjurmim statusesh dhe kosto për dërgesë.</p></div>
+      <div class="mx" data-reveal><b><em>09</em><span data-sq="Blerjet" data-en="Purchasing">Blerjet</span></b><p data-sq="Kërkesa → RFQ → urdhërblerje me aprovime sipas vlerës, vlerësim furnitorësh me lead-time real, three-way matching me faturat." data-en="Requisition → RFQ → PO with value-based approvals, supplier scoring on real lead times, three-way matching against invoices.">Kërkesa → RFQ → urdhërblerje me aprovime sipas vlerës, vlerësim furnitorësh me lead-time real, three-way matching me faturat.</p></div>
+      <div class="mx" data-reveal><b><em>10</em>E-Commerce</b><p data-sq="Sinkronizim dy-drejtimësh me Shopify & Shopware — stoku, çmimet, porositë dhe kthimet — me radhë të qëndrueshme mesazhesh, pa mbishitje." data-en="Two-way sync with Shopify & Shopware — stock, prices, orders and returns — over durable message queues, no overselling.">Sinkronizim dy-drejtimësh me Shopify & Shopware — stoku, çmimet, porositë dhe kthimet — me radhë të qëndrueshme mesazhesh, pa mbishitje.</p></div>
+      <div class="mx" data-reveal><b><em>11</em><span data-sq="Marketingu" data-en="Marketing">Marketingu</span></b><p data-sq="Segmentim klientësh mbi të dhënat reale të blerjeve, fushata me matje të kthimit deri te fatura, integrim me platformat e email-it." data-en="Customer segmentation on real purchase data, campaigns measured down to the invoice, email-platform integrations.">Segmentim klientësh mbi të dhënat reale të blerjeve, fushata me matje të kthimit deri te fatura, integrim me platformat e email-it.</p></div>
+      <div class="mx" data-reveal><b><em>12</em>POS</b><p data-sq="Pika e shitjes si modul natyral i platformës — offline-first, me sinkronizim event-based dhe mbyllje arke që kalon direkt në financa." data-en="The point of sale as a native module — offline-first, with event-based sync and till closings that post straight to finance.">Pika e shitjes si modul natyral i platformës — offline-first, me sinkronizim event-based dhe mbyllje arke që kalon direkt në financa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft" id="arkitektura">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Arkitektura" data-en="Architecture">Arkitektura</span>
+      <h2 data-sq="Modular Monolith — modulet ndahen, të dhënat jo" data-en="Modular Monolith — modules separate, data doesn't">Modular Monolith — modulet ndahen, të dhënat jo</h2>
+      <p class="lead" style="margin-top:18px;" data-sq="Çdo modul është një kufi i qartë me Onion/Clean Architecture dhe Vertical Slice për çdo veçori — mjaft i pavarur për t'u zhvilluar veçmas, mjaft i afërt për transaksione konsistente. Mikroshërbimet i nxjerrim vetëm aty ku ngarkesa e kërkon." data-en="Each module is a hard boundary with Onion/Clean Architecture and a Vertical Slice per feature — independent enough to evolve separately, close enough for consistent transactions. We extract microservices only where load demands it.">Çdo modul është një kufi i qartë me Onion/Clean Architecture dhe Vertical Slice për çdo veçori — mjaft i pavarur për t'u zhvilluar veçmas, mjaft i afërt për transaksione konsistente. Mikroshërbimet i nxjerrim vetëm aty ku ngarkesa e kërkon.</p>
+    </div>
+    <div class="arch" data-reveal>
+      <div class="arch-diagram">
+        <div class="arch-row"><div class="anode">Web App<small>Angular / React · TypeScript</small></div><div class="anode">Mobile<small>React Native · iOS & Android</small></div><div class="anode">POS Terminal<small>offline-first · event sync</small></div></div>
+        <div class="aconn">▼ &nbsp; RESTful API · OpenAPI · OAuth2/OIDC (IdentityServer) &nbsp; ▼</div>
+        <div class="arch-row"><div class="anode hub">Modular Monolith — ASP.NET Core / C#<small>12 module · Onion/Clean · Vertical Slice · CQRS ku vlen · Outbox për integrime</small></div></div>
+        <div class="aconn">▼</div>
+        <div class="arch-row"><div class="anode">SQL Server<small>AlwaysOn · RPO 15 min</small></div><div class="anode" data-sq-title><span data-sq="Radhë mesazhesh" data-en="Message queues">Radhë mesazhesh</span><small>Shopify · Shopware · banka · pagesa</small></div><div class="anode">Azure<small>Docker · CI/CD · IaC</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:920px;">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Implementimi" data-en="Implementation">Implementimi</span>
+      <h2 data-sq="Me faza — biznesi nuk ndalon asnjë ditë" data-en="Phased — the business never stops for a day">Me faza — biznesi nuk ndalon asnjë ditë</h2>
+    </div>
+    <div data-reveal>
+      <div class="phase"><span class="pw" data-sq="Java 1–3" data-en="Weeks 1–3">Java 1–3</span><div><h4 data-sq="Zbulim & modelim procesesh" data-en="Discovery & process modelling">Zbulim & modelim procesesh</h4><p data-sq="Hartëzojmë proceset reale — jo ato në letër — dhe vendosim kufijtë e moduleve, të dhënat master dhe pronarët e tyre (data governance)." data-en="We map the real processes — not the paper ones — and set module boundaries, master data and its owners (data governance).">Hartëzojmë proceset reale — jo ato në letër — dhe vendosim kufijtë e moduleve, të dhënat master dhe pronarët e tyre (data governance).</p></div></div>
+      <div class="phase"><span class="pw" data-sq="Java 4–8" data-en="Weeks 4–8">Java 4–8</span><div><h4 data-sq="Konfigurim & migrim i të dhënave" data-en="Configuration & data migration">Konfigurim & migrim i të dhënave</h4><p data-sq="Plani i llogarive, çmimoret, artikujt dhe saldot hapëse migrohen me skripta të përsëritshëm e të verifikueshëm — provohen sa herë duhet para go-live." data-en="Chart of accounts, price lists, items and opening balances migrate via repeatable, verifiable scripts — rehearsed as many times as needed before go-live.">Plani i llogarive, çmimoret, artikujt dhe saldot hapëse migrohen me skripta të përsëritshëm e të verifikueshëm — provohen sa herë duhet para go-live.</p></div></div>
+      <div class="phase"><span class="pw" data-sq="Java 9–12" data-en="Weeks 9–12">Java 9–12</span><div><h4 data-sq="UAT me skenarë realë" data-en="UAT with real scenarios">UAT me skenarë realë</h4><p data-sq="Përdoruesit kyç ekzekutojnë muajin e tyre real në mjedisin UAT — nga porosia te mbyllja — me kritere kalimi të matshme, jo 'na duket në rregull'." data-en="Key users run their actual month in UAT — order to close — against measurable exit criteria, not 'looks fine to us'.">Përdoruesit kyç ekzekutojnë muajin e tyre real në mjedisin UAT — nga porosia te mbyllja — me kritere kalimi të matshme, jo 'na duket në rregull'.</p></div></div>
+      <div class="phase"><span class="pw">Go-live</span><div><h4 data-sq="Kalim i kontrolluar" data-en="A controlled cutover">Kalim i kontrolluar</h4><p data-sq="Cutover me plan orar për orë, rollback i gatshëm, dhe ekipi ynë prezent — fizikisht ose live — ditën e parë të punës." data-en="An hour-by-hour cutover plan, a ready rollback, and our team present — on site or live — for the first working day.">Cutover me plan orar për orë, rollback i gatshëm, dhe ekipi ynë prezent — fizikisht ose live — ditën e parë të punës.</p></div></div>
+      <div class="phase"><span class="pw">Hypercare</span><div><h4 data-sq="30 ditë hypercare, pastaj SLA" data-en="30 days of hypercare, then SLA">30 ditë hypercare, pastaj SLA</h4><p data-sq="Muajin e parë reagojmë brenda orës. Pastaj kalojmë në SLA të rregullt me monitorim 24/7, patch-e të planifikuara dhe raport mujor shëndeti." data-en="For the first month we respond within the hour. Then a standing SLA with 24/7 monitoring, scheduled patching and a monthly health report.">Muajin e parë reagojmë brenda orës. Pastaj kalojmë në SLA të rregullt me monitorim 24/7, patch-e të planifikuara dhe raport mujor shëndeti.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container-wide">
+    <div class="sla-band" data-reveal>
+      <div><b>99.9%</b><span data-sq="Uptime me SLA kontraktual" data-en="Contractual SLA uptime">Uptime me SLA kontraktual</span></div>
+      <div><b>RPO 15'/RTO 4h</b><span data-sq="Rikuperim i testuar i fatkeqësive" data-en="Tested disaster recovery">Rikuperim i testuar i fatkeqësive</span></div>
+      <div><b>DEV·UAT·PROD</b><span data-sq="Tri mjedise, release të kontrolluara" data-en="Three environments, controlled releases">Tri mjedise, release të kontrolluara</span></div>
+      <div><b>RBAC</b><span data-sq="Qasje me role përmes IdentityServer, audit i plotë" data-en="Role-based access via IdentityServer, full audit">Qasje me role përmes IdentityServer, audit i plotë</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal><span class="eyebrow" data-sq="Të lidhura" data-en="Related">Të lidhura</span><h2 data-sq="Platforma që flasin me ERP-në" data-en="Platforms that talk to the ERP">Platforma që flasin me ERP-në</h2></div>
+    <div class="grid cols-3"><a class="related-card" href="service-pos.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="9" rx="2"/><path d="M8 8h8M6 13v7h12v-7M10 17h4"/></svg></span><div><b data-sq="Sistem POS" data-en="POS System">Sistem POS</b></div></a><a class="related-card" href="service-wms.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></span><div><b>WMS & OMS</b></div></a><a class="related-card" href="service-ai.html" data-reveal><span class="rc-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></span><div><b data-sq="Integrime AI & Cloud" data-en="AI & Cloud">Integrime AI & Cloud</b></div></a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-wide">
+    <div class="cta-band" data-reveal style="background:#081c33;">
+      <h2 data-sq="Sa i copëtuar është sistemi yt sot?" data-en="How fragmented is your system today?">Sa i copëtuar është sistemi yt sot?</h2>
+      <p data-sq="Na trego proceset — të kthejmë një vlerësim arkitekture dhe një plan implementimi me faza, falas." data-en="Show us your processes — we'll return an architecture assessment and a phased implementation plan, free.">Na trego proceset — të kthejmë një vlerësim arkitekture dhe një plan implementimi me faza, falas.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:32px;">
+        <a class="btn btn-primary btn-lg" href="contact.html" data-sq="Kërko demo" data-en="Request a demo">Kërko demo</a>
+        <a class="btn btn-outline-light btn-lg" href="tel:+38348331333">+383 48 331 333</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer id="site-footer"></footer>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+  function $(id){return document.getElementById(id);}
+  function num(id){var v=parseFloat($(id).value);return isNaN(v)?0:v;}
+  function fmt(n){return n.toLocaleString('en-US',{maximumFractionDigits:0});}
+  document.querySelectorAll('.ctab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.ctab').forEach(function(x){x.classList.remove('on');});
+      document.querySelectorAll('.cbody').forEach(function(x){x.classList.remove('on');});
+      t.classList.add('on'); $('cb-'+t.getAttribute('data-ct')).classList.add('on');
+    });
+  });
+  function calc(){
+    $('roi-out').textContent=fmt(num('roi-h')*num('roi-c')*12*(num('roi-p')/100))+' €';
+    var p=num('mg-p'),c=num('mg-c'),m=p>0?((p-c)/p*100):0;
+    $('mg-out').textContent=m.toFixed(1)+'% · '+fmt(p-c)+' €';
+    var n=num('tv-n'),r=num('tv-r'),t=n*r/100;
+    $('tv-out').textContent=fmt(t)+' € · '+fmt(n+t)+' €';
+    var b=num('pg-b'),k=b*0.05,tb=b-k,tax=0;
+    tax+=Math.max(0,Math.min(tb,80)-0)*0;
+    tax+=Math.max(0,Math.min(tb,250)-80)*0.04;
+    tax+=Math.max(0,Math.min(tb,450)-250)*0.08;
+    tax+=Math.max(0,tb-450)*0.10;
+    $('pg-out').textContent=fmt(tb-tax)+' € · '+fmt(k)+' € · '+fmt(tax)+' €';
+  }
+  document.querySelectorAll('.cbody input').forEach(function(i){i.addEventListener('input',calc);});
+  calc();
+})();
+</script>
+</body>
+</html>
