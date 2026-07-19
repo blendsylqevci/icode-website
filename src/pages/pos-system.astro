@@ -24,7 +24,7 @@ import Base from '../layouts/Base.astro';
         <div class="pos-stage">
           <div class="bill" id="bill">
             <div class="mode-tabs"><button class="mtab on" data-mode="market">MARKET</button><button class="mtab" data-mode="rest" data-sq="RESTORANT" data-en="RESTAURANT">RESTORANT</button><span class="mtab mtab-more" data-sq="+ TJERA" data-en="+ MORE">+ TJERA</span></div>
-            <div class="mode-note" data-sq="Ofrojmë edhe POS për hotele, farmaci, servise, bar-kafe etj. — na pyet." data-en="We also offer POS for hotels, pharmacies, workshops, cafés and more — ask us.">Ofrojmë edhe POS për hotele, farmaci, servise, bar-kafe etj. — na pyet.</div>
+            <div class="mode-note" data-sq="Demo interaktive — klikoji MARKET / RESTORANT për t’i provuar. Ofrojmë edhe POS për hotele, farmaci, servise, bar-kafe etj." data-en="Interactive demo — click MARKET / RESTAURANT to try them. We also offer POS for hotels, pharmacies, workshops, cafés and more.">Demo interaktive — klikoji MARKET / RESTORANT për t’i provuar. Ofrojmë edhe POS për hotele, farmaci, servise, bar-kafe etj.</div>
             <div id="v-rest" hidden>
               <div id="floor-v">
                 <div class="bt" data-sq="ZGJIDH TAVOLINËN" data-en="PICK A TABLE">ZGJIDH TAVOLINËN</div>
@@ -247,6 +247,12 @@ a{color:inherit;}a:hover{color:var(--primary);}
 .mode-tabs{display:flex;gap:8px;margin-bottom:12px;}
 .mtab{flex:1;font-family:var(--ff-head);font-weight:700;font-size:.72rem;letter-spacing:.08em;padding:10px 0;border:1.5px solid #e0e0e4;border-radius:10px;background:#fafafa;color:#555;cursor:pointer;transition:.2s;}
 .mtab.on{background:#0e0e10;color:#7dffa8;border-color:#0e0e10;}
+.mtab[data-mode]{position:relative;}
+.mtab[data-mode]:not(.on){animation:tabHint 3.2s var(--ease) infinite;}
+.mtab[data-mode]:not(.on)::after{content:'';position:absolute;top:-4px;right:-4px;width:9px;height:9px;border-radius:50%;background:#1b4dff;animation:tabDot 1.8s infinite;}
+@keyframes tabHint{0%,72%,100%{transform:translateY(0);border-color:#e0e0e4;box-shadow:none;}80%{transform:translateY(-3px);border-color:#1b4dff;box-shadow:0 6px 16px rgba(27,77,255,.16);}90%{transform:translateY(0);}}
+@keyframes tabDot{0%,100%{box-shadow:0 0 0 0 rgba(27,77,255,.45);}50%{box-shadow:0 0 0 6px rgba(27,77,255,0);}}
+@media (prefers-reduced-motion:reduce){.mtab[data-mode]:not(.on){animation:none;}.mtab[data-mode]:not(.on)::after{animation:none;}}
 .mtab-more{flex:0 0 auto;display:flex;align-items:center;padding:10px 11px;font-size:.58rem;color:#888;background:#fff;border-style:dashed;cursor:default;}
 .mtab-more:hover{border-color:#e0e0e4;color:#888;}
 .mode-note{font-family:var(--ff-head);font-size:.58rem;color:#999;text-align:center;margin:-4px 0 12px;letter-spacing:.02em;}

@@ -290,6 +290,17 @@ body.menu-open .nav-overlay{opacity:1;visibility:visible;}
 .logo-wall-4{grid-template-columns:repeat(4,1fr);gap:44px 24px;}
 .logo-wall-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:30px 56px;}
 .marquee .logo-item{font-family:var(--ff-head);font-weight:700;font-size:1.35rem;color:#6e6e76;letter-spacing:-.02em;white-space:nowrap;}
+/* two paths */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.6vw,36px);}
+@media (max-width:860px){.path-grid{grid-template-columns:1fr;}}
+.path-card{background:#fff;border:1px solid var(--line);padding:clamp(28px,3.4vw,46px);display:flex;flex-direction:column;align-items:flex-start;gap:16px;}
+.path-card .path-k{font-family:var(--ff-head);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);}
+.path-card h3{font-size:clamp(1.25rem,1.7vw,1.55rem);letter-spacing:-.02em;text-wrap:pretty;}
+.path-card p{color:var(--muted);}
+.path-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:2px 0 8px;padding:0;}
+.path-list li{position:relative;padding-left:26px;font-family:var(--ff-head);font-weight:500;font-size:.95rem;}
+.path-list li::before{content:'';position:absolute;left:0;top:4px;width:14px;height:14px;border:2px solid var(--primary);border-top:none;border-right:none;transform:rotate(-48deg) scaleY(.62);}
+.path-card .btn{margin-top:auto;}
 @media (max-width:900px){.logo-wall{grid-template-columns:repeat(3,1fr);gap:30px 18px;}}
 @media (max-width:520px){.logo-wall{grid-template-columns:repeat(2,1fr);}}
 

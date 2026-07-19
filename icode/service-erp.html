@@ -44,6 +44,9 @@
 .arch h3{color:#fff;margin-bottom:26px;}
 .arch-diagram{display:grid;gap:12px;font-family:var(--ff-head);}
 .arch-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.arch-row.r4{grid-template-columns:repeat(4,1fr);}
+@media (max-width:760px){.arch-row,.arch-row.r4{grid-template-columns:1fr 1fr;}.anode.hub{grid-column:1/-1;}}
+@media (max-width:440px){.arch-row,.arch-row.r4{grid-template-columns:1fr;}}
 .anode{border:1px solid rgba(127,193,255,.35);border-radius:11px;padding:13px 16px;text-align:center;font-size:.85rem;font-weight:600;background:rgba(127,193,255,.06);}
 .anode small{display:block;font-weight:500;font-size:.7rem;color:rgba(214,232,250,.55);margin-top:3px;}
 .anode.hub{background:#1b4dff;border-color:#1b4dff;grid-column:1/-1;padding:18px;}
@@ -139,9 +142,9 @@ a{color:inherit;}a:hover{color:var(--primary);}
       <h2 data-sq="Çdo modul, i thelluar në procesin që mbulon" data-en="Every module goes deep on the process it owns">Çdo modul, i thelluar në procesin që mbulon</h2>
     </div>
     <div class="mod-x">
-      <div class="mx" data-reveal><b><em>01</em><span data-sq="Financa" data-en="Finance">Financa</span></b><p data-sq="Libër kryesor me hyrje të dyfishtë, multi-valutë me rivlerësim, TVSH & raportim sipas standardeve lokale, mbyllje mujore me checklist të automatizuar." data-en="Double-entry general ledger, multi-currency with revaluation, VAT & local statutory reporting, month-end close with an automated checklist.">Libër kryesor me hyrje të dyfishtë, multi-valutë me rivlerësim, TVSH & raportim sipas standardeve lokale, mbyllje mujore me checklist të automatizuar.</p></div>
+      <div class="mx" data-reveal><b><em>01</em><span data-sq="Financa & Kontabiliteti" data-en="Finance & Accounting">Financa & Kontabiliteti</span></b><p data-sq="Kontabilitet i plotë: libër kryesor me hyrje të dyfishtë, libra blerjeje e shitjeje, bilanci, PASH & cash-flow, amortizimi, multi-valutë me rivlerësim, TVSH & deklarimet lokale — dhe e-fatura me fiskalizim digjital, gati për SEF." data-en="Complete accounting: double-entry general ledger, purchase & sales ledgers, balance sheet, P&L & cash-flow, depreciation, multi-currency with revaluation, VAT & local filings — plus e-invoicing with digital fiscalisation, SEF-ready.">Kontabilitet i plotë: libër kryesor me hyrje të dyfishtë, libra blerjeje e shitjeje, bilanci, PASH & cash-flow, amortizimi, multi-valutë me rivlerësim, TVSH & deklarimet lokale — dhe e-fatura me fiskalizim digjital, gati për SEF.</p></div>
       <div class="mx" data-reveal><b><em>02</em>CRM</b><p data-sq="Pipeline shitjesh me faza të konfigurueshme, historik 360° i klientit nga çdo modul, oferta që kthehen në porosi me një klik, SLA për përgjigje." data-en="Sales pipeline with configurable stages, a 360° customer history drawn from every module, quotes that convert to orders in one click, response SLAs.">Pipeline shitjesh me faza të konfigurueshme, historik 360° i klientit nga çdo modul, oferta që kthehen në porosi me një klik, SLA për përgjigje.</p></div>
-      <div class="mx" data-reveal><b><em>03</em><span data-sq="Prodhimi" data-en="Manufacturing">Prodhimi</span></b><p data-sq="BOM shumënivelëshe me versione, planifikim MRP nga porositë dhe parashikimi, urdhra pune me kosto reale për njësi, gjurmim i skarcitetit." data-en="Multi-level versioned BOMs, MRP planning driven by orders and forecast, work orders with true per-unit costing, scrap tracking.">BOM shumënivelëshe me versione, planifikim MRP nga porositë dhe parashikimi, urdhra pune me kosto reale për njësi, gjurmim i skarcitetit.</p></div>
+      <div class="mx" data-reveal><b><em>03</em><span data-sq="Prodhimi" data-en="Manufacturing">Prodhimi</span></b><p data-sq="Normativat (recepturat) & BOM shumënivelëshe me versione, planifikim MRP nga porositë dhe parashikimi, urdhra pune me kosto reale për njësi, gjurmim i skarcitetit." data-en="Recipe norms & multi-level versioned BOMs, MRP planning driven by orders and forecast, work orders with true per-unit costing, scrap tracking.">Normativat (recepturat) & BOM shumënivelëshe me versione, planifikim MRP nga porositë dhe parashikimi, urdhra pune me kosto reale për njësi, gjurmim i skarcitetit.</p></div>
       <div class="mx" data-reveal><b><em>04</em><span data-sq="Operacionet" data-en="Operations">Operacionet</span></b><p data-sq="Rrjedha pune të konfigurueshme me aprovime shumë-nivelëshe, matrica përgjegjësish, KPI operative me alarme kur devijon procesi." data-en="Configurable workflows with multi-level approvals, responsibility matrices, operational KPIs with alerts when a process drifts.">Rrjedha pune të konfigurueshme me aprovime shumë-nivelëshe, matrica përgjegjësish, KPI operative me alarme kur devijon procesi.</p></div>
       <div class="mx" data-reveal><b><em>05</em><span data-sq="Inventari" data-en="Inventory">Inventari</span></b><p data-sq="Libër stoku në kohë reale me kosto mesatare të lëvizshme ose FIFO, lote & numra serialë, rezervime ATP, numërim ciklik sipas klasifikimit ABC." data-en="A real-time stock ledger with moving-average or FIFO costing, lots & serials, ATP reservations, ABC-driven cycle counting.">Libër stoku në kohë reale me kosto mesatare të lëvizshme ose FIFO, lote & numra serialë, rezervime ATP, numërim ciklik sipas klasifikimit ABC.</p></div>
       <div class="mx" data-reveal><b><em>06</em><span data-sq="Shitjet" data-en="Sales">Shitjet</span></b><p data-sq="Çmimore shumë-nivelëshe për klientë e kanale, kontrolle marzhi para konfirmimit, porosi B2B me limite krediti dhe bllokime automatike." data-en="Multi-tier price lists per customer and channel, margin guards before confirmation, B2B orders with credit limits and automatic holds.">Çmimore shumë-nivelëshe për klientë e kanale, kontrolle marzhi para konfirmimit, porosi B2B me limite krediti dhe bllokime automatike.</p></div>
@@ -151,6 +154,26 @@ a{color:inherit;}a:hover{color:var(--primary);}
       <div class="mx" data-reveal><b><em>10</em>E-Commerce</b><p data-sq="Sinkronizim dy-drejtimësh me Shopify & Shopware — stoku, çmimet, porositë dhe kthimet — me radhë të qëndrueshme mesazhesh, pa mbishitje." data-en="Two-way sync with Shopify & Shopware — stock, prices, orders and returns — over durable message queues, no overselling.">Sinkronizim dy-drejtimësh me Shopify & Shopware — stoku, çmimet, porositë dhe kthimet — me radhë të qëndrueshme mesazhesh, pa mbishitje.</p></div>
       <div class="mx" data-reveal><b><em>11</em><span data-sq="Marketingu" data-en="Marketing">Marketingu</span></b><p data-sq="Segmentim klientësh mbi të dhënat reale të blerjeve, fushata me matje të kthimit deri te fatura, integrim me platformat e email-it." data-en="Customer segmentation on real purchase data, campaigns measured down to the invoice, email-platform integrations.">Segmentim klientësh mbi të dhënat reale të blerjeve, fushata me matje të kthimit deri te fatura, integrim me platformat e email-it.</p></div>
       <div class="mx" data-reveal><b><em>12</em>POS</b><p data-sq="Pika e shitjes si modul natyral i platformës — offline-first, me sinkronizim event-based dhe mbyllje arke që kalon direkt në financa." data-en="The point of sale as a native module — offline-first, with event-based sync and till closings that post straight to finance.">Pika e shitjes si modul natyral i platformës — offline-first, me sinkronizim event-based dhe mbyllje arke që kalon direkt në financa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" data-screen-label="Zinxhiri A-Zh">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="Zinxhiri i vlerës" data-en="The value chain">Zinxhiri i vlerës</span>
+      <h2 data-sq="Nga blerja te klienti — në një platformë të vetme" data-en="From purchasing to the customer — on one single platform">Nga blerja te klienti — në një platformë të vetme</h2>
+      <p class="lead" style="margin-top:16px;" data-sq="Dyqani online, POS-i në dyqan, kontabiliteti, depoja me WMS & OMS dhe dërgesat me postë — jo pesë sisteme të lidhura me eksporte, por një. Çdo hap postohet vetë në kontabilitet dhe përcillet në raporte nga pika A në pikën Zh." data-en="The web shop, the in-store POS, accounting, the warehouse with WMS & OMS and courier deliveries — not five systems glued with exports, but one. Every step self-posts to accounting and flows into reports from point A to point Z.">Dyqani online, POS-i në dyqan, kontabiliteti, depoja me WMS & OMS dhe dërgesat me postë — jo pesë sisteme të lidhura me eksporte, por një. Çdo hap postohet vetë në kontabilitet dhe përcillet në raporte nga pika A në pikën Zh.</p>
+    </div>
+    <div class="arch" data-reveal>
+      <div class="arch-diagram">
+        <div class="arch-row r4"><div class="anode"><span data-sq="Blerjet" data-en="Purchasing">Blerjet</span><small data-sq="urdhërblerja te furnitori" data-en="PO to the supplier">urdhërblerja te furnitori</small></div><div class="anode"><span data-sq="WMS · Pranimi" data-en="WMS · Receiving">WMS · Pranimi</span><small data-sq="skanim, lote, afate" data-en="scanning, lots, expiry">skanim, lote, afate</small></div><div class="anode"><span data-sq="Stoku & kostoja" data-en="Stock & costing">Stoku & kostoja</span><small data-sq="në kohë reale, me normativa" data-en="real-time, with recipe norms">në kohë reale, me normativa</small></div><div class="anode"><span data-sq="Kanalet e shitjes" data-en="Sales channels">Kanalet e shitjes</span><small>E-Commerce · POS · B2B</small></div></div>
+        <div class="aconn">▼ &nbsp; <span data-sq="çdo lëvizje postohet automatikisht" data-en="every movement posts automatically">çdo lëvizje postohet automatikisht</span> &nbsp; ▼</div>
+        <div class="arch-row"><div class="anode hub"><span data-sq="ERP — Kontabiliteti i plotë" data-en="ERP — Complete accounting">ERP — Kontabiliteti i plotë</span><small data-sq="blerje · stok · shitje · arkë · pagesa · e-fatura & fiskalizim digjital — një libër i vetëm" data-en="purchases · stock · sales · till · payments · e-invoicing & digital fiscalisation — one ledger">blerje · stok · shitje · arkë · pagesa · e-fatura & fiskalizim digjital — një libër i vetëm</small></div></div>
+        <div class="aconn">▼</div>
+        <div class="arch-row"><div class="anode">OMS<small data-sq="rutimi & premtimi i porosisë (ATP)" data-en="order routing & promising (ATP)">rutimi & premtimi i porosisë (ATP)</small></div><div class="anode"><span data-sq="Posta & dërgesat" data-en="Couriers & shipping">Posta & dërgesat</span><small data-sq="etiketa, manifeste, tracking me API" data-en="labels, manifests, tracking via API">etiketa, manifeste, tracking me API</small></div><div class="anode"><span data-sq="Klienti" data-en="The customer">Klienti</span><small data-sq="fatura, njoftimet, historiku 360°" data-en="invoice, notifications, 360° history">fatura, njoftimet, historiku 360°</small></div></div>
+        <div class="aconn" style="letter-spacing:.08em;"><span data-sq="RAPORTET 360°: një zinxhir i gjurmueshëm — nga urdhërblerja te dorëzimi, A → Zh" data-en="360° REPORTING: one traceable chain — from purchase order to delivery, A → Z">RAPORTET 360°: një zinxhir i gjurmueshëm — nga urdhërblerja te dorëzimi, A → Zh</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -198,6 +221,21 @@ a{color:inherit;}a:hover{color:var(--primary);}
       <div><b>DEV·UAT·PROD</b><span data-sq="Tri mjedise, release të kontrolluara" data-en="Three environments, controlled releases">Tri mjedise, release të kontrolluara</span></div>
       <div><b>RBAC</b><span data-sq="Qasje me role përmes IdentityServer, audit i plotë" data-en="Role-based access via IdentityServer, full audit">Qasje me role përmes IdentityServer, audit i plotë</span></div>
     </div>
+  </div>
+</section>
+
+<section class="section" data-screen-label="AI i integruar">
+  <div class="container-wide">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow" data-sq="AI i integruar" data-en="Integrated AI">AI i integruar</span>
+      <h2 data-sq="Inteligjenca brenda platformës — jo një chatbot anësh" data-en="Intelligence inside the platform — not a chatbot on the side">Inteligjenca brenda platformës — jo një chatbot anësh</h2>
+    </div>
+    <div class="mod-x">
+      <div class="mx" data-reveal><b data-sq="Parashikim kërkese & stoku" data-en="Demand & stock forecasting">Parashikim kërkese & stoku</b><p data-sq="Modelet mbi historikun e shitjeve propozojnë sasi porosish dhe nivele minimale stoku — MRP ushqehet me parashikim, jo me hamendje." data-en="Models on your sales history propose order quantities and minimum stock levels — MRP runs on forecast, not guesswork.">Modelet mbi historikun e shitjeve propozojnë sasi porosish dhe nivele minimale stoku — MRP ushqehet me parashikim, jo me hamendje.</p></div>
+      <div class="mx" data-reveal data-reveal-delay="1"><b data-sq="Deteksion anomalish në libra" data-en="Anomaly detection in the ledger">Deteksion anomalish në libra</b><p data-sq="Postimet e pazakonta, çmimet jashtë kornize dhe diferencat e arkës flagohen para mbylljes mujore — jo pas auditit." data-en="Unusual postings, out-of-band prices and till variances get flagged before month-end close — not after the audit.">Postimet e pazakonta, çmimet jashtë kornize dhe diferencat e arkës flagohen para mbylljes mujore — jo pas auditit.</p></div>
+      <div class="mx" data-reveal data-reveal-delay="2"><b data-sq="Asistent raportesh" data-en="Reporting assistant">Asistent raportesh</b><p data-sq="Pyet në gjuhë natyrale — “marzhi për klientin X në Q2?” — dhe merr raportin mbi të dhënat live, me qasje sipas rolit." data-en="Ask in natural language — “margin for customer X in Q2?” — and get the report on live data, scoped to your role.">Pyet në gjuhë natyrale — “marzhi për klientin X në Q2?” — dhe merr raportin mbi të dhënat live, me qasje sipas rolit.</p></div>
+    </div>
+    <div class="center" style="margin-top:28px;" data-reveal><a class="btn btn-outline" href="service-ai.html" data-sq="Shiko integrimet AI →" data-en="See the AI integrations →">Shiko integrimet AI →</a></div>
   </div>
 </section>
 
