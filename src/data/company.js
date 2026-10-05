@@ -13,12 +13,17 @@ export const COMPANY = {
   founded: 2016,
 
   address: {
-    street: '',                // TODO: street + number, e.g. "Rr. Adem Jashari, nr. 12"
+    street: 'Rr. Adem Jashari, Flora Center, Kati III', // as on Google Maps — must match D-U-N-S
     postalCode: '60000',
     city: 'Gjilan',
     country: { sq: 'Kosovë', en: 'Kosovo' },
     countryCode: 'XK',
   },
+
+  geo: { lat: 42.4662797, lng: 21.4684537 },
+  // Google Maps place "iCode". The embed is only loaded after cookie consent.
+  mapsUrl: 'https://www.google.com/maps?ftid=0x1354f3aac8dafb2f:0x42a2942f7cd67583',
+  mapsEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d21.4684537!3d42.4662797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1354f3aac8dafb2f%3A0x42a2942f7cd67583!2siCode!5e0!3m2!1sen!2s!4v1791216930204!5m2!1sen!2s',
 
   phone: '+383 48 331 333',
   phoneHref: '+38348331333',

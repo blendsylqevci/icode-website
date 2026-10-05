@@ -11,6 +11,7 @@ import '@fontsource/plus-jakarta-sans/700.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { COMPANY } from '../data/company.js';
 
 interface Props {
@@ -41,6 +42,11 @@ const orgLd = {
     postalCode: A.postalCode,
     addressLocality: A.city,
     addressCountry: A.countryCode,
+  },
+  location: {
+    '@type': 'Place',
+    geo: { '@type': 'GeoCoordinates', latitude: COMPANY.geo.lat, longitude: COMPANY.geo.lng },
+    hasMap: COMPANY.mapsUrl,
   },
   ...(COMPANY.duns && { duns: COMPANY.duns }),
   ...(COMPANY.vatNumber && { vatID: COMPANY.vatNumber }),
@@ -82,6 +88,7 @@ const orgLd = {
   <Header />
   <slot />
   <Footer />
+  <CookieBanner />
   <script>
     import '../scripts/site.js';
   </script>

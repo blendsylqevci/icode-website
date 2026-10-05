@@ -238,7 +238,7 @@ body.menu-open .nav-overlay{opacity:1;visibility:visible;}
 .footer-bottom .links{display:flex;flex-wrap:wrap;gap:10px 24px;}
 .footer-legal{display:flex;flex-wrap:wrap;gap:6px 18px;}
 .footer-col .footer-addr{display:block;color:rgba(255,255,255,.84);padding:7px 0;font-size:.97rem;}
-.footer-bottom a:hover{color:#fff;}
+.footer-bottom a:hover,.footer-bottom button:hover{color:#fff;}
 
 /* ---------- Section heading ---------- */
 .sec-head{max-width:740px;margin-bottom:clamp(40px,5vw,60px);}
@@ -463,6 +463,16 @@ body.menu-open .nav-overlay{opacity:1;visibility:visible;}
 
 [data-lang-block]{display:none;}
 [data-lang-block].show{display:block;}
+
+/* ---------- Cookie banner ---------- */
+.cookie-banner{position:fixed;left:24px;bottom:24px;z-index:120;width:min(460px,calc(100vw - 32px));background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:22px 24px;display:grid;gap:10px;}
+.cookie-banner[hidden]{display:none;}
+.cookie-title{font-family:var(--ff-head);font-weight:600;font-size:1.02rem;}
+.cookie-text{font-size:.9rem;color:var(--muted);line-height:1.55;}
+.cookie-text a{color:var(--primary);text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+.cookie-actions .btn{flex:1 1 auto;padding:13px 18px;font-size:.9rem;}
+@media (max-width:520px){.cookie-banner{left:16px;right:16px;bottom:16px;width:auto;padding:18px;}}
 
 /* ---------- Utilities ---------- */
 .divider{height:1px;background:var(--line);border:none;}

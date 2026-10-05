@@ -26,11 +26,21 @@ const C = COMPANY;
         <div class="mt-l">
           <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5a2 2 0 012-2h2l2 5-2 1a12 12 0 006 6l1-2 5 2v2a2 2 0 01-2 2A16 16 0 014 5z"/></svg></span><div><b data-sq="Telefon" data-en="Phone">Telefon</b><a href={`tel:${C.phoneHref}`}>{C.phone}</a></div></div>
           <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><b>Email</b><a href={`mailto:${C.email}`}>{C.email}</a><br><a href={`mailto:${C.officeEmail}`}>{C.officeEmail}</a></div></div>
-          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b data-sq="Adresa" data-en="Address">Adresa</b><span data-sq={addressLine('sq')} data-en={addressLine('en')}>{addressLine('sq')}</span></div></div>
+          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b data-sq="Adresa" data-en="Address">Adresa</b><a href={C.mapsUrl} target="_blank" rel="noopener" data-sq={addressLine('sq')} data-en={addressLine('en')}>{addressLine('sq')}</a></div></div>
           <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b data-sq="Orari" data-en="Hours">Orari</b><span data-sq="Hën–Pre, 09:00–17:00" data-en="Mon–Fri, 09:00–17:00">Hën–Pre, 09:00–17:00</span></div></div>
           <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><b data-sq="Kompania" data-en="Company">Kompania</b><span>{C.legalName}{C.regNumber && <><br /><span data-sq={`NUI: ${C.regNumber}`} data-en={`Reg. no.: ${C.regNumber}`}>NUI: {C.regNumber}</span></>}</span><br /><a href="/support" data-sq="Mbështetja për aplikacionet →" data-en="App support →">Mbështetja për aplikacionet →</a></div></div>
         </div>
-        <div class="ph" data-label="[ Hartë: Gjilan, Kosovë ]" style="aspect-ratio:16/9;margin-top:28px;"></div>
+        <div class="map-embed" data-embed-src={C.mapsEmbed} data-embed-title="iCode — Google Maps">
+          <div class="map-ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <b data-sq={addressLine('sq')} data-en={addressLine('en')}>{addressLine('sq')}</b>
+            <p data-sq="Harta ngarkohet nga Google Maps, i cili vendos cookies të veta." data-en="The map is loaded from Google Maps, which sets its own cookies.">Harta ngarkohet nga Google Maps, i cili vendos cookies të veta.</p>
+            <div class="map-actions">
+              <button type="button" class="btn btn-primary" data-load-embed data-sq="Shfaq hartën" data-en="Show map">Shfaq hartën</button>
+              <a class="btn btn-outline" href={C.mapsUrl} target="_blank" rel="noopener" data-sq="Hap në Google Maps" data-en="Open in Google Maps">Hap në Google Maps</a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- form -->
@@ -81,6 +91,15 @@ const C = COMPANY;
 @media (max-width:520px){.form-row{grid-template-columns:1fr;}}
 .form-note{display:none;margin-top:18px;padding:16px 18px;background:#eaf7ef;border:1px solid #bfe6cd;border-radius:13px;color:#12713e;font-weight:600;font-family:var(--ff-head);}
 .form-note.show{display:block;}
+.map-embed{position:relative;min-height:320px;aspect-ratio:16/10;margin-top:28px;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--bg-soft);}
+.map-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.map-embed.loaded .map-ph{display:none;}
+.map-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;text-align:center;}
+.map-ph svg{width:34px;height:34px;color:var(--primary);}
+.map-ph b{font-family:var(--ff-head);font-weight:600;}
+.map-ph p{font-size:.9rem;color:var(--muted);max-width:340px;}
+.map-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:6px;}
+.map-actions .btn{padding:12px 20px;font-size:.9rem;}
 </style>
 
 <script>

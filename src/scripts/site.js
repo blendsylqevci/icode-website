@@ -1,7 +1,7 @@
 /* ============================================================
    iCode LLC — site.js
    SQ/EN i18n, reveal, counters, mobile nav, accordion,
-   utility clock, header scroll behaviour.
+   utility clock, header scroll behaviour, cookie consent.
    Header/footer are server-rendered (see src/components/).
    ============================================================ */
 (function(){
@@ -200,6 +200,55 @@
     tick(); setInterval(tick,1000);
   }
 
+  /* ---------- Cookie consent ----------
+     Only optional category is external media (Google Maps embed). Choice is
+     kept in localStorage for 12 months. [data-embed-src] boxes get their
+     iframe only while consent is given. See /cookies. */
+  var CONSENT_KEY = 'icode-consent', CONSENT_MAX_AGE = 365*864e5;
+  function readConsent(){
+    try{
+      var c = JSON.parse(localStorage.getItem(CONSENT_KEY) || 'null');
+      if(c && c.v===1 && Date.now()-c.ts < CONSENT_MAX_AGE) return c;
+    }catch(e){}
+    return null;
+  }
+  function applyConsent(c){
+    var on = !!(c && c.maps);
+    document.querySelectorAll('[data-embed-src]').forEach(function(box){
+      var frame = box.querySelector('iframe');
+      if(on && !frame){
+        frame = document.createElement('iframe');
+        frame.src = box.getAttribute('data-embed-src');
+        frame.title = box.getAttribute('data-embed-title') || '';
+        frame.loading = 'lazy';
+        frame.referrerPolicy = 'strict-origin-when-cross-origin';
+        frame.setAttribute('allowfullscreen', '');
+        box.appendChild(frame);
+      } else if(!on && frame){ frame.remove(); }
+      box.classList.toggle('loaded', on);
+    });
+  }
+  function saveConsent(maps){
+    var c = {v:1, maps:!!maps, ts:Date.now()};
+    try{ localStorage.setItem(CONSENT_KEY, JSON.stringify(c)); }catch(e){}
+    applyConsent(c);
+  }
+  function showConsent(show){
+    var b = document.getElementById('cookie-banner');
+    if(b) b.hidden = !show;
+  }
+  function initConsent(){
+    var c = readConsent();
+    applyConsent(c);
+    if(!c) showConsent(true);
+    document.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-consent]');
+      if(btn){ saveConsent(btn.getAttribute('data-consent')==='all'); showConsent(false); return; }
+      if(e.target.closest('[data-load-embed]')){ saveConsent(true); showConsent(false); return; }
+      if(e.target.closest('[data-open-consent]')){ e.preventDefault(); showConsent(true); }
+    });
+  }
+
   /* ---------- Init ---------- */
   function init(){
     initClock();
@@ -210,6 +259,7 @@
     initReveal();
     initCounters();
     initAccordion();
+    initConsent();
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init);
   else init();

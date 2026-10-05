@@ -1,0 +1,97 @@
+---
+import LegalPage from '../layouts/LegalPage.astro';
+import { COMPANY } from '../data/company.js';
+const C = COMPANY;
+const mail = `mailto:${C.privacyEmail}`;
+const gPrivacy = 'https://policies.google.com/privacy';
+const gCookies = 'https://policies.google.com/technologies/cookies';
+---
+<LegalPage
+  title="Politika e Cookies · Cookie Policy — iCode LLC"
+  description="Cilat cookies dhe ruajtje lokale përdor icode-ks.com, pse, sa kohë dhe si ta ndryshoni pëlqimin."
+  crumb={{ sq: 'Cookies', en: 'Cookies' }}
+  heading={{ sq: 'Politika e Cookies', en: 'Cookie Policy' }}
+  lead={{
+    sq: 'Cilat cookies dhe ruajtje lokale përdor icode-ks.com, pse i përdor dhe si ta ndryshoni zgjedhjen tuaj.',
+    en: 'Which cookies and local storage icode-ks.com uses, why, and how to change your choice.',
+  }}
+>
+
+<Fragment slot="sq">
+  <div class="legal-summary">
+    <p>icode-ks.com <strong>nuk përdor</strong> cookies për reklama ose analitikë. Ruajmë vetëm atë që i nevojitet faqes për të funksionuar, dhe Google Maps ngarkohet vetëm nëse e lejoni.</p>
+  </div>
+
+  <h2>1. Çfarë janë cookies</h2>
+  <p>Cookies dhe teknologjitë e ngjashme (si hapësira lokale e shfletuesit, localStorage) janë të dhëna të vogla që një uebfaqe i ruan në pajisjen tuaj.</p>
+
+  <h2>2. Çfarë përdorim</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Emri</th><th>Ofruesi</th><th>Qëllimi</th><th>Lloji</th><th>Kohëzgjatja</th></tr></thead>
+    <tbody>
+      <tr><td><code>icode-lang</code></td><td>icode-ks.com (localStorage)</td><td>Mban mend gjuhën (SQ/EN)</td><td>E domosdoshme</td><td>Derisa ta fshini</td></tr>
+      <tr><td><code>icode-consent</code></td><td>icode-ks.com (localStorage)</td><td>Mban mend zgjedhjen tuaj për cookies</td><td>E domosdoshme</td><td>12 muaj</td></tr>
+      <tr><td>Cookies të Google Maps (p.sh. <code>NID</code>, <code>AEC</code>, <code>SOCS</code>)</td><td>Google (google.com)</td><td>Shfaq hartën interaktive në faqen e kontaktit</td><td>Media e jashtme — opsionale</td><td>Sipas Google, deri në 13 muaj</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>3. Ruajtja e domosdoshme</h2>
+  <p>Gjuha dhe zgjedhja juaj për cookies ruhen vetëm në shfletuesin tuaj, nuk na dërgohen ne dhe nuk kërkojnë pëlqim, sepse duhen që faqja të funksionojë siç e kërkoni.</p>
+
+  <h2>4. Google Maps</h2>
+  <p>Harta në faqen e <a href="/contact">kontaktit</a> ngarkohet vetëm pasi të klikoni „Prano të gjitha" ose „Shfaq hartën". Kur ngarkohet, Google merr adresën tuaj IP dhe mund të vendosë cookies. Google i përpunon këto të dhëna si kontrollues i pavarur, sipas <a href={gPrivacy} target="_blank" rel="noopener">Politikës së Privatësisë së Google</a> dhe <a href={gCookies} target="_blank" rel="noopener">informacionit të Google për cookies</a>. Pa pëlqim, vendndodhjen tonë mund ta hapni gjithsesi te <a href={C.mapsUrl} target="_blank" rel="noopener">Google Maps</a>.</p>
+
+  <h2>5. Ndryshimi ose tërheqja e pëlqimit</h2>
+  <p>Mund ta ndryshoni zgjedhjen në çdo kohë:</p>
+  <p><button type="button" class="btn btn-outline" data-open-consent>Cilësimet e cookies</button></p>
+  <p>Nëse e tërhiqni pëlqimin, harta largohet nga faqja. Cookies që Google i ka vendosur tashmë mund t'i fshini nga cilësimet e shfletuesit tuaj.</p>
+
+  <h2>6. Aplikacionet mobile</h2>
+  <p>Aplikacionet tona mobile nuk përdorin cookies të uebit. Si trajtohen të dhënat në aplikacione e shpjegon <a href="/privacy">Politika e Privatësisë</a>.</p>
+
+  <h2>7. Kontakti</h2>
+  <p>Për pyetje rreth cookies: <a href={mail}>{C.privacyEmail}</a>.</p>
+</Fragment>
+
+<Fragment slot="en">
+  <div class="legal-summary">
+    <p>icode-ks.com <strong>does not use</strong> advertising or analytics cookies. We only store what the site needs to work, and Google Maps is loaded only if you allow it.</p>
+  </div>
+
+  <h2>1. What cookies are</h2>
+  <p>Cookies and similar technologies (such as your browser's local storage) are small pieces of data a website saves on your device.</p>
+
+  <h2>2. What we use</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Name</th><th>Provider</th><th>Purpose</th><th>Type</th><th>Duration</th></tr></thead>
+    <tbody>
+      <tr><td><code>icode-lang</code></td><td>icode-ks.com (localStorage)</td><td>Remembers your language (SQ/EN)</td><td>Essential</td><td>Until you clear it</td></tr>
+      <tr><td><code>icode-consent</code></td><td>icode-ks.com (localStorage)</td><td>Remembers your cookie choice</td><td>Essential</td><td>12 months</td></tr>
+      <tr><td>Google Maps cookies (e.g. <code>NID</code>, <code>AEC</code>, <code>SOCS</code>)</td><td>Google (google.com)</td><td>Shows the interactive map on the contact page</td><td>External media — optional</td><td>Per Google, up to 13 months</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>3. Essential storage</h2>
+  <p>Your language and cookie choice are stored only in your browser, are never sent to us and need no consent, because the site needs them to work the way you ask it to.</p>
+
+  <h2>4. Google Maps</h2>
+  <p>The map on our <a href="/contact">contact page</a> loads only after you click “Accept all” or “Show map”. Once it loads, Google receives your IP address and may set cookies. Google processes this data as an independent controller under the <a href={gPrivacy} target="_blank" rel="noopener">Google Privacy Policy</a> and <a href={gCookies} target="_blank" rel="noopener">Google's cookie information</a>. Without consent, you can still open our location in <a href={C.mapsUrl} target="_blank" rel="noopener">Google Maps</a>.</p>
+
+  <h2>5. Changing or withdrawing consent</h2>
+  <p>You can change your choice at any time:</p>
+  <p><button type="button" class="btn btn-outline" data-open-consent>Cookie settings</button></p>
+  <p>If you withdraw consent, the map is removed from the page. Cookies Google has already set can be deleted in your browser settings.</p>
+
+  <h2>6. Mobile apps</h2>
+  <p>Our mobile apps do not use web cookies. How data is handled in the apps is explained in our <a href="/privacy">Privacy Policy</a>.</p>
+
+  <h2>7. Contact</h2>
+  <p>Questions about cookies: <a href={mail}>{C.privacyEmail}</a>.</p>
+</Fragment>
+
+</LegalPage>
+
+<style is:global>
+.legal code{font-size:.86em;background:var(--bg-soft);border:1px solid var(--line);border-radius:6px;padding:1px 6px;}
+.legal .btn-outline{text-decoration:none;color:var(--ink);}
+</style>
