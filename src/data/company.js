@@ -43,7 +43,7 @@ export const COMPANY = {
 
   // Google Search Console "HTML tag" token (Play Console org website verification).
   // Paste only the content value, e.g. 'AbC123...'. DNS TXT verification also works.
-  googleSiteVerification: '',
+  googleSiteVerification: 'jkvIBSGQXRnO7DJzw1TvWNPpnmQvlHwtq_504OQpM-E',
 
   // Apps published under iCode's own developer accounts (shown on Support and
   // Delete-account pages). Example: { name: 'iData+', platforms: 'iOS · Android' }
