@@ -33,7 +33,7 @@ export const COMPANY = {
   privacyEmail: 'info@icode-ks.com', // consider a dedicated privacy@icode-ks.com
   hours: { sq: 'Hën–Pre, 09:00–17:00 (CET)', en: 'Mon–Fri, 09:00–17:00 (CET)' },
 
-  website: 'https://icode-ks.com',
+  website: 'https://www.icode-ks.com',
   socials: [
     'https://www.linkedin.com/company/icode-ks',
     'https://x.com/icode_ks',
