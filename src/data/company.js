@@ -6,7 +6,7 @@
 
 export const COMPANY = {
   brand: 'iCode',
-  legalName: 'iCode LLC',      // TODO: exact registered name (e.g. "iCode L.L.C." / "iCode SH.P.K.")
+  legalName: 'ICODE L.L.C.',   // as registered (D-U-N-S / Play Console developer name)
   regNumber: '',               // TODO: NUI / business registration no. (ARBK)
   vatNumber: '',               // optional: VAT / fiscal number
   duns: '',                    // optional: D-U-N-S number
