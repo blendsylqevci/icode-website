@@ -1,0 +1,148 @@
+---
+// Body of /support for one language (rendered once per lang slot).
+import { COMPANY, addressLine } from '../data/company.js';
+const { lang } = Astro.props;
+const C = COMPANY;
+const mailHref = `mailto:${C.supportEmail}?subject=${encodeURIComponent(lang === 'en' ? 'Support request' : 'Kërkesë për mbështetje')}`;
+
+const T = {
+  sq: {
+    contact: 'Na kontaktoni',
+    email: 'Email', emailSub: 'Përgjigjemi brenda 1 dite pune.',
+    phone: 'Telefon',
+    address: 'Adresa',
+    write: 'Shkruaj email',
+    before: 'Për një përgjigje më të shpejtë',
+    beforeItems: [
+      'emrin dhe versionin e aplikacionit;',
+      'modelin e pajisjes dhe versionin e sistemit (iOS / Android);',
+      'email-in e llogarisë — <strong>asnjëherë fjalëkalimin</strong>;',
+      'hapat për ta përsëritur problemin dhe pamje ekrani, nëse keni.',
+    ],
+    apps: 'Aplikacionet tona',
+    faq: 'Pyetjet e shpeshta',
+  },
+  en: {
+    contact: 'Contact us',
+    email: 'Email', emailSub: 'We reply within 1 business day.',
+    phone: 'Phone',
+    address: 'Address',
+    write: 'Send an email',
+    before: 'For a faster answer, include',
+    beforeItems: [
+      'the app name and version;',
+      'your device model and OS version (iOS / Android);',
+      'your account email — <strong>never your password</strong>;',
+      'steps to reproduce the problem and screenshots, if you have them.',
+    ],
+    apps: 'Our apps',
+    faq: 'Frequently asked questions',
+  },
+};
+
+const FAQ = [
+  {
+    q: { sq: 'Si ta fshij llogarinë time?', en: 'How do I delete my account?' },
+    a: {
+      sq: 'Në aplikacion hapni <strong>Profili / Cilësimet → Llogaria → Fshij llogarinë</strong>. Fshirjen mund ta kërkoni edhe në ueb, pa aplikacionin, te faqja <a href="/delete-account">Fshirja e llogarisë</a>.',
+      en: 'In the app, open <strong>Profile / Settings → Account → Delete account</strong>. You can also request deletion on the web, without the app, on our <a href="/delete-account">Account deletion</a> page.',
+    },
+  },
+  {
+    q: { sq: 'Kam harruar fjalëkalimin.', en: 'I forgot my password.' },
+    a: {
+      sq: 'Shtypni „Keni harruar fjalëkalimin?" në ekranin e hyrjes dhe ndiqni linkun që ju dërgojmë me email. Nëse nuk keni më qasje në atë email, na kontaktoni.',
+      en: 'Tap “Forgot password” on the sign-in screen and follow the link we email you. If you no longer have access to that email, contact us.',
+    },
+  },
+  {
+    q: { sq: 'Si ta anuloj abonimin?', en: 'How do I cancel a subscription?' },
+    a: {
+      sq: 'Abonimet e blera në aplikacion menaxhohen nga Apple ose Google. <strong>iPhone/iPad:</strong> Settings → [emri juaj] → Subscriptions. <strong>Android:</strong> Google Play → ikona e profilit → Payments &amp; subscriptions → Subscriptions. Fshirja e aplikacionit ose e llogarisë nuk e anulon abonimin.',
+      en: 'Subscriptions bought in the app are managed by Apple or Google. <strong>iPhone/iPad:</strong> Settings → [your name] → Subscriptions. <strong>Android:</strong> Google Play → profile icon → Payments &amp; subscriptions → Subscriptions. Deleting the app or your account does not cancel a subscription.',
+    },
+  },
+  {
+    q: { sq: 'Si të kërkoj rimbursim?', en: 'How do I request a refund?' },
+    a: {
+      sq: 'Blerjet në App Store i rimburson Apple te <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>. Blerjet në Google Play i rimburson Google sipas politikës së vet, nga historiku i porosive në Google Play. Për shërbimet e faturuara nga ne, na shkruani.',
+      en: 'App Store purchases are refunded by Apple at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>. Google Play purchases are refunded by Google under its policy, from your Google Play order history. For services we invoice directly, email us.',
+    },
+  },
+  {
+    q: { sq: 'Aplikacioni nuk punon si duhet.', en: 'The app isn’t working properly.' },
+    a: {
+      sq: 'Përditësoni aplikacionin në versionin e fundit, kontrolloni lidhjen me internet dhe rinisni aplikacionin. Nëse problemi vazhdon, na shkruani me detajet e listuara më lart.',
+      en: 'Update the app to the latest version, check your internet connection and restart the app. If the problem continues, email us with the details listed above.',
+    },
+  },
+  {
+    q: { sq: 'Jam klient biznesi me kontratë (ERP, POS, WMS).', en: 'I’m a business client with a contract (ERP, POS, WMS).' },
+    a: {
+      sq: 'Përdorni kanalin e mbështetjes dhe SLA-në e përcaktuar në kontratë. Nëse nuk jeni të sigurt, na shkruani me emrin e kompanisë dhe e drejtojmë kërkesën te ekipi përkatës.',
+      en: 'Use the support channel and SLA defined in your contract. If you are unsure, email us with your company name and we will route your request to the right team.',
+    },
+  },
+  {
+    q: { sq: 'Si i mbroni të dhënat e mia?', en: 'How do you protect my data?' },
+    a: {
+      sq: 'Çfarë mbledhim, pse dhe sa kohë e ruajmë e shpjegojmë te <a href="/privacy">Politika e Privatësisë</a>. Për kërkesa privatësie shkruani në <a href="mailto:' + C.privacyEmail + '">' + C.privacyEmail + '</a>.',
+      en: 'What we collect, why and for how long is explained in our <a href="/privacy">Privacy Policy</a>. For privacy requests, email <a href="mailto:' + C.privacyEmail + '">' + C.privacyEmail + '</a>.',
+    },
+  },
+];
+const t = T[lang];
+---
+<h2>{t.contact}</h2>
+<div class="sup-grid">
+  <div class="sup-card">
+    <span class="sup-lbl">{t.email}</span>
+    <a class="sup-val" href={mailHref}>{C.supportEmail}</a>
+    <span class="sup-sub">{t.emailSub}</span>
+  </div>
+  <div class="sup-card">
+    <span class="sup-lbl">{t.phone}</span>
+    <a class="sup-val" href={`tel:${C.phoneHref}`}>{C.phone}</a>
+    <span class="sup-sub">{C.hours[lang]}</span>
+  </div>
+  <div class="sup-card">
+    <span class="sup-lbl">{t.address}</span>
+    <span class="sup-val">{C.legalName}</span>
+    <span class="sup-sub">{addressLine(lang)}</span>
+  </div>
+</div>
+<p><a class="btn btn-primary sup-btn" href={mailHref}>{t.write}</a></p>
+
+<h3>{t.before}</h3>
+<ul>{t.beforeItems.map((i) => <li set:html={i} />)}</ul>
+
+{C.apps.length > 0 && (
+  <>
+    <h2>{t.apps}</h2>
+    <ul>{C.apps.map((app) => <li><strong>{app.name}</strong>{app.platforms && ` — ${app.platforms}`}</li>)}</ul>
+  </>
+)}
+
+<h2>{t.faq}</h2>
+<div class="sup-faq" data-acc-group>
+  {FAQ.map((f) => (
+    <div class="acc-item">
+      <button class="acc-q" type="button">{f.q[lang]}<span class="pm"></span></button>
+      <div class="acc-a"><div class="acc-a-inner" set:html={f.a[lang]} /></div>
+    </div>
+  ))}
+</div>
+
+
+<style is:global>
+.sup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-bottom:22px;}
+.sup-card{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;background:#fff;}
+.sup-lbl{font-family:var(--ff-head);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);font-weight:600;}
+.legal .sup-val{font-family:var(--ff-head);font-weight:600;color:var(--ink);text-decoration:none;font-size:1.02rem;overflow-wrap:anywhere;}
+.legal a.sup-val:hover{color:var(--primary);}
+.sup-sub{font-size:.9rem;color:var(--muted);}
+.legal .sup-btn{color:#fff;text-decoration:none;}
+.sup-faq{border-top:1px solid var(--line);}
+.sup-faq .acc-q{padding:22px 0;font-size:1.08rem;}
+.sup-faq .acc-a-inner{padding-bottom:22px;}
+</style>

@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import { COMPANY, addressLine } from '../data/company.js';
+const C = COMPANY;
 ---
 <Base
   title="Kontakti — iCode LLC"
@@ -22,10 +24,11 @@ import Base from '../layouts/Base.astro';
         <span class="eyebrow" data-sq="Kontakti" data-en="Get in touch">Kontakti</span>
         <h2 data-sq="Jemi këtu për të ndihmuar" data-en="We're here to help">Jemi këtu për të ndihmuar</h2>
         <div class="mt-l">
-          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5a2 2 0 012-2h2l2 5-2 1a12 12 0 006 6l1-2 5 2v2a2 2 0 01-2 2A16 16 0 014 5z"/></svg></span><div><b data-sq="Telefon" data-en="Phone">Telefon</b><a href="tel:+38348331333">+383 48 331 333</a></div></div>
-          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><b>Email</b><a href="mailto:info@icode-ks.com">info@icode-ks.com</a><br><a href="mailto:office@icode-ks.com">office@icode-ks.com</a></div></div>
-          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b data-sq="Adresa" data-en="Address">Adresa</b><span data-sq="Gjilan, Kosovë" data-en="Gjilan, Kosovo">Gjilan, Kosovë</span></div></div>
+          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5a2 2 0 012-2h2l2 5-2 1a12 12 0 006 6l1-2 5 2v2a2 2 0 01-2 2A16 16 0 014 5z"/></svg></span><div><b data-sq="Telefon" data-en="Phone">Telefon</b><a href={`tel:${C.phoneHref}`}>{C.phone}</a></div></div>
+          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><b>Email</b><a href={`mailto:${C.email}`}>{C.email}</a><br><a href={`mailto:${C.officeEmail}`}>{C.officeEmail}</a></div></div>
+          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><b data-sq="Adresa" data-en="Address">Adresa</b><span data-sq={addressLine('sq')} data-en={addressLine('en')}>{addressLine('sq')}</span></div></div>
           <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b data-sq="Orari" data-en="Hours">Orari</b><span data-sq="Hën–Pre, 09:00–17:00" data-en="Mon–Fri, 09:00–17:00">Hën–Pre, 09:00–17:00</span></div></div>
+          <div class="contact-info-item"><span class="ci-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span><div><b data-sq="Kompania" data-en="Company">Kompania</b><span>{C.legalName}{C.regNumber && <><br /><span data-sq={`NUI: ${C.regNumber}`} data-en={`Reg. no.: ${C.regNumber}`}>NUI: {C.regNumber}</span></>}</span><br /><a href="/support" data-sq="Mbështetja për aplikacionet →" data-en="App support →">Mbështetja për aplikacionet →</a></div></div>
         </div>
         <div class="ph" data-label="[ Hartë: Gjilan, Kosovë ]" style="aspect-ratio:16/9;margin-top:28px;"></div>
       </div>

@@ -1,0 +1,146 @@
+---
+// Body of /delete-account for one language (rendered once per lang slot).
+// Google Play requires a web path to request account + data deletion without
+// reinstalling the app, naming the developer and listing deleted vs kept data.
+// There is no backend, so the form composes a prefilled email to privacyEmail.
+import { COMPANY } from '../data/company.js';
+const { lang } = Astro.props;
+const C = COMPANY;
+const en = lang === 'en';
+const id = (k) => `del-${k}-${lang}`;
+const mail = `mailto:${C.privacyEmail}`;
+const appNames = C.apps.map((a) => a.name);
+---
+<div class="legal-summary">
+  {en ? (
+    <p>This page explains how to delete your account and the data associated with it in apps published on Google Play and the App Store by the developer <strong>{C.legalName}</strong>{appNames.length > 0 && <> ({appNames.join(', ')})</>}. You do not need to reinstall the app.</p>
+  ) : (
+    <p>Kjo faqe shpjegon si ta fshini llogarinë dhe të dhënat e lidhura me të në aplikacionet e publikuara në Google Play dhe App Store nga zhvilluesi <strong>{C.legalName}</strong>{appNames.length > 0 && <> ({appNames.join(', ')})</>}. Nuk keni nevojë ta instaloni sërish aplikacionin.</p>
+  )}
+</div>
+
+<h2>{en ? 'Option 1 — In the app' : 'Mënyra 1 — Në aplikacion'}</h2>
+<ol>
+  <li>{en ? 'Open the app and sign in.' : 'Hapni aplikacionin dhe hyni në llogari.'}</li>
+  <li>{en ? <>Go to <strong>Profile / Settings → Account</strong>.</> : <>Shkoni te <strong>Profili / Cilësimet → Llogaria</strong>.</>}</li>
+  <li>{en ? <>Tap <strong>Delete account</strong> and confirm.</> : <>Shtypni <strong>Fshij llogarinë</strong> dhe konfirmoni.</>}</li>
+</ol>
+<p>{en ? 'Your account is closed right away and its data is deleted within 30 days.' : 'Llogaria mbyllet menjëherë dhe të dhënat e saj fshihen brenda 30 ditëve.'}</p>
+
+<h2 id={en ? 'request' : 'kerkesa'}>{en ? 'Option 2 — Request deletion on the web' : 'Mënyra 2 — Kërkoni fshirjen në ueb'}</h2>
+<p class="del-warn">
+  {en
+    ? <><strong>Before you delete:</strong> if you have an active subscription bought through the App Store or Google Play, cancel it first in your store account — deleting your account does not cancel it. <a href="/support">How to cancel</a>.</>
+    : <><strong>Para fshirjes:</strong> nëse keni abonim aktiv të blerë përmes App Store ose Google Play, anulojeni fillimisht te llogaria juaj e dyqanit — fshirja e llogarisë nuk e anulon abonimin. <a href="/support">Si ta anuloni</a>.</>}
+</p>
+
+<form class="del-form del-card" data-lang={lang} data-to={C.privacyEmail}>
+  <div class="field">
+    <label for={id('app')}>{en ? 'App' : 'Aplikacioni'}</label>
+    {appNames.length > 0 ? (
+      <select id={id('app')} name="app" required>
+        {appNames.map((n) => <option>{n}</option>)}
+        <option>{en ? 'Other' : 'Tjetër'}</option>
+      </select>
+    ) : (
+      <input id={id('app')} name="app" type="text" required placeholder={en ? 'App name' : 'Emri i aplikacionit'} />
+    )}
+  </div>
+  <div class="field">
+    <label for={id('email')}>{en ? 'Email linked to your account' : 'Email-i i lidhur me llogarinë'}</label>
+    <input id={id('email')} name="email" type="email" required autocomplete="email" placeholder="email@example.com" />
+  </div>
+  <fieldset class="del-opts">
+    <legend>{en ? 'What do you want to delete?' : 'Çfarë dëshironi të fshini?'}</legend>
+    <label class="del-check"><input type="radio" name="scope" value="all" checked /><span>{en ? 'My account and all associated data' : 'Llogarinë dhe të gjitha të dhënat e lidhura me të'}</span></label>
+    <label class="del-check"><input type="radio" name="scope" value="partial" /><span>{en ? 'Only specific data (describe below)' : 'Vetëm disa të dhëna (përshkruajini më poshtë)'}</span></label>
+  </fieldset>
+  <div class="field">
+    <label for={id('details')}>{en ? 'Details (optional)' : 'Detaje (opsionale)'}</label>
+    <textarea id={id('details')} name="details" placeholder={en ? 'e.g. username, phone number, or which data to delete' : 'p.sh. emri i përdoruesit, telefoni ose cilat të dhëna të fshihen'}></textarea>
+  </div>
+  <label class="del-check del-confirm"><input type="checkbox" name="confirm" required /><span>{en ? 'I understand that deletion is permanent and cannot be undone.' : 'E kuptoj që fshirja është e përhershme dhe nuk mund të kthehet.'}</span></label>
+  <button class="btn btn-primary btn-lg del-submit" type="submit">{en ? 'Send deletion request' : 'Dërgo kërkesën për fshirje'}</button>
+  <p class="del-note" role="status">
+    {en
+      ? <>Your email app has opened with the request ready — just press <strong>Send</strong>. If nothing opened, email <a href={mail}>{C.privacyEmail}</a> with the subject “Account deletion request”.</>
+      : <>U hap aplikacioni i email-it me kërkesën të gatshme — thjesht shtypni <strong>Dërgo</strong>. Nëse nuk u hap asgjë, shkruani në <a href={mail}>{C.privacyEmail}</a> me temën „Kërkesë për fshirjen e llogarisë".</>}
+  </p>
+</form>
+<p>
+  {en
+    ? <>Prefer email? Write to <a href={mail}>{C.privacyEmail}</a> from the address linked to your account, with the app name and the subject “Account deletion request”.</>
+    : <>Preferoni email? Shkruani në <a href={mail}>{C.privacyEmail}</a> nga adresa e lidhur me llogarinë, me emrin e aplikacionit dhe temën „Kërkesë për fshirjen e llogarisë".</>}
+</p>
+
+<h2>{en ? 'What happens next' : 'Çfarë ndodh më pas'}</h2>
+<ol>
+  <li>{en ? 'We confirm receipt within 2 business days.' : 'E konfirmojmë marrjen e kërkesës brenda 2 ditëve të punës.'}</li>
+  <li>{en ? 'We verify that the account is yours — for example, by a reply from the account email.' : 'Verifikojmë që llogaria është e juaja — p.sh. me një përgjigje nga email-i i llogarisë.'}</li>
+  <li>{en ? 'We delete the account and its data within 30 days and send you a confirmation.' : 'E fshijmë llogarinë dhe të dhënat e saj brenda 30 ditëve dhe ju dërgojmë konfirmim.'}</li>
+</ol>
+
+<h2>{en ? 'Data that is deleted' : 'Të dhënat që fshihen'}</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>{en ? 'Data' : 'Të dhënat'}</th><th>{en ? 'What happens' : 'Çfarë ndodh'}</th></tr></thead>
+  <tbody>
+    <tr><td>{en ? 'Profile: name, email, phone, photo' : 'Profili: emri, email-i, telefoni, fotoja'}</td><td>{en ? 'Deleted' : 'Fshihen'}</td></tr>
+    <tr><td>{en ? 'Login credentials, sessions and push tokens' : 'Kredencialet e hyrjes, sesionet dhe token-ët push'}</td><td>{en ? 'Deleted' : 'Fshihen'}</td></tr>
+    <tr><td>{en ? 'Content and preferences you created in the app' : 'Përmbajtja dhe preferencat që keni krijuar në aplikacion'}</td><td>{en ? 'Deleted' : 'Fshihen'}</td></tr>
+    <tr><td>{en ? 'Device and diagnostic data linked to your account' : 'Të dhënat e pajisjes dhe diagnostikimit të lidhura me llogarinë'}</td><td>{en ? 'Deleted or anonymised' : 'Fshihen ose anonimizohen'}</td></tr>
+  </tbody>
+</table></div>
+
+<h2>{en ? 'Data we keep, and for how long' : 'Të dhënat që ruhen dhe për sa kohë'}</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>{en ? 'Data' : 'Të dhënat'}</th><th>{en ? 'Retention' : 'Ruajtja'}</th></tr></thead>
+  <tbody>
+    <tr><td>{en ? 'Invoices and transaction records' : 'Faturat dhe të dhënat e transaksioneve'}</td><td>{en ? 'Kept for the period required by tax and accounting law, then deleted' : 'Ruhen për periudhën që kërkon legjislacioni tatimor dhe kontabël, pastaj fshihen'}</td></tr>
+    <tr><td>{en ? 'Security logs' : 'Regjistrat e sigurisë'}</td><td>{en ? 'Up to 90 days' : 'Deri në 90 ditë'}</td></tr>
+    <tr><td>{en ? 'Backups' : 'Kopjet rezervë (backup)'}</td><td>{en ? 'Deleted data is purged from backups within 90 days' : 'Të dhënat e fshira largohen nga kopjet rezervë brenda 90 ditëve'}</td></tr>
+    <tr><td>{en ? 'Data in a business (company) account' : 'Të dhënat në llogari biznesi (kompanie)'}</td><td>{en ? 'Records you entered in your company’s POS/ERP (e.g. sales, stock) belong to the company and stay with it; your personal user profile is deleted or anonymised. The company administrator can request deletion of business data.' : 'Regjistrimet që keni bërë në POS/ERP-në e kompanisë (p.sh. shitje, stoqe) i përkasin kompanisë dhe mbeten te ajo; profili juaj personal fshihet ose anonimizohet. Administratori i kompanisë mund të kërkojë fshirjen e të dhënave të biznesit.'}</td></tr>
+  </tbody>
+</table></div>
+
+<h2>{en ? 'Delete only some data' : 'Fshini vetëm disa të dhëna'}</h2>
+<p>{en
+  ? 'You can ask us to delete specific data (for example uploaded photos or order history) without deleting your account — choose “Only specific data” in the form above or email us.'
+  : 'Mund të kërkoni fshirjen e të dhënave të caktuara (p.sh. fotot e ngarkuara ose historikun e porosive) pa e fshirë llogarinë — zgjidhni „Vetëm disa të dhëna" në formularin më lart ose na shkruani.'}</p>
+<p>{en
+  ? <>More about how we handle data: <a href="/privacy">Privacy Policy</a>.</>
+  : <>Më shumë për trajtimin e të dhënave: <a href="/privacy">Politika e Privatësisë</a>.</>}</p>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.del-form').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const en = form.dataset.lang === 'en';
+      const d = new FormData(form);
+      const app = String(d.get('app') || '').trim();
+      const partial = d.get('scope') === 'partial';
+      const subject = (en ? 'Account deletion request – ' : 'Kërkesë për fshirjen e llogarisë – ') + app;
+      const lines = en
+        ? ['Hello iCode,', '', partial ? 'Please delete the following data from my account.' : 'Please delete my account and all associated data.', '',
+           'App: ' + app, 'Account email: ' + d.get('email'), 'Details: ' + (d.get('details') || '-'), '',
+           'I understand that deletion is permanent.']
+        : ['Përshëndetje iCode,', '', partial ? 'Ju lutem fshini të dhënat e mëposhtme nga llogaria ime.' : 'Ju lutem fshini llogarinë time dhe të gjitha të dhënat e lidhura me të.', '',
+           'Aplikacioni: ' + app, 'Email-i i llogarisë: ' + d.get('email'), 'Detaje: ' + (d.get('details') || '-'), '',
+           'E kuptoj që fshirja është e përhershme.'];
+      window.location.href = 'mailto:' + form.dataset.to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+      form.querySelector('.del-note')?.classList.add('show');
+    });
+  });
+</script>
+
+<style is:global>
+.del-warn{background:#fff8e6;border:1px solid #f3dca0;border-radius:var(--r);padding:16px 20px;}
+.del-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(24px,3.5vw,38px);margin:8px 0 20px;}
+.del-opts{border:none;padding:0;margin:0 0 20px;}
+.del-opts legend{font-family:var(--ff-head);font-weight:600;font-size:.86rem;margin-bottom:9px;padding:0;}
+.del-check{display:flex;gap:11px;align-items:flex-start;margin-bottom:10px;font-size:.96rem;cursor:pointer;}
+.del-check input{width:18px;height:18px;margin-top:3px;flex:none;accent-color:var(--primary);}
+.del-confirm{margin:4px 0 22px;}
+.del-submit{width:100%;}
+.legal .del-note{display:none;margin:18px 0 0;padding:16px 18px;background:#eaf7ef;border:1px solid #bfe6cd;border-radius:13px;color:#12713e;font-size:.95rem;}
+.legal .del-note.show{display:block;}
+</style>

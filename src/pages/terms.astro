@@ -1,0 +1,199 @@
+---
+import LegalPage from '../layouts/LegalPage.astro';
+import { COMPANY, addressLine } from '../data/company.js';
+const C = COMPANY;
+const mail = `mailto:${C.email}`;
+const appleEula = 'https://www.apple.com/legal/internet-services/itunes/dev/stdeula/';
+---
+<LegalPage
+  title="Kushtet e Përdorimit · Terms of Use — iCode LLC"
+  description="Kushtet që rregullojnë përdorimin e uebfaqes icode-ks.com dhe të aplikacioneve të iCode LLC në Google Play dhe App Store."
+  crumb={{ sq: 'Kushtet', en: 'Terms' }}
+  heading={{ sq: 'Kushtet e Përdorimit', en: 'Terms of Use' }}
+  lead={{
+    sq: 'Rregullat për përdorimin e uebfaqes icode-ks.com dhe të aplikacioneve që iCode LLC publikon në Google Play dhe App Store.',
+    en: 'The rules for using icode-ks.com and the apps iCode LLC publishes on Google Play and the App Store.',
+  }}
+>
+
+<Fragment slot="sq">
+  <div class="legal-summary">
+    <p>Këto kushte janë marrëveshje mes jush dhe <strong>{C.legalName}</strong>. Duke përdorur uebfaqen ose Aplikacionet tona, i pranoni ato. Projektet softuerike me porosi për klientë rregullohen nga kontrata e veçantë e nënshkruar, e cila ka përparësi ndaj këtyre kushteve.</p>
+  </div>
+
+  <h2>1. Kush jemi</h2>
+  <p>{C.legalName}{C.regNumber && ` (NUI ${C.regNumber})`}, {addressLine('sq')}. Email: <a href={mail}>{C.email}</a>, tel: <a href={`tel:${C.phoneHref}`}>{C.phone}</a>.</p>
+
+  <h2>2. Uebfaqja</h2>
+  <p>Përmbajtja e icode-ks.com është informative dhe mund të ndryshojë pa njoftim. Përpiqemi që ajo të jetë e saktë, por nuk garantojmë që është gjithmonë e plotë ose e përditësuar.</p>
+
+  <h2>3. Licenca për Aplikacionet</h2>
+  <p>Ju japim një licencë të kufizuar, jo-ekskluzive, të patransferueshme dhe të revokueshme për ta shkarkuar dhe përdorur Aplikacionin në pajisje që i zotëroni ose i kontrolloni, për qëllime personale ose për nevojat e brendshme të biznesit tuaj, në përputhje me këto kushte dhe me rregullat e dyqanit nga i cili e keni shkarkuar.</p>
+
+  <h2>4. Llogaria</h2>
+  <ul>
+    <li>Jepni të dhëna të sakta dhe mbajini kredencialet konfidenciale.</li>
+    <li>Jeni përgjegjës për aktivitetin në llogarinë tuaj dhe na njoftoni menjëherë për çdo qasje të paautorizuar.</li>
+    <li>Në llogaritë e biznesit, administratori i biznesit menaxhon përdoruesit, rolet dhe të dhënat.</li>
+    <li>Mund ta fshini llogarinë në çdo kohë — shih <a href="/delete-account">Fshirja e llogarisë</a>.</li>
+  </ul>
+
+  <h2>5. Përdorimi i lejuar</h2>
+  <p>Nuk lejohet:</p>
+  <ul>
+    <li>dekompilimi ose inxhinieria e kundërt e Aplikacioneve, përveç kur ligji e lejon shprehimisht;</li>
+    <li>anashkalimi i masave të sigurisë, testimi i dobësive pa leje ose mbingarkimi i sistemeve;</li>
+    <li>ngarkimi i malware-it ose i përmbajtjes së paligjshme apo që shkel të drejtat e të tjerëve;</li>
+    <li>mbledhja automatike e të dhënave (scraping) ose rishitja e shërbimit pa leje me shkrim;</li>
+    <li>përdorimi i shërbimeve për qëllime të paligjshme.</li>
+  </ul>
+
+  <h2>6. Të dhënat dhe përmbajtja juaj</h2>
+  <p>Të dhënat që futni (p.sh. produkte, porosi, fatura) mbeten tuajat. Na jepni të drejtën t'i ruajmë dhe t'i përpunojmë vetëm për t'ju ofruar shërbimin, sipas <a href="/privacy">Politikës së Privatësisë</a>.</p>
+
+  <h2>7. Abonimet dhe blerjet brenda aplikacionit</h2>
+  <ul>
+    <li>Blerjet në Aplikacione procesohen nga Apple (App Store) ose Google (Google Play), sipas kushteve të tyre.</li>
+    <li>Abonimet rinovohen automatikisht, përveç nëse anulohen të paktën 24 orë para përfundimit të periudhës aktuale.</li>
+    <li>Abonimin e menaxhoni dhe e anuloni te cilësimet e llogarisë suaj në App Store ose Google Play. Fshirja e Aplikacionit ose e llogarisë nuk e anulon abonimin.</li>
+    <li>Rimbursimet trajtohen nga Apple ose Google sipas politikave të tyre.</li>
+    <li>Shërbimet B2B (ERP, POS, WMS etj.) faturohen drejtpërdrejt sipas kontratës.</li>
+  </ul>
+
+  <h2>8. Pronësia intelektuale</h2>
+  <p>Uebfaqja, Aplikacionet, kodi, dizajni dhe markat (p.sh. iCode, iData+) janë pronë e {C.legalName} ose e licencuesve tanë. Këto kushte nuk ju japin asnjë të drejtë mbi to përveç licencës në pikën 3.</p>
+
+  <h2>9. Shërbime të palëve të treta</h2>
+  <p>Aplikacionet mund të lidhen me shërbime të palëve të treta (p.sh. pagesa, harta, platforma e-commerce). Ato rregullohen nga kushtet e tyre dhe ne nuk jemi përgjegjës për to.</p>
+
+  <h2>10. Përditësimet dhe mbështetja</h2>
+  <p>Mund t'i përditësojmë, ndryshojmë ose ndërpresim funksionet e Aplikacioneve. Mbështetja ofrohet përmes faqes <a href="/support">Mbështetja</a>.</p>
+
+  <h2>11. Mohimi i garancive</h2>
+  <p>Në masën maksimale të lejuar nga ligji, uebfaqja dhe Aplikacionet ofrohen „siç janë" dhe „siç janë në dispozicion", pa garanci të shprehura ose të nënkuptuara.</p>
+
+  <h2>12. Kufizimi i përgjegjësisë</h2>
+  <p>Në masën maksimale të lejuar nga ligji, {C.legalName} nuk përgjigjet për dëme indirekte, të rastësishme ose pasuese, as për humbje fitimi ose të dhënash. Përgjegjësia jonë totale kufizohet në shumën që na keni paguar në 12 muajt para pretendimit, ose 100 € nëse nuk keni paguar asgjë. Asgjë në këto kushte nuk kufizon përgjegjësinë që nuk mund të kufizohet me ligj, përfshirë të drejtat e detyrueshme të konsumatorit.</p>
+
+  <h2>13. Ndërprerja</h2>
+  <p>Mund ta ndërprisni përdorimin në çdo kohë. Mund ta pezullojmë ose mbyllim llogarinë nëse i shkelni këto kushte, me njoftim kur kjo është e arsyeshme.</p>
+
+  <h2 id="apple">14. Kushte shtesë për Aplikacionet nga Apple App Store</h2>
+  <p>Për Aplikacionet e shkarkuara nga App Store vlejnë edhe këto kushte:</p>
+  <ul>
+    <li>Këto kushte janë mes jush dhe {C.legalName}, jo me Apple Inc. („Apple"). {C.legalName}, jo Apple, është plotësisht përgjegjës për Aplikacionin dhe përmbajtjen e tij.</li>
+    <li>Licenca vlen vetëm për pajisje Apple që i zotëroni ose i kontrolloni, sipas Rregullave të Përdorimit në Kushtet e Shërbimit të App Store.</li>
+    <li>Apple nuk ka asnjë detyrim të ofrojë mirëmbajtje ose mbështetje për Aplikacionin.</li>
+    <li>Nëse Aplikacioni nuk përputhet me ndonjë garanci të zbatueshme, mund ta njoftoni Apple dhe Apple do t'ju rimbursojë çmimin e blerjes, nëse ka; në masën maksimale të lejuar nga ligji, Apple nuk ka asnjë detyrim tjetër garancie.</li>
+    <li>{C.legalName}, jo Apple, është përgjegjës për çdo pretendim lidhur me Aplikacionin, përfshirë përgjegjësinë për produktin, mospërputhjen me kërkesat ligjore dhe pretendimet për mbrojtjen e konsumatorit ose të privatësisë.</li>
+    <li>Nëse një palë e tretë pretendon se Aplikacioni shkel të drejtat e saj të pronësisë intelektuale, {C.legalName}, jo Apple, është përgjegjës për hetimin, mbrojtjen dhe zgjidhjen e pretendimit.</li>
+    <li>Ju deklaroni se nuk ndodheni në një vend nën embargo të Qeverisë së SHBA-së ose të shpallur si mbështetës i terrorizmit, dhe se nuk jeni në asnjë listë të palëve të ndaluara ose të kufizuara të Qeverisë së SHBA-së.</li>
+    <li>Duhet t'u përmbaheni kushteve të palëve të treta kur përdorni Aplikacionin (p.sh. kontratës me operatorin e internetit).</li>
+    <li>Apple dhe filialet e saj janë përfitues të palës së tretë të këtyre kushteve dhe, pasi t'i pranoni, Apple ka të drejtë t'i zbatojë ato ndaj jush.</li>
+  </ul>
+  <p>Përveç nëse në faqen e Aplikacionit në App Store specifikohet një licencë e veçantë, vlen edhe <a href={appleEula} target="_blank" rel="noopener">Marrëveshja Standarde e Licencës për Përdoruesin Fundor e Apple (EULA)</a>.</p>
+
+  <h2 id="google">15. Kushte shtesë për Aplikacionet nga Google Play</h2>
+  <p>Përdorimi i Aplikacioneve të shkarkuara nga Google Play rregullohet edhe nga Kushtet e Shërbimit të Google Play. Google nuk është palë në këto kushte.</p>
+
+  <h2>16. Ligji i zbatueshëm</h2>
+  <p>Këto kushte rregullohen nga ligjet e Republikës së Kosovës. Mosmarrëveshjet zgjidhen nga gjykata kompetente në Gjilan, pa cenuar të drejtat e detyrueshme që konsumatorët kanë sipas ligjit të vendit ku jetojnë.</p>
+
+  <h2>17. Ndryshimet e kushteve</h2>
+  <p>Mund t'i ndryshojmë këto kushte. Për ndryshime të rëndësishme ju njoftojmë paraprakisht në aplikacion ose me email. Vazhdimi i përdorimit pas hyrjes në fuqi nënkupton pranimin e tyre.</p>
+
+  <h2>18. Kontakti</h2>
+  <p><strong>{C.legalName}</strong><br />{addressLine('sq')}<br />Email: <a href={mail}>{C.email}</a><br />Tel: <a href={`tel:${C.phoneHref}`}>{C.phone}</a></p>
+</Fragment>
+
+<Fragment slot="en">
+  <div class="legal-summary">
+    <p>These terms are an agreement between you and <strong>{C.legalName}</strong>. By using our website or Apps you accept them. Custom software projects for clients are governed by a separate signed contract, which takes precedence over these terms.</p>
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>{C.legalName}{C.regNumber && ` (business reg. no. ${C.regNumber})`}, {addressLine('en')}. Email: <a href={mail}>{C.email}</a>, phone: <a href={`tel:${C.phoneHref}`}>{C.phone}</a>.</p>
+
+  <h2>2. The website</h2>
+  <p>Content on icode-ks.com is for information and may change without notice. We aim to keep it accurate but do not guarantee that it is always complete or up to date.</p>
+
+  <h2>3. App licence</h2>
+  <p>We grant you a limited, non-exclusive, non-transferable, revocable licence to download and use the App on devices you own or control, for personal use or your business's internal purposes, in accordance with these terms and the rules of the store you downloaded it from.</p>
+
+  <h2>4. Your account</h2>
+  <ul>
+    <li>Provide accurate information and keep your credentials confidential.</li>
+    <li>You are responsible for activity in your account and must tell us promptly about any unauthorised access.</li>
+    <li>In business accounts, the business administrator manages users, roles and data.</li>
+    <li>You can delete your account at any time — see <a href="/delete-account">Account deletion</a>.</li>
+  </ul>
+
+  <h2>5. Acceptable use</h2>
+  <p>You must not:</p>
+  <ul>
+    <li>decompile or reverse engineer the Apps, except where the law expressly allows it;</li>
+    <li>bypass security measures, probe for vulnerabilities without permission or overload our systems;</li>
+    <li>upload malware or content that is unlawful or infringes the rights of others;</li>
+    <li>scrape data or resell the service without our written permission;</li>
+    <li>use the services for any unlawful purpose.</li>
+  </ul>
+
+  <h2>6. Your data and content</h2>
+  <p>The data you enter (e.g. products, orders, invoices) remains yours. You allow us to store and process it only to provide the service, as described in our <a href="/privacy">Privacy Policy</a>.</p>
+
+  <h2>7. Subscriptions and in-app purchases</h2>
+  <ul>
+    <li>Purchases in the Apps are processed by Apple (App Store) or Google (Google Play) under their terms.</li>
+    <li>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period.</li>
+    <li>Manage and cancel subscriptions in your App Store or Google Play account settings. Deleting the App or your account does not cancel a subscription.</li>
+    <li>Refunds are handled by Apple or Google under their policies.</li>
+    <li>B2B services (ERP, POS, WMS, etc.) are invoiced directly under contract.</li>
+  </ul>
+
+  <h2>8. Intellectual property</h2>
+  <p>The website, Apps, code, design and trademarks (e.g. iCode, iData+) belong to {C.legalName} or our licensors. These terms give you no rights in them other than the licence in section 3.</p>
+
+  <h2>9. Third-party services</h2>
+  <p>The Apps may connect to third-party services (e.g. payments, maps, e-commerce platforms). Those services are governed by their own terms and we are not responsible for them.</p>
+
+  <h2>10. Updates and support</h2>
+  <p>We may update, change or discontinue features of the Apps. Support is available through our <a href="/support">Support</a> page.</p>
+
+  <h2>11. Disclaimer</h2>
+  <p>To the fullest extent permitted by law, the website and Apps are provided “as is” and “as available”, without warranties of any kind, express or implied.</p>
+
+  <h2>12. Limitation of liability</h2>
+  <p>To the fullest extent permitted by law, {C.legalName} is not liable for indirect, incidental or consequential damages, or for loss of profits or data. Our total liability is limited to the amount you paid us in the 12 months before the claim, or €100 if you paid nothing. Nothing in these terms limits liability that cannot be limited by law, including mandatory consumer rights.</p>
+
+  <h2>13. Termination</h2>
+  <p>You may stop using the services at any time. We may suspend or close your account if you breach these terms, with notice where reasonable.</p>
+
+  <h2 id="apple">14. Additional terms for Apps from the Apple App Store</h2>
+  <p>The following also applies to Apps downloaded from the App Store:</p>
+  <ul>
+    <li>These terms are between you and {C.legalName} only, not Apple Inc. (“Apple”). {C.legalName}, not Apple, is solely responsible for the App and its content.</li>
+    <li>The licence is limited to Apple-branded products you own or control, as permitted by the Usage Rules in the App Store Terms of Service.</li>
+    <li>Apple has no obligation whatsoever to provide maintenance or support services for the App.</li>
+    <li>If the App fails to conform to any applicable warranty, you may notify Apple and Apple will refund the purchase price, if any; to the maximum extent permitted by law, Apple has no other warranty obligation with respect to the App.</li>
+    <li>{C.legalName}, not Apple, is responsible for addressing any claims relating to the App, including product liability claims, claims that the App fails to conform to any legal or regulatory requirement, and claims under consumer protection or privacy legislation.</li>
+    <li>If a third party claims that the App infringes its intellectual property rights, {C.legalName}, not Apple, is solely responsible for the investigation, defence, settlement and discharge of that claim.</li>
+    <li>You represent that you are not located in a country subject to a U.S. Government embargo or designated as a “terrorist supporting” country, and that you are not listed on any U.S. Government list of prohibited or restricted parties.</li>
+    <li>You must comply with applicable third-party terms when using the App (e.g. your wireless data service agreement).</li>
+    <li>Apple and its subsidiaries are third-party beneficiaries of these terms and, upon your acceptance, Apple will have the right to enforce them against you as a third-party beneficiary.</li>
+  </ul>
+  <p>Unless the App's App Store listing specifies a custom licence, <a href={appleEula} target="_blank" rel="noopener">Apple's Standard Licensed Application End User License Agreement (EULA)</a> also applies.</p>
+
+  <h2 id="google">15. Additional terms for Apps from Google Play</h2>
+  <p>Use of Apps downloaded from Google Play is also subject to the Google Play Terms of Service. Google is not a party to these terms.</p>
+
+  <h2>16. Governing law</h2>
+  <p>These terms are governed by the laws of the Republic of Kosovo. Disputes are resolved by the competent court in Gjilan, without prejudice to the mandatory rights consumers have under the law of their country of residence.</p>
+
+  <h2>17. Changes to these terms</h2>
+  <p>We may change these terms. For material changes we will notify you in advance in the app or by email. Continuing to use the services after the changes take effect means you accept them.</p>
+
+  <h2>18. Contact</h2>
+  <p><strong>{C.legalName}</strong><br />{addressLine('en')}<br />Email: <a href={mail}>{C.email}</a><br />Phone: <a href={`tel:${C.phoneHref}`}>{C.phone}</a></p>
+</Fragment>
+
+</LegalPage>

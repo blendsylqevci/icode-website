@@ -1,5 +1,9 @@
 ---
 // Server-rendered site footer. Social links ordered: LinkedIn, X, Facebook, Instagram.
+// Legal entity line + legal links are required by Apple / Google Play reviews.
+import { COMPANY, addressLine } from '../data/company.js';
+const C = COMPANY;
+const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container-wide">
@@ -35,16 +39,24 @@
         <a href="/blog" data-sq="Blog" data-en="Blog">Blog</a>
       </div>
       <div class="footer-col"><h5 data-sq="Kontakti" data-en="Contact">Kontakti</h5>
-        <a href="tel:+38348331333">+383 48 331 333</a>
-        <a href="mailto:info@icode-ks.com">info@icode-ks.com</a>
-        <a href="mailto:office@icode-ks.com">office@icode-ks.com</a>
-        <a href="#" data-sq="Gjilan, Kosovë" data-en="Gjilan, Kosovo">Gjilan, Kosovë</a>
+        <a href={`tel:${C.phoneHref}`}>{C.phone}</a>
+        <a href={`mailto:${C.email}`}>{C.email}</a>
+        <a href={`mailto:${C.officeEmail}`}>{C.officeEmail}</a>
+        <span class="footer-addr" data-sq={addressLine('sq')} data-en={addressLine('en')}>{addressLine('sq')}</span>
         <a class="btn btn-primary" href="/contact" style="margin-top:14px;display:inline-flex;" data-sq="Nis një projekt" data-en="Start a project">Nis një projekt</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span data-sq="© 2026 iCode LLC. Të gjitha të drejtat e rezervuara." data-en="© 2026 iCode LLC. All rights reserved.">© 2026 iCode LLC. Të gjitha të drejtat e rezervuara.</span>
-      <div class="links"><a href="#" data-sq="Privatësia" data-en="Privacy">Privatësia</a><a href="#" data-sq="Kushtet" data-en="Terms">Kushtet</a></div>
+      <div class="footer-legal">
+        <span data-sq={`© ${year} ${C.legalName}. Të gjitha të drejtat e rezervuara.`} data-en={`© ${year} ${C.legalName}. All rights reserved.`}>© {year} {C.legalName}. Të gjitha të drejtat e rezervuara.</span>
+        {C.regNumber && <span><span data-sq="NUI" data-en="Reg. no.">NUI</span> {C.regNumber}</span>}
+      </div>
+      <nav class="links" aria-label="Legal">
+        <a href="/privacy" data-sq="Privatësia" data-en="Privacy">Privatësia</a>
+        <a href="/terms" data-sq="Kushtet" data-en="Terms">Kushtet</a>
+        <a href="/support" data-sq="Mbështetja" data-en="Support">Mbështetja</a>
+        <a href="/delete-account" data-sq="Fshirja e llogarisë" data-en="Delete account">Fshirja e llogarisë</a>
+      </nav>
     </div>
   </div>
 </footer>

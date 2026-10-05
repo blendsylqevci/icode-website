@@ -64,6 +64,8 @@
   function initLang(){
     var saved='sq';
     try{ saved = localStorage.getItem('icode-lang') || 'sq'; }catch(e){}
+    // ?lang=en|sq wins — shareable links (e.g. Privacy URL for store reviewers)
+    try{ var q = new URLSearchParams(location.search).get('lang'); if(q==='sq'||q==='en') saved = q; }catch(e){}
     applyLang(saved);
     document.addEventListener('click', function(e){
       var b = e.target.closest('[data-setlang]');

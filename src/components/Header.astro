@@ -8,7 +8,7 @@ const ACT = {
   platforms: ['/erp-platform', '/pos-system', '/wms-oms', '/ecommerce', '/ai-cloud'],
   services: ['/services', '/web-development', '/mobile-apps', '/custom-software', '/ui-ux-design', '/game-engine-3d'],
   work: ['/portfolio'],
-  company: ['/about', '/process', '/industries', '/blog', '/careers', '/contact'],
+  company: ['/about', '/process', '/industries', '/blog', '/careers', '/contact', '/support'],
 };
 const active = (group) => (ACT[group].includes(path) ? ' active' : '');
 const activeHome = path === '/' ? ' active' : '';
@@ -120,6 +120,7 @@ const activeHome = path === '/' ? ' active' : '';
             <a class="dd-a" href="/blog"><i>›</i><span data-sq="Blog" data-en="Blog">Blog</span></a>
             <a class="dd-a" href="/careers"><i>›</i><span data-sq="Karriera" data-en="Careers">Karriera</span></a>
             <a class="dd-a" href="/contact"><i>›</i><span data-sq="Kontakti" data-en="Contact">Kontakti</span></a>
+            <a class="dd-a" href="/support"><i>›</i><span data-sq="Mbështetja" data-en="Support">Mbështetja</span></a>
           </div></div>
           <div class="dd-cta"><h4 data-sq="Cakto një bisedë falas 15-minutëshe." data-en="Book a free 15-minute call.">Cakto një bisedë falas 15-minutëshe.</h4>
             <div class="dd-cta-rows">
@@ -177,6 +178,7 @@ const activeHome = path === '/' ? ' active' : '';
     <a class="sub" href="/blog" data-sq="Blog" data-en="Blog">Blog</a>
     <a class="sub" href="/careers" data-sq="Karriera" data-en="Careers">Karriera</a>
     <a class="sub" href="/contact" data-sq="Kontakti" data-en="Contact">Kontakti</a>
+    <a class="sub" href="/support" data-sq="Mbështetja" data-en="Support">Mbështetja</a>
   </div>
   <a class="btn btn-primary" href="/contact" data-sq="Na kontakto" data-en="Get in touch">Na kontakto</a>
 </div>

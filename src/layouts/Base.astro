@@ -11,6 +11,7 @@ import '@fontsource/plus-jakarta-sans/700.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { COMPANY } from '../data/company.js';
 
 interface Props {
   title: string;
@@ -20,6 +21,39 @@ interface Props {
 
 const { title, description, bodyClass } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Organization identity for search engines — mirrors the legal details the
+// stores check against D-U-N-S (see src/data/company.js).
+const A = COMPANY.address;
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: COMPANY.brand,
+  legalName: COMPANY.legalName,
+  url: COMPANY.website,
+  logo: new URL('/brand/logo-black.png', Astro.site).href,
+  foundingDate: String(COMPANY.founded),
+  email: COMPANY.email,
+  telephone: COMPANY.phoneHref,
+  address: {
+    '@type': 'PostalAddress',
+    ...(A.street && { streetAddress: A.street }),
+    postalCode: A.postalCode,
+    addressLocality: A.city,
+    addressCountry: A.countryCode,
+  },
+  ...(COMPANY.duns && { duns: COMPANY.duns }),
+  ...(COMPANY.vatNumber && { vatID: COMPANY.vatNumber }),
+  contactPoint: [{
+    '@type': 'ContactPoint',
+    contactType: 'customer support',
+    email: COMPANY.supportEmail,
+    telephone: COMPANY.phoneHref,
+    url: new URL('/support', Astro.site).href,
+    availableLanguage: ['sq', 'en'],
+  }],
+  sameAs: COMPANY.socials,
+};
 ---
 <!doctype html>
 <html lang="sq">
@@ -41,6 +75,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@icode_ks" />
   <meta name="generator" content={Astro.generator} />
+  {COMPANY.googleSiteVerification && <meta name="google-site-verification" content={COMPANY.googleSiteVerification} />}
+  <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
 </head>
 <body class={bodyClass}>
   <Header />

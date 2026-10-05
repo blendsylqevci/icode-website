@@ -1,0 +1,276 @@
+---
+import LegalPage from '../layouts/LegalPage.astro';
+import { COMPANY, addressLine } from '../data/company.js';
+const C = COMPANY;
+const mail = `mailto:${C.privacyEmail}`;
+---
+<LegalPage
+  title="Politika e Privatësisë · Privacy Policy — iCode LLC"
+  description="Si i mbledh, përdor dhe mbron iCode LLC të dhënat personale në uebfaqen icode-ks.com dhe në aplikacionet e publikuara në Google Play dhe App Store."
+  crumb={{ sq: 'Privatësia', en: 'Privacy' }}
+  heading={{ sq: 'Politika e Privatësisë', en: 'Privacy Policy' }}
+  lead={{
+    sq: 'Si i mbledhim, i përdorim dhe i mbrojmë të dhënat tuaja në icode-ks.com dhe në aplikacionet që iCode LLC publikon në Google Play dhe App Store.',
+    en: 'How we collect, use and protect your data on icode-ks.com and in the apps iCode LLC publishes on Google Play and the App Store.',
+  }}
+>
+
+<Fragment slot="sq">
+  <div class="legal-summary">
+    <p><strong>Shkurtimisht</strong></p>
+    <ul>
+      <li>{C.legalName} është kontrolluesi i të dhënave personale që mblidhen përmes icode-ks.com dhe aplikacioneve që publikojmë në Google Play dhe App Store me emrin e zhvilluesit „{C.legalName}".</li>
+      <li>Mbledhim vetëm të dhënat që na nevojiten për të ofruar shërbimet. Nuk i shesim të dhënat personale dhe nuk i përdorim për reklama të palëve të treta.</li>
+      <li>Mund të kërkoni qasje, korrigjim ose fshirje të të dhënave në çdo kohë — përfshirë fshirjen e llogarisë te faqja <a href="/delete-account">Fshirja e llogarisë</a>.</li>
+    </ul>
+  </div>
+
+  <h2 id="kush-jemi">1. Kush jemi</h2>
+  <p>{C.legalName} („iCode", „ne") është kompani softuerike e regjistruar në Republikën e Kosovës{C.regNumber && `, me numër biznesi (NUI) ${C.regNumber}`}, me seli në {addressLine('sq')}. Për çdo pyetje rreth privatësisë na shkruani në <a href={mail}>{C.privacyEmail}</a> ose na telefononi në <a href={`tel:${C.phoneHref}`}>{C.phone}</a>.</p>
+
+  <h2 id="fusha">2. Fusha e zbatimit</h2>
+  <p>Kjo politikë zbatohet për:</p>
+  <ul>
+    <li>uebfaqen <strong>icode-ks.com</strong>;</li>
+    <li>aplikacionet mobile dhe ueb që iCode i publikon me llogaritë e veta të zhvilluesit në <strong>Google Play</strong> dhe <strong>Apple App Store</strong> („Aplikacionet");</li>
+    <li>komunikimin me ne përmes email-it, telefonit ose formularëve të kontaktit.</li>
+  </ul>
+  <p>Nëse një Aplikacion ka njoftim privatësie specifik, ai njoftim e plotëson këtë politikë. Aplikacionet që i ndërtojmë për klientë dhe që publikohen me llogarinë e zhvilluesit të vetë klientit rregullohen nga politika e privatësisë e atij klienti; në këto raste iCode vepron vetëm si përpunues në emër të klientit.</p>
+
+  <h2 id="te-dhenat">3. Të dhënat që mbledhim</h2>
+  <h3>3.1 Të dhënat që na i jepni ju</h3>
+  <ul>
+    <li><strong>Kontakt dhe kërkesa:</strong> emri, email-i, telefoni, kompania dhe përmbajtja e mesazhit — kur na kontaktoni ose kërkoni demo apo audit.</li>
+    <li><strong>Llogaria</strong> (në Aplikacionet që ofrojnë llogari): emri, email-i, numri i telefonit, fjalëkalimi (ruhet vetëm i hash-uar), emri i biznesit dhe roli.</li>
+    <li><strong>Të dhëna biznesi</strong> që i futni në platformat tona (p.sh. produkte, stoqe, porosi, fatura, klientë) — i përpunojmë në emër të biznesit tuaj.</li>
+    <li><strong>Mbështetja:</strong> përmbajtja e kërkesës, pamjet e ekranit dhe bashkëngjitjet.</li>
+    <li><strong>Aplikime për punë:</strong> CV-ja dhe informacionet që na dërgoni.</li>
+  </ul>
+  <h3>3.2 Të dhënat që mblidhen automatikisht</h3>
+  <ul>
+    <li><strong>Pajisja dhe aplikacioni:</strong> modeli i pajisjes, versioni i sistemit operativ, versioni i aplikacionit, gjuha dhe identifikues të instalimit.</li>
+    <li><strong>Diagnostikimi:</strong> raporte ndërprerjesh (crash), të dhëna performance dhe gabimesh.</li>
+    <li><strong>Regjistrat e serverit:</strong> adresa IP, data dhe ora e kërkesës, faqet ose ekranet e hapura — për siguri dhe funksionim.</li>
+    <li><strong>Token për njoftime push</strong>, nëse i lejoni njoftimet.</li>
+  </ul>
+  <h3>3.3 Qasje vetëm me lejen tuaj</h3>
+  <p>Disa funksione kërkojnë leje të pajisjes. I kërkojmë vetëm kur e përdorni funksionin dhe mund t'i revokoni në çdo kohë nga cilësimet e pajisjes:</p>
+  <ul>
+    <li><strong>Kamera</strong> — për skanimin e barkodeve/QR kodeve ose fotografimin e produkteve dhe dokumenteve;</li>
+    <li><strong>Lokacioni</strong> — vetëm për funksione si gjurmimi i dërgesave ose gjetja e pikës më të afërt, dhe vetëm gjatë përdorimit të funksionit, përveç nëse Aplikacioni shpjegon ndryshe;</li>
+    <li><strong>Fotot dhe skedarët</strong> — vetëm ato që zgjidhni t'i ngarkoni;</li>
+    <li><strong>Bluetooth / rrjeti lokal</strong> — për lidhje me printerë faturash, skanerë dhe pajisje fiskale (POS);</li>
+    <li><strong>Njoftimet</strong>.</li>
+  </ul>
+  <p>Nuk qasemi në të dhëna të tjera në pajisjen tuaj (p.sh. kontaktet), përveç nëse kjo shpjegohet qartë në Aplikacion dhe ju jepni leje.</p>
+  <h3>3.4 Pagesat</h3>
+  <p>Blerjet brenda aplikacionit dhe abonimet procesohen nga Apple ose Google. Ne nuk i marrim të dhënat e kartës suaj — marrim vetëm konfirmimin e blerjes (produkti, data, identifikuesi i transaksionit). Shërbimet B2B faturohen drejtpërdrejt sipas kontratës.</p>
+  <h3>3.5 Uebfaqja dhe cookies</h3>
+  <p>Uebfaqja icode-ks.com nuk përdor cookies për reklama apo analitikë. Ajo ruan vetëm gjuhën e zgjedhur (SQ/EN) në hapësirën lokale të shfletuesit tuaj (localStorage). Fontet shërbehen nga serveri ynë, pa thirrje te palë të treta.</p>
+
+  <h2 id="perdorimi">4. Si i përdorim të dhënat dhe baza ligjore</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Qëllimi</th><th>Të dhënat</th><th>Baza ligjore</th></tr></thead>
+    <tbody>
+      <tr><td>Ofrimi i Aplikacioneve dhe shërbimeve, krijimi dhe menaxhimi i llogarisë</td><td>Llogaria, të dhënat e biznesit, pajisja</td><td>Përmbushja e kontratës</td></tr>
+      <tr><td>Përgjigjja ndaj kërkesave dhe mbështetja</td><td>Kontakti, kërkesat për mbështetje</td><td>Kontrata / interesi legjitim</td></tr>
+      <tr><td>Siguria, parandalimi i abuzimit, rregullimi i gabimeve dhe stabiliteti</td><td>Regjistrat, diagnostikimi</td><td>Interesi legjitim</td></tr>
+      <tr><td>Njoftime shërbimi (siguria, ndryshime të rëndësishme)</td><td>Email-i, token-i push</td><td>Kontrata / interesi legjitim</td></tr>
+      <tr><td>Email-e marketingu (newsletter)</td><td>Email-i</td><td>Pëlqimi — mund ta tërhiqni në çdo kohë</td></tr>
+      <tr><td>Detyrime ligjore (kontabilitet, tatime, kërkesa të autoriteteve)</td><td>Të dhënat e faturimit</td><td>Detyrim ligjor</td></tr>
+      <tr><td>Rekrutimi</td><td>Të dhënat e aplikimit</td><td>Pëlqimi / hapat para kontratës</td></tr>
+    </tbody>
+  </table></div>
+  <p>Ne <strong>nuk</strong> i shesim të dhënat personale, <strong>nuk</strong> i përdorim për reklama të targetuara të palëve të treta dhe <strong>nuk</strong> ju gjurmojmë nëpër aplikacione ose uebfaqe të kompanive të tjera. Nuk marrim vendime të automatizuara me efekte ligjore për ju.</p>
+
+  <h2 id="ndarja">5. Me kë i ndajmë të dhënat</h2>
+  <ul>
+    <li><strong>Ofrues shërbimesh (përpunues)</strong> që punojnë sipas udhëzimeve tona: hostim cloud dhe baza të dhënash (p.sh. Microsoft Azure), dërgim email-esh, raportim ndërprerjesh dhe njoftime push (p.sh. Google Firebase, Apple Push Notification service). Ata janë të detyruar me kontratë të ruajnë konfidencialitetin dhe t'i mbrojnë të dhënat në nivel të njëjtë me këtë politikë.</li>
+    <li><strong>Apple dhe Google</strong>, si platforma shpërndarjeje dhe pagese, sipas politikave të tyre të privatësisë.</li>
+    <li><strong>Biznesi juaj</strong> — nëse përdorni një Aplikacion përmes llogarisë së punëdhënësit, administratori i asaj llogarie ka qasje në të dhënat e saj.</li>
+    <li><strong>Autoritete, gjykata ose këshilltarë profesionalë</strong>, kur kërkohet me ligj ose për të mbrojtur të drejtat tona dhe të përdoruesve.</li>
+    <li><strong>Një blerës ose pasardhës</strong>, në rast bashkimi apo blerjeje të kompanisë, me njoftim paraprak për ju.</li>
+  </ul>
+
+  <h2 id="transferimet">6. Transferimet ndërkombëtare</h2>
+  <p>Ofruesit tanë mund t'i përpunojnë të dhënat në BE/ZEE ose në vende të tjera. Kur të dhënat transferohen në një vend pa nivel adekuat mbrojtjeje, përdorim masa të përshtatshme mbrojtëse, si Klauzolat Standarde Kontraktuale të BE-së.</p>
+
+  <h2 id="ruajtja">7. Sa kohë i ruajmë të dhënat</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Të dhënat</th><th>Periudha e ruajtjes</th></tr></thead>
+    <tbody>
+      <tr><td>Të dhënat e llogarisë</td><td>Sa kohë është aktive llogaria; fshihen ose anonimizohen brenda 30 ditëve pas fshirjes së llogarisë</td></tr>
+      <tr><td>Të dhënat e biznesit në platforma</td><td>Gjatë kontratës; kthehen ose fshihen brenda 90 ditëve pas përfundimit të saj, përveç nëse kontrata parashikon ndryshe</td></tr>
+      <tr><td>Kërkesat dhe korrespondenca e mbështetjes</td><td>Deri në 24 muaj pas kontaktit të fundit</td></tr>
+      <tr><td>Regjistrat e serverit dhe të sigurisë</td><td>Deri në 90 ditë</td></tr>
+      <tr><td>Raportet e ndërprerjeve dhe diagnostikimi</td><td>Deri në 90 ditë</td></tr>
+      <tr><td>Faturat dhe të dhënat kontabël</td><td>Për periudhën që kërkon legjislacioni tatimor dhe kontabël</td></tr>
+      <tr><td>Kopjet rezervë (backup)</td><td>Të dhënat e fshira largohen nga kopjet rezervë brenda 90 ditëve</td></tr>
+      <tr><td>Aplikimet për punë</td><td>Deri në 12 muaj, përveç nëse pajtoheni për më gjatë</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="siguria">8. Siguria</h2>
+  <p>Përdorim enkriptim gjatë transmetimit (TLS/HTTPS), enkriptim të të dhënave të ruajtura aty ku mbështetet, fjalëkalime të ruajtura me hash, qasje sipas parimit të privilegjit minimal, verifikim me dy faktorë për qasjet administrative, kopje rezervë të rregullta dhe monitorim. Asnjë sistem nuk është 100% i sigurt; në rast cenimi të të dhënave do t'ju njoftojmë juve dhe autoritetin kompetent siç e kërkon ligji.</p>
+
+  <h2 id="te-drejtat">9. Të drejtat tuaja</h2>
+  <p>Sipas Ligjit Nr. 06/L-082 për Mbrojtjen e të Dhënave Personale dhe, kur zbatohet, Rregullores së Përgjithshme për Mbrojtjen e të Dhënave të BE-së (GDPR), keni të drejtë:</p>
+  <ul>
+    <li>të kërkoni qasje dhe kopje të të dhënave tuaja;</li>
+    <li>të kërkoni korrigjimin e të dhënave të pasakta;</li>
+    <li>të kërkoni fshirjen e të dhënave;</li>
+    <li>të kërkoni kufizimin e përpunimit ose ta kundërshtoni atë;</li>
+    <li>të kërkoni bartjen e të dhënave në format të lexueshëm nga makina;</li>
+    <li>ta tërhiqni pëlqimin në çdo kohë, pa ndikuar në përpunimin e mëparshëm.</li>
+  </ul>
+  <p>Për t'i ushtruar këto të drejta, na shkruani në <a href={mail}>{C.privacyEmail}</a>. Përgjigjemi brenda 30 ditëve dhe mund t'ju kërkojmë të vërtetoni identitetin. Keni gjithashtu të drejtë të paraqitni ankesë në Agjencinë për Informim dhe Privatësi (AIP) të Republikës së Kosovës ose në autoritetin e mbrojtjes së të dhënave në vendin ku jetoni.</p>
+
+  <h2 id="fshirja">10. Fshirja e llogarisë dhe e të dhënave</h2>
+  <p>Mund ta fshini llogarinë dhe të dhënat në çdo kohë:</p>
+  <ul>
+    <li><strong>Në aplikacion:</strong> Profili / Cilësimet → Llogaria → Fshij llogarinë;</li>
+    <li><strong>Në ueb, pa e instaluar aplikacionin:</strong> te faqja <a href="/delete-account">Fshirja e llogarisë</a>;</li>
+    <li><strong>Me email:</strong> në <a href={mail}>{C.privacyEmail}</a>, nga adresa e lidhur me llogarinë.</li>
+  </ul>
+  <p>Çfarë fshihet, çfarë ruhet dhe për sa kohë e shpjegojmë te faqja <a href="/delete-account">Fshirja e llogarisë</a>.</p>
+
+  <h2 id="femijet">11. Fëmijët</h2>
+  <p>Aplikacionet dhe uebfaqja jonë u dedikohen bizneseve dhe të rriturve. Nuk u drejtohen fëmijëve nën 13 vjeç (ose nën 16 vjeç në BE) dhe nuk mbledhim me vetëdije të dhëna prej tyre. Nëse mendoni se një fëmijë na ka dhënë të dhëna, na kontaktoni dhe do t'i fshijmë.</p>
+
+  <h2 id="ndryshimet">12. Ndryshimet e kësaj politike</h2>
+  <p>Mund ta përditësojmë këtë politikë herë pas here. Data e përditësimit të fundit shfaqet në krye të faqes. Për ndryshime të rëndësishme ju njoftojmë në aplikacion ose me email para se të hyjnë në fuqi.</p>
+
+  <h2 id="kontakti">13. Kontakti</h2>
+  <p><strong>{C.legalName}</strong><br />{addressLine('sq')}<br />Email: <a href={mail}>{C.privacyEmail}</a><br />Tel: <a href={`tel:${C.phoneHref}`}>{C.phone}</a></p>
+</Fragment>
+
+<Fragment slot="en">
+  <div class="legal-summary">
+    <p><strong>In short</strong></p>
+    <ul>
+      <li>{C.legalName} is the controller of personal data collected through icode-ks.com and the apps we publish on Google Play and the App Store under the developer name “{C.legalName}”.</li>
+      <li>We collect only the data we need to provide our services. We do not sell personal data and do not use it for third-party advertising.</li>
+      <li>You can request access, correction or deletion of your data at any time — including deleting your account on the <a href="/delete-account">Account deletion</a> page.</li>
+    </ul>
+  </div>
+
+  <h2 id="who-we-are">1. Who we are</h2>
+  <p>{C.legalName} (“iCode”, “we”, “us”) is a software company registered in the Republic of Kosovo{C.regNumber && `, business registration number ${C.regNumber}`}, with its registered office at {addressLine('en')}. For any privacy question, email us at <a href={mail}>{C.privacyEmail}</a> or call <a href={`tel:${C.phoneHref}`}>{C.phone}</a>.</p>
+
+  <h2 id="scope">2. Scope</h2>
+  <p>This policy applies to:</p>
+  <ul>
+    <li>the website <strong>icode-ks.com</strong>;</li>
+    <li>mobile and web applications that iCode publishes under its own developer accounts on <strong>Google Play</strong> and the <strong>Apple App Store</strong> (the “Apps”);</li>
+    <li>communications with us by email, phone or contact forms.</li>
+  </ul>
+  <p>Where an App has an app-specific privacy notice, that notice supplements this policy. Apps we build for clients that are published under the client's own developer account are governed by that client's privacy policy; in those cases iCode acts only as a processor on the client's behalf.</p>
+
+  <h2 id="data-we-collect">3. Data we collect</h2>
+  <h3>3.1 Data you give us</h3>
+  <ul>
+    <li><strong>Contact and enquiries:</strong> name, email, phone, company and message content — when you contact us or request a demo or audit.</li>
+    <li><strong>Account</strong> (in Apps that offer accounts): name, email, phone number, password (stored only as a hash), business name and role.</li>
+    <li><strong>Business data</strong> you enter into our platforms (e.g. products, stock, orders, invoices, customers) — processed on behalf of your business.</li>
+    <li><strong>Support:</strong> the content of your request, screenshots and attachments.</li>
+    <li><strong>Job applications:</strong> your CV and the information you send us.</li>
+  </ul>
+  <h3>3.2 Data collected automatically</h3>
+  <ul>
+    <li><strong>Device and app:</strong> device model, operating-system version, app version, language and app installation identifiers.</li>
+    <li><strong>Diagnostics:</strong> crash reports, performance and error data.</li>
+    <li><strong>Server logs:</strong> IP address, date and time of requests, pages or screens opened — for security and operation.</li>
+    <li><strong>Push notification token</strong>, if you allow notifications.</li>
+  </ul>
+  <h3>3.3 Access only with your permission</h3>
+  <p>Some features need device permissions. We ask only when you use the feature, and you can revoke them at any time in your device settings:</p>
+  <ul>
+    <li><strong>Camera</strong> — to scan barcodes/QR codes or photograph products and documents;</li>
+    <li><strong>Location</strong> — only for features such as delivery tracking or finding the nearest store, and only while the feature is in use, unless the App explains otherwise;</li>
+    <li><strong>Photos and files</strong> — only the items you choose to upload;</li>
+    <li><strong>Bluetooth / local network</strong> — to connect receipt printers, scanners and fiscal devices (POS);</li>
+    <li><strong>Notifications</strong>.</li>
+  </ul>
+  <p>We do not access other data on your device (e.g. contacts) unless the App clearly explains it and you grant permission.</p>
+  <h3>3.4 Payments</h3>
+  <p>In-app purchases and subscriptions are processed by Apple or Google. We never receive your card details — only a purchase confirmation (product, date, transaction ID). B2B services are invoiced directly under contract.</p>
+  <h3>3.5 Website and cookies</h3>
+  <p>icode-ks.com does not use advertising or analytics cookies. It only stores your chosen language (SQ/EN) in your browser's local storage. Fonts are served from our own server, with no third-party calls.</p>
+
+  <h2 id="how-we-use-data">4. How we use data and legal bases</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Purpose</th><th>Data</th><th>Legal basis</th></tr></thead>
+    <tbody>
+      <tr><td>Providing the Apps and services, creating and managing your account</td><td>Account, business data, device</td><td>Performance of a contract</td></tr>
+      <tr><td>Answering enquiries and providing support</td><td>Contact, support requests</td><td>Contract / legitimate interest</td></tr>
+      <tr><td>Security, abuse prevention, debugging and stability</td><td>Logs, diagnostics</td><td>Legitimate interest</td></tr>
+      <tr><td>Service notices (security, important changes)</td><td>Email, push token</td><td>Contract / legitimate interest</td></tr>
+      <tr><td>Marketing emails (newsletter)</td><td>Email</td><td>Consent — you can withdraw it at any time</td></tr>
+      <tr><td>Legal obligations (accounting, tax, requests from authorities)</td><td>Billing data</td><td>Legal obligation</td></tr>
+      <tr><td>Recruitment</td><td>Application data</td><td>Consent / pre-contract steps</td></tr>
+    </tbody>
+  </table></div>
+  <p>We do <strong>not</strong> sell personal data, do <strong>not</strong> use it for third-party targeted advertising and do <strong>not</strong> track you across apps or websites owned by other companies. We make no automated decisions that have legal effects on you.</p>
+
+  <h2 id="sharing">5. Who we share data with</h2>
+  <ul>
+    <li><strong>Service providers (processors)</strong> acting on our instructions: cloud hosting and databases (e.g. Microsoft Azure), email delivery, crash reporting and push notifications (e.g. Google Firebase, Apple Push Notification service). They are contractually bound to confidentiality and to protect the data to the same standard as this policy.</li>
+    <li><strong>Apple and Google</strong>, as distribution and payment platforms, under their own privacy policies.</li>
+    <li><strong>Your business</strong> — if you use an App through your employer's account, that account's administrator can access its data.</li>
+    <li><strong>Authorities, courts or professional advisers</strong>, when required by law or to protect our rights and those of our users.</li>
+    <li><strong>A buyer or successor</strong> in a merger or acquisition, with prior notice to you.</li>
+  </ul>
+
+  <h2 id="transfers">6. International transfers</h2>
+  <p>Our providers may process data in the EU/EEA or in other countries. When data is transferred to a country without an adequate level of protection, we use appropriate safeguards such as the EU Standard Contractual Clauses.</p>
+
+  <h2 id="retention">7. How long we keep data</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Data</th><th>Retention period</th></tr></thead>
+    <tbody>
+      <tr><td>Account data</td><td>While the account is active; deleted or anonymised within 30 days after the account is deleted</td></tr>
+      <tr><td>Business data in our platforms</td><td>For the term of the contract; returned or deleted within 90 days after it ends, unless the contract says otherwise</td></tr>
+      <tr><td>Enquiries and support correspondence</td><td>Up to 24 months after the last contact</td></tr>
+      <tr><td>Server and security logs</td><td>Up to 90 days</td></tr>
+      <tr><td>Crash reports and diagnostics</td><td>Up to 90 days</td></tr>
+      <tr><td>Invoices and accounting records</td><td>For the period required by tax and accounting law</td></tr>
+      <tr><td>Backups</td><td>Deleted data is purged from backups within 90 days</td></tr>
+      <tr><td>Job applications</td><td>Up to 12 months, unless you agree to a longer period</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="security">8. Security</h2>
+  <p>We use encryption in transit (TLS/HTTPS), encryption at rest where supported, hashed passwords, least-privilege access, two-factor authentication for administrative access, regular backups and monitoring. No system is 100% secure; in the event of a personal data breach we will notify you and the competent authority as required by law.</p>
+
+  <h2 id="your-rights">9. Your rights</h2>
+  <p>Under Kosovo Law No. 06/L-082 on the Protection of Personal Data and, where applicable, the EU General Data Protection Regulation (GDPR), you have the right to:</p>
+  <ul>
+    <li>access your data and receive a copy;</li>
+    <li>have inaccurate data corrected;</li>
+    <li>have your data deleted;</li>
+    <li>restrict or object to processing;</li>
+    <li>receive your data in a machine-readable format (portability);</li>
+    <li>withdraw consent at any time, without affecting earlier processing.</li>
+  </ul>
+  <p>To exercise these rights, email <a href={mail}>{C.privacyEmail}</a>. We reply within 30 days and may ask you to verify your identity. You also have the right to lodge a complaint with the Information and Privacy Agency (AIP) of the Republic of Kosovo or with the data protection authority in your country of residence.</p>
+
+  <h2 id="deletion">10. Deleting your account and data</h2>
+  <p>You can delete your account and data at any time:</p>
+  <ul>
+    <li><strong>In the app:</strong> Profile / Settings → Account → Delete account;</li>
+    <li><strong>On the web, without reinstalling the app:</strong> on the <a href="/delete-account">Account deletion</a> page;</li>
+    <li><strong>By email:</strong> to <a href={mail}>{C.privacyEmail}</a>, from the address linked to your account.</li>
+  </ul>
+  <p>What is deleted, what is kept and for how long is explained on the <a href="/delete-account">Account deletion</a> page.</p>
+
+  <h2 id="children">11. Children</h2>
+  <p>Our Apps and website are intended for businesses and adults. They are not directed at children under 13 (or under 16 in the EU), and we do not knowingly collect their data. If you believe a child has given us personal data, contact us and we will delete it.</p>
+
+  <h2 id="changes">12. Changes to this policy</h2>
+  <p>We may update this policy from time to time. The date of the latest update is shown at the top of this page. For material changes we will notify you in the app or by email before they take effect.</p>
+
+  <h2 id="contact">13. Contact</h2>
+  <p><strong>{C.legalName}</strong><br />{addressLine('en')}<br />Email: <a href={mail}>{C.privacyEmail}</a><br />Phone: <a href={`tel:${C.phoneHref}`}>{C.phone}</a></p>
+</Fragment>
+
+</LegalPage>

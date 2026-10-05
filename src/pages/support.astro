@@ -1,0 +1,22 @@
+---
+// Support page — used as the App Store "Support URL". Apple requires it to
+// show real contact info: legal address, email and phone.
+import LegalPage from '../layouts/LegalPage.astro';
+import SupportBody from '../components/SupportBody.astro';
+---
+<LegalPage
+  title="Mbështetja · Support — iCode LLC"
+  description="Mbështetje për aplikacionet dhe platformat e iCode LLC: email, telefon, adresë dhe pyetjet e shpeshta."
+  crumb={{ sq: 'Mbështetja', en: 'Support' }}
+  heading={{ sq: 'Mbështetja', en: 'Support' }}
+  lead={{
+    sq: 'Ndihmë për aplikacionet dhe platformat e iCode — iData+, POS, ERP, WMS dhe aplikacionet mobile që publikojmë.',
+    en: 'Help with iCode apps and platforms — iData+, POS, ERP, WMS and the mobile apps we publish.',
+  }}
+  showUpdated={false}
+>
+
+<Fragment slot="sq"><SupportBody lang="sq" /></Fragment>
+<Fragment slot="en"><SupportBody lang="en" /></Fragment>
+
+</LegalPage>
